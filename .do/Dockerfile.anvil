@@ -2,5 +2,5 @@ FROM ghcr.io/foundry-rs/foundry:nightly
 
 EXPOSE 8545
 
-COPY entrypoint.anvil.sh /entrypoint.sh
+COPY .do/entrypoint.anvil.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
