@@ -1,0 +1,10 @@
+name: ethui-demo
+services:
+  - name: anvil
+    github:
+      repo: "ethui/demo"
+      branch: "main"
+    dockerfile_path: ./.do/Dockerfile.anvil
+    instance_count: 1
+    instance_size_slug: basic-xxs
+
