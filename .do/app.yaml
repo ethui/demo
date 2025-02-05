@@ -1,4 +1,5 @@
 name: ethui-demo
+
 services:
   - name: anvil
     github:
@@ -13,3 +14,7 @@ services:
     envs:
       - key: "ANVIL_CHAIN_ID"
         value: "31338"
+
+domains:
+  - domain: anvil.demo.ethui.dev
+    type: PRIMARY
