@@ -9,6 +9,7 @@ interface Props {
 const demoChain = defineChain({
   ...anvil,
   name: "demo",
+  id: 31338,
   rpcUrls: {
     default: {
       http: ["https://anvil.demo.ethui.dev"],
