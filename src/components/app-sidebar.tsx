@@ -59,6 +59,10 @@ const data = {
           title: "addEthereumChain",
           to: "/wallet/addEthereumChain",
         },
+        {
+          title: "updateEthereumChain",
+          to: "/wallet/updateEthereumChain",
+        },
       ],
     },
   ],

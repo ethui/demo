@@ -12,6 +12,7 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
+import { Route as WalletUpdateEthereumChainImport } from './routes/wallet/updateEthereumChain'
 import { Route as WalletSwitchChainImport } from './routes/wallet/switchChain'
 import { Route as WalletAddEthereumChainImport } from './routes/wallet/addEthereumChain'
 import { Route as SignaturesEip712Import } from './routes/signatures/eip712'
@@ -24,6 +25,12 @@ import { Route as ContractsErc20Import } from './routes/contracts/erc20'
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const WalletUpdateEthereumChainRoute = WalletUpdateEthereumChainImport.update({
+  id: '/wallet/updateEthereumChain',
+  path: '/wallet/updateEthereumChain',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -116,6 +123,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WalletSwitchChainImport
       parentRoute: typeof rootRoute
     }
+    '/wallet/updateEthereumChain': {
+      id: '/wallet/updateEthereumChain'
+      path: '/wallet/updateEthereumChain'
+      fullPath: '/wallet/updateEthereumChain'
+      preLoaderRoute: typeof WalletUpdateEthereumChainImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -129,6 +143,7 @@ export interface FileRoutesByFullPath {
   '/signatures/eip712': typeof SignaturesEip712Route
   '/wallet/addEthereumChain': typeof WalletAddEthereumChainRoute
   '/wallet/switchChain': typeof WalletSwitchChainRoute
+  '/wallet/updateEthereumChain': typeof WalletUpdateEthereumChainRoute
 }
 
 export interface FileRoutesByTo {
@@ -139,6 +154,7 @@ export interface FileRoutesByTo {
   '/signatures/eip712': typeof SignaturesEip712Route
   '/wallet/addEthereumChain': typeof WalletAddEthereumChainRoute
   '/wallet/switchChain': typeof WalletSwitchChainRoute
+  '/wallet/updateEthereumChain': typeof WalletUpdateEthereumChainRoute
 }
 
 export interface FileRoutesById {
@@ -150,6 +166,7 @@ export interface FileRoutesById {
   '/signatures/eip712': typeof SignaturesEip712Route
   '/wallet/addEthereumChain': typeof WalletAddEthereumChainRoute
   '/wallet/switchChain': typeof WalletSwitchChainRoute
+  '/wallet/updateEthereumChain': typeof WalletUpdateEthereumChainRoute
 }
 
 export interface FileRouteTypes {
@@ -162,6 +179,7 @@ export interface FileRouteTypes {
     | '/signatures/eip712'
     | '/wallet/addEthereumChain'
     | '/wallet/switchChain'
+    | '/wallet/updateEthereumChain'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -171,6 +189,7 @@ export interface FileRouteTypes {
     | '/signatures/eip712'
     | '/wallet/addEthereumChain'
     | '/wallet/switchChain'
+    | '/wallet/updateEthereumChain'
   id:
     | '__root__'
     | '/'
@@ -180,6 +199,7 @@ export interface FileRouteTypes {
     | '/signatures/eip712'
     | '/wallet/addEthereumChain'
     | '/wallet/switchChain'
+    | '/wallet/updateEthereumChain'
   fileRoutesById: FileRoutesById
 }
 
@@ -191,6 +211,7 @@ export interface RootRouteChildren {
   SignaturesEip712Route: typeof SignaturesEip712Route
   WalletAddEthereumChainRoute: typeof WalletAddEthereumChainRoute
   WalletSwitchChainRoute: typeof WalletSwitchChainRoute
+  WalletUpdateEthereumChainRoute: typeof WalletUpdateEthereumChainRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -201,6 +222,7 @@ const rootRouteChildren: RootRouteChildren = {
   SignaturesEip712Route: SignaturesEip712Route,
   WalletAddEthereumChainRoute: WalletAddEthereumChainRoute,
   WalletSwitchChainRoute: WalletSwitchChainRoute,
+  WalletUpdateEthereumChainRoute: WalletUpdateEthereumChainRoute,
 }
 
 export const routeTree = rootRoute
@@ -219,7 +241,8 @@ export const routeTree = rootRoute
         "/signatures/basic",
         "/signatures/eip712",
         "/wallet/addEthereumChain",
-        "/wallet/switchChain"
+        "/wallet/switchChain",
+        "/wallet/updateEthereumChain"
       ]
     },
     "/": {
@@ -242,6 +265,9 @@ export const routeTree = rootRoute
     },
     "/wallet/switchChain": {
       "filePath": "wallet/switchChain.tsx"
+    },
+    "/wallet/updateEthereumChain": {
+      "filePath": "wallet/updateEthereumChain.tsx"
     }
   }
 }
