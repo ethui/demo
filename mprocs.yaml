@@ -1,4 +1,6 @@
 procs:
+  anvil:
+    cmd: ["anvil", "--host", "0.0.0.0"]
   demo:
     cmd: ["yarn", "dev"]
   demo-contracts:
