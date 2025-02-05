@@ -1,7 +1,5 @@
 procs:
-  anvil:
-    cmd: ["anvil"]
-  frontend:
+  demo:
     cmd: ["yarn", "dev"]
-  contracts-deploy:
-    cmd: ["mise", "run", "eth-watch"]
+  demo-contracts:
+    cmd: ["yarn", "eth-watch"]

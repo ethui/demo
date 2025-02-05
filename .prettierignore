@@ -1,6 +1,0 @@
-out/
-.next/
-broadcast/
-lib/
-cache/
-src/wagmi.generated.ts

@@ -1,4 +1,3 @@
 # ethui demo app
 
-This project was merged into ethui's main repo: https://github.com/ethui/ethui/tree/main/packages/demo
-
+A collection if web3 interactions to test and demonstrate ethui's capabilities.
