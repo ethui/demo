@@ -1,0 +1,10 @@
+FROM ghcr.io/foundry-rs/foundry:nightly
+
+EXPOSE 8545
+
+ENV ANVIL_FORK_URL ""
+ENV ANVIL_FORK_BLOCK_NUMBER ""
+ENV ANVIL_CHAIN_ID ""
+
+COPY entrypoint.anvil.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]

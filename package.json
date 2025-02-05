@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "eth-watch": "./eth-watch.sh"
+    "eth-watch": "./scripts/eth-watch.sh"
   },
   "dependencies": {
     "@ethui/ui": "https://gitpkg.vercel.app/ethui/ethui/packages/ui?865ddd08",

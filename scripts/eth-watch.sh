@@ -6,4 +6,4 @@ watchexec \
   --watch contracts \
   --watch foundry.toml \
   --restart \
-  --exts sol,toml ./eth-deploy.sh
+  --exts sol,toml ./scripts/eth-deploy.sh
