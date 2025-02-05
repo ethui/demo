@@ -8,4 +8,5 @@ services:
     dockerfile_path: ./.do/Dockerfile.anvil
     instance_count: 1
     instance_size_slug: basic-xxs
-
+  http_port: 8545
+  health_check: null
