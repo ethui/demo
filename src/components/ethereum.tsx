@@ -6,10 +6,21 @@ interface Props {
   children: React.ReactNode;
 }
 
+const demoChain = defineChain({
+  ...anvil,
+  name: "demo",
+  rpcUrls: {
+    default: {
+      http: ["https://anvil.demo.ethui.dev"],
+      webSocket: ["wss://anvil.demo.ethui.dev"],
+    },
+  },
+});
+
 export const config = getDefaultConfig({
   appName: "ethui demo",
   projectId: "TODO",
-  chains: [anvil, mainnet, sepolia],
+  chains: [demoChain, anvil, mainnet, sepolia],
   ssr: true,
 });
 

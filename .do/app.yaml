@@ -10,3 +10,6 @@ services:
     instance_size_slug: basic-xxs
     http_port: 8545
     health_check: null
+    envs:
+      - key: "ANVIL_CHAIN_ID"
+        value: "31338"
