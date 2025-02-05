@@ -4,6 +4,7 @@ services:
     github:
       repo: "ethui/demo"
       branch: "main"
+      deploy_on_push: true
     dockerfile_path: ./.do/Dockerfile.anvil
     instance_count: 1
     instance_size_slug: basic-xxs
