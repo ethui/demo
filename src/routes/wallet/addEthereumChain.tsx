@@ -13,11 +13,15 @@ function RouteComponent() {
   const { data: client } = useWalletClient();
   const schema = z.object({
     chainId: z.number().min(1),
-    name: z.string().min(1),
-    rpcUrls: z.tuple([
-      z.string().url().startsWith("http"),
-      z.string().url().startsWith("ws").optional(),
-    ]),
+    chainName: z.string().min(1),
+    rpcUrls: z.array(
+      z
+        .string()
+        .url()
+        .startsWith("http")
+        .or(z.string().url().startsWith("ws"))
+        .optional(),
+    ),
     blockExplorerUrls: z.array(z.string().url().optional()),
     nativeCurrency: z.object({
       name: z.string().min(1),
@@ -32,7 +36,7 @@ function RouteComponent() {
     resolver: zodResolver(schema),
     defaultValues: {
       chainId: 123,
-      name: "fake chain",
+      chainName: "fake chain",
       rpcUrls: ["http://not-a-real-url", undefined],
       nativeCurrency: {
         name: "Ether",
@@ -45,6 +49,10 @@ function RouteComponent() {
   if (!client) return null;
 
   const onSubmit = (data: Schema) => {
+    data.rpcUrls = data.rpcUrls.filter((url) => !!url && url.length > 0);
+    data.blockExplorerUrls = data.blockExplorerUrls.filter(
+      (url) => !!url && url.length > 0,
+    );
     client.request({
       method: "wallet_addEthereumChain",
       params: [data],
@@ -60,7 +68,7 @@ function RouteComponent() {
           name="chainId"
           className="col-span-1"
         />
-        <Form.Text label="name" name="name" className="col-span-1" />
+        <Form.Text label="name" name="chainName" className="col-span-1" />
       </div>
       <Form.Text label="RPC Url" name="rpcUrls.0" className="w-full" />
       <Form.Text label="WS Url" name="rpcUrls.1" className=" w-full" />
