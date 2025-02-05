@@ -39,8 +39,8 @@ contract DevDeployScript is Script {
         Token token = new Token();
         console.log("Token", address(token));
 
-        new TestCalls();
-        console.log("TestCalls", address(new TestCalls()));
+        TestCalls testCalls = new TestCalls();
+        console.log("TestCalls", address(testCalls));
 
         address impl = address(new TestCallsUpgradeable());
         address proxy = UnsafeUpgrades.deployUUPSProxy(impl, abi.encodeCall(TestCallsUpgradeable.initialize, ()));
