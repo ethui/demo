@@ -4,7 +4,7 @@ import baseConfig from "@ethui/ui/tailwind.config";
 export default {
   darkMode: ["class"],
   content: [
-    "node_modules/@ethui/ui/**/*.tsx",
+    "node_modules/@ethui/ui/**/*.js",
     "./src/components/**/*.tsx",
     "./src/routes/**/*.tsx",
     "../**/*.tsx",
