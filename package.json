@@ -9,7 +9,7 @@
     "eth-watch": "./scripts/eth-watch.sh"
   },
   "dependencies": {
-    "@ethui/ui": "0.0.3",
+    "@ethui/ui": "0.0.7",
     "@hookform/resolvers": "^3.10.0",
     "@rainbow-me/rainbowkit": "^2.2.3",
     "@tanstack/react-query": "^5.66.0",
