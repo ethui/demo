@@ -27,7 +27,5 @@
       "#/*": ["./src/*"]
     }
   },
-  "files": [],
-  "include": ["./src", "vite.config.ts", "wagmi.config.ts"],
-  "references": [{ "path": "node_modules/@ethui/ui" }]
+  "include": ["./src", "vite.config.ts", "wagmi.config.ts"]
 }
