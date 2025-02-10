@@ -12,7 +12,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "#/components/shadcn/sidebar";
+} from "@ethui/ui/components/shadcn/sidebar";
 
 export function VersionSwitcher({
   versions,

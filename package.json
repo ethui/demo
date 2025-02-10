@@ -9,7 +9,7 @@
     "eth-watch": "./scripts/eth-watch.sh"
   },
   "dependencies": {
-    "@ethui/ui": "https://gitpkg.vercel.app/ethui/ethui/packages/ui?865ddd08",
+    "@ethui/ui": "0.0.3",
     "@hookform/resolvers": "^3.10.0",
     "@rainbow-me/rainbowkit": "^2.2.3",
     "@tanstack/react-query": "^5.66.0",
@@ -30,6 +30,7 @@
     "@tanstack/react-router": "^1.99.0",
     "@tanstack/router-plugin": "^1.99.3",
     "@types/lodash-es": "^4.17.12",
+    "@types/node": "^22.13.1",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "@vitejs/plugin-react": "^4.3.4",

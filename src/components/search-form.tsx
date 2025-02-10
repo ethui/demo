@@ -4,7 +4,7 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarInput,
-} from "#/components/shadcn/sidebar";
+} from "@ethui/ui/components/shadcn/sidebar";
 
 export function SearchForm({ ...props }: React.ComponentProps<"form">) {
   return (
