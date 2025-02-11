@@ -1,10 +1,10 @@
 import { Label } from "@ethui/ui/components/shadcn/label";
-import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarInput,
 } from "@ethui/ui/components/shadcn/sidebar";
+import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 
 export function SearchForm({ ...props }: React.ComponentProps<"form">) {
   return (

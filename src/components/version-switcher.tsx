@@ -7,12 +7,12 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@ethui/ui/components/shadcn/dropdown-menu";
-import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@ethui/ui/components/shadcn/sidebar";
+import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
 
 export function VersionSwitcher({
   versions,

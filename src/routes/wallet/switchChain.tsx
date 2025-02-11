@@ -1,12 +1,12 @@
-import { config } from '#/components/ethereum'
-import { Button } from '@ethui/ui/components/shadcn/button'
-import { createFileRoute } from '@tanstack/react-router'
-import { switchChain } from '@wagmi/core'
-import { useChainId, useChains } from 'wagmi'
+import { Button } from "@ethui/ui/components/shadcn/button";
+import { createFileRoute } from "@tanstack/react-router";
+import { switchChain } from "@wagmi/core";
+import { useChainId, useChains } from "wagmi";
+import { config } from "#/components/ethereum";
 
-export const Route = createFileRoute('/wallet/switchChain')({
+export const Route = createFileRoute("/wallet/switchChain")({
   component: RouteComponent,
-})
+});
 
 function RouteComponent() {
   return (
@@ -14,22 +14,22 @@ function RouteComponent() {
       <CurrentChain />
       <SwitchChain />
     </div>
-  )
+  );
 }
 
 function CurrentChain() {
-  const chainId = useChainId()
+  const chainId = useChainId();
 
   return (
     <div className="flex gap-2">
       <div>Current Chain:</div>
       <strong>{chainId}</strong>
     </div>
-  )
+  );
 }
 
 function SwitchChain() {
-  const chains = useChains()
+  const chains = useChains();
 
   return (
     <div>
@@ -45,5 +45,5 @@ function SwitchChain() {
         ))}
       </div>
     </div>
-  )
+  );
 }

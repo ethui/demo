@@ -9,7 +9,8 @@
       "*.generated.ts",
       "extension/dist",
       "gui/dist",
-      "bin/gen"
+      "bin/gen",
+      "dependencies"
     ]
   },
   "formatter": {
