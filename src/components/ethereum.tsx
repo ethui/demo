@@ -19,7 +19,7 @@ const demoChain = defineChain({
   },
 });
 
-export const config = getDefaultConfig({
+export const config: ReturnType<typeof getDefaultConfig> = getDefaultConfig({
   appName: "ethui demo",
   projectId: "TODO",
   chains: [demoChain, anvil, mainnet, sepolia],

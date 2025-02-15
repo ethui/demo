@@ -1,7 +1,7 @@
 import { defineConfig } from "@wagmi/cli";
 import { foundry, react } from "@wagmi/cli/plugins";
 
-export default defineConfig({
+const config: ReturnType<typeof defineConfig> = defineConfig({
   out: "src/wagmi.generated.ts",
   plugins: [
     foundry({
@@ -24,3 +24,5 @@ export default defineConfig({
     react(),
   ],
 });
+
+export default config;

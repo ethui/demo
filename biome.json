@@ -10,7 +10,10 @@
       "extension/dist",
       "gui/dist",
       "bin/gen",
-      "dependencies"
+      "dependencies",
+      "out",
+      "broadcast",
+      "cache"
     ]
   },
   "formatter": {

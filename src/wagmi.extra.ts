@@ -1,7 +1,7 @@
 import { useChainId, useReadContracts } from "wagmi";
 import { nftAbi, nftAddress } from "./wagmi.generated";
 
-export function useReadsNftTokenUri(configs: object[] = [] as object) {
+export function useReadsNftTokenUri(configs: object[] = []) {
   const chainId = useChainId();
 
   const reads = configs.map((config) => {

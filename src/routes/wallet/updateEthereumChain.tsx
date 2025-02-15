@@ -53,10 +53,10 @@ function RouteComponent() {
     data.blockExplorerUrls = data.blockExplorerUrls.filter(
       (url) => !!url && url.length > 0,
     );
-    client.request({
-      method: "wallet_updateEthereumChain",
-      params: [data],
-    });
+    //client.request({
+    //  method: "wallet_updateEthereumChain" as any,
+    //  params: [{ ...data, chainId: data.chainId.toString() }],
+    //});
   };
 
   return (

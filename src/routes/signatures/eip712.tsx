@@ -43,7 +43,7 @@ function Eip712() {
   });
 
   const onSubmit = (data: FieldValues) => {
-    signTypedData({ domain, primaryType: "Mail", types, message: data });
+    signTypedData({ domain, primaryType: "Mail", types, message: data as any });
   };
 
   return (

@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "composite": true,
-    "target": "es2022",
+    "target": "esnext",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": false,
     "skipLibCheck": true,
@@ -22,6 +22,7 @@
     "rewriteRelativeImportExtensions": true,
 
     "types": ["node"],
+    "typeRoots": ["node_mdules", "./node_modules/@types"],
 
     "paths": {
       "#/*": ["./src/*"]

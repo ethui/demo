@@ -38,7 +38,7 @@ function SwitchChain() {
         {chains.map((c) => (
           <Button
             key={c.id}
-            onClick={() => switchChain(config, { chainId: c.id })}
+            onClick={() => switchChain(config, { chainId: c.id as 1 | 31337 })}
           >
             {c.name} ({c.id})
           </Button>
