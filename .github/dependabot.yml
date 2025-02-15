@@ -10,3 +10,19 @@ updates:
     open-pull-requests-limit: 20
     schedule:
       interval: "weekly"
+    groups:
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "@types/react"
+          - "@types/react-dom"
+      wevm:
+        patterns:
+          - "*wagmi*"
+          - "*viem*"
+      css:
+        patterns:
+          - "*tailwind*"
+          - "*postcss*"
+          - "*autoprefixer*"
