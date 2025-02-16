@@ -1,4 +1,4 @@
-name: CI - Foundry
+name: foundry
 
 on: workflow_dispatch
 
@@ -6,7 +6,7 @@ env:
   FOUNDRY_PROFILE: ci
 
 jobs:
-  check:
+  forge:
     strategy:
       fail-fast: true
 
