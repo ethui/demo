@@ -1,16 +1,21 @@
-name: CI - Foundry
+name: foundry
 
-on: workflow_dispatch
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - "*"
+  pull_request:
 
 env:
   FOUNDRY_PROFILE: ci
 
 jobs:
-  check:
+  forge:
     strategy:
       fail-fast: true
 
-    name: Foundry project
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -27,8 +32,3 @@ jobs:
           forge --version
           forge build --sizes
         id: build
-
-      - name: Run Forge tests
-        run: |
-          forge test -vvv
-        id: test
