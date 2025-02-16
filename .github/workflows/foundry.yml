@@ -1,6 +1,12 @@
 name: foundry
 
-on: workflow_dispatch
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - "*"
+  pull_request:
 
 env:
   FOUNDRY_PROFILE: ci
