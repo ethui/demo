@@ -1,4 +1,4 @@
-name: CI - Yarn
+name: nodejs
 
 on:
   push:
@@ -7,35 +7,20 @@ on:
     tags:
       - "*"
   pull_request:
-    types: [opened, synchronize]
-    paths-ignore:
-      - "*.toml"
-      - "*.contracts"
-      - "*.md"
-      - "LICENSE"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  #
-  # yarn tests/lint
-  #
-  yarn:
+  node-lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
-      - name: rust cache
-        uses: Swatinem/rust-cache@v2
-
+      - uses: actions/checkout@v4
       - name: yarn cache
         uses: actions/setup-node@v3
         with:
           cache: "yarn"
 
       - run: yarn install
-
-      - name: ESLint
-        run: yarn lint
+      - run: yarn lint
