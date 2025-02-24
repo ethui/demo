@@ -1708,10 +1708,10 @@
   resolved "https://registry.yarnpkg.com/@radix-ui/rect/-/rect-1.1.0.tgz#f817d1d3265ac5415dadc67edab30ae196696438"
   integrity sha512-A9+lCBZoaMJlVKcRBz2YByCG+Cp2t6nAnMnNba+XiWxnj6r4JUFqfsgwocMBZU9LPtdxC6wB56ySYpc7LQIoJg==
 
-"@rainbow-me/rainbowkit@^2.2.3":
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/@rainbow-me/rainbowkit/-/rainbowkit-2.2.3.tgz#f1b5c146e6a4f30f1d0792eb3c755b167be1bfda"
-  integrity sha512-kXZ+zmKSPZhZdNHey+4TwOIW4p2vIRv5B9+5FoTJv1xktru1RykfAAQY5z+nLUdvc0l6M5hiYH4X88Jl1foXGQ==
+"@rainbow-me/rainbowkit@^2.2.4":
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/@rainbow-me/rainbowkit/-/rainbowkit-2.2.4.tgz#a02b79b8be3838046cf4ef54d2d014ac9301fe3b"
+  integrity sha512-LUYBcB5bzLf6/BMdnW3dEFHVqoPkTGcFN3u6WamaIHXuqD9HT+HVAeNlcYvKENBXldN2zNBs1Bt3k8Oy7y5bTw==
   dependencies:
     "@vanilla-extract/css" "1.15.5"
     "@vanilla-extract/dynamic" "2.1.2"
