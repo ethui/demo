@@ -36,7 +36,7 @@
     "@tanstack/react-router": "^1.105.0",
     "@tanstack/router-plugin": "^1.105.0",
     "@types/lodash-es": "^4.17.12",
-    "@types/node": "^22.13.4",
+    "@types/node": "^22.13.5",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",
