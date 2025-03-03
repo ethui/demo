@@ -2062,28 +2062,28 @@
     "@tanstack/store" "0.7.0"
     use-sync-external-store "^1.4.0"
 
-"@tanstack/router-core@^1.111.6":
-  version "1.111.6"
-  resolved "https://registry.yarnpkg.com/@tanstack/router-core/-/router-core-1.111.6.tgz#9d453488643c588394ac048777374c3455f479e8"
-  integrity sha512-WEd/DhfjFUGp03a8iX6Fueo/jsKiCXUlF6xAo2J/miKvRJqTVyZ2y/5eP2pKbqml6c1oRpELEc1n9xj+QSOMDg==
+"@tanstack/router-core@^1.111.6", "@tanstack/router-core@^1.112.0":
+  version "1.112.0"
+  resolved "https://registry.yarnpkg.com/@tanstack/router-core/-/router-core-1.112.0.tgz#e8343dcf0931faac60d874dab4829007326767a2"
+  integrity sha512-kmpMiBuz17Hxyl+ZO+B6/F98p07NSEmgr2JlZkKXcdupLIBAWqcXw+bjowFXNcTEwe9RWsS/WjAC/bBTftr0rA==
   dependencies:
     "@tanstack/history" "1.99.13"
     "@tanstack/store" "^0.7.0"
 
-"@tanstack/router-generator@^1.111.6":
-  version "1.111.6"
-  resolved "https://registry.yarnpkg.com/@tanstack/router-generator/-/router-generator-1.111.6.tgz#e5ee3f899b9b4a9548db56543e5f9330c0d9160a"
-  integrity sha512-QO2LzVd38gLbCpnXmM9ocWI7BSdion8yViFoSWos9amVNHMEaL5DRt7wDdGjHaQvRYsl0fWzzV4cP4EmvxNlMg==
+"@tanstack/router-generator@^1.112.3":
+  version "1.112.3"
+  resolved "https://registry.yarnpkg.com/@tanstack/router-generator/-/router-generator-1.112.3.tgz#9fee385be244e68fcdfcda2ef3aa0e7640654df5"
+  integrity sha512-RUT+O/j7YIjbemVJjkP4qM8MYaaOltKYhyp9VGtcWxWGS8U2QDwC9UsskjBVOj7QV7aq3UcnExicABwK/AMCCQ==
   dependencies:
     "@tanstack/virtual-file-routes" "^1.99.0"
     prettier "^3.5.0"
     tsx "^4.19.2"
     zod "^3.24.1"
 
-"@tanstack/router-plugin@^1.111.6":
-  version "1.111.6"
-  resolved "https://registry.yarnpkg.com/@tanstack/router-plugin/-/router-plugin-1.111.6.tgz#8e36e55b1c4758a419707c9ad26d8649961bb66f"
-  integrity sha512-RQpqsuq96owawWDFJTR4B+t/ZCy97YeIcfxwQHUtYLbvo5ati+7/Zup8gHS9tcciKTzZaACn2VPgkWNlL0NAWQ==
+"@tanstack/router-plugin@^1.112.3":
+  version "1.112.3"
+  resolved "https://registry.yarnpkg.com/@tanstack/router-plugin/-/router-plugin-1.112.3.tgz#14b27eaee4a9d77517372c0d6c3725addcbeb4ad"
+  integrity sha512-XhKXFoJ7eajqghAPwHXfggyB8khopr5yVXiYQRiL+9Gek2q5M8N4z9+Uh2MM31KjTuiaJ72lZpUgT5FDj1m6Tg==
   dependencies:
     "@babel/core" "^7.26.8"
     "@babel/plugin-syntax-jsx" "^7.25.9"
@@ -2091,7 +2091,8 @@
     "@babel/template" "^7.26.8"
     "@babel/traverse" "^7.26.8"
     "@babel/types" "^7.26.8"
-    "@tanstack/router-generator" "^1.111.6"
+    "@tanstack/router-core" "^1.112.0"
+    "@tanstack/router-generator" "^1.112.3"
     "@tanstack/router-utils" "^1.102.2"
     "@tanstack/virtual-file-routes" "^1.99.0"
     "@types/babel__core" "^7.20.5"
