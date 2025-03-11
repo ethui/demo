@@ -2025,11 +2025,6 @@
   resolved "https://registry.yarnpkg.com/@standard-schema/utils/-/utils-0.3.0.tgz#3d5e608f16c2390c10528e98e59aef6bf73cae7b"
   integrity sha512-e7Mew686owMaPJVNNLs55PUvgz371nKgwsc4vxE49zsODpJEnxgxRo2y/OKrqueavXgZNMDVj3DdHFlaSAeU8g==
 
-"@tanstack/history@1.112.8":
-  version "1.112.8"
-  resolved "https://registry.yarnpkg.com/@tanstack/history/-/history-1.112.8.tgz#c4d3605b29221887fcbf73a03d2474e6ab768bbe"
-  integrity sha512-+EPOvUtnA3PnIBF2oUhggdy7UrVimLZd1SpULhV1UiesNgKtmLjArO7ZdGPrRq7pRXhc8V0ZAWTI9vfplhZfeA==
-
 "@tanstack/history@1.114.12":
   version "1.114.12"
   resolved "https://registry.yarnpkg.com/@tanstack/history/-/history-1.114.12.tgz#f5ff12bda71d75848e1a100a255832dfb8785562"
@@ -2047,14 +2042,14 @@
   dependencies:
     "@tanstack/query-core" "5.67.1"
 
-"@tanstack/react-router@^1.112.13":
-  version "1.112.13"
-  resolved "https://registry.yarnpkg.com/@tanstack/react-router/-/react-router-1.112.13.tgz#625a1bf19a5b3180a23b26342ebe8cec3bf3dea0"
-  integrity sha512-F/ILuPWqs51Rc8plD4hhxOIKXExbWaba80usO4+Rh2qZZ8eMM/hNwgGvNrtzca0Dltf8PkFr9si3RljO1PYs1Q==
+"@tanstack/react-router@^1.114.13":
+  version "1.114.13"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-router/-/react-router-1.114.13.tgz#2694d120ca57df6c2c0a96f70ce33499a745d909"
+  integrity sha512-cW216LAfdmviaIU3enpWE/lS05cOo8zAeBZ8GHGpmFU/z+4ZHIcTMvs4pG8WnDA5hMFnpaLXBmYQx1Z4URXKkQ==
   dependencies:
-    "@tanstack/history" "1.112.8"
+    "@tanstack/history" "1.114.12"
     "@tanstack/react-store" "^0.7.0"
-    "@tanstack/router-core" "^1.112.12"
+    "@tanstack/router-core" "1.114.12"
     jsesc "^3.1.0"
     tiny-invariant "^1.3.3"
     tiny-warning "^1.0.3"
@@ -2067,7 +2062,7 @@
     "@tanstack/store" "0.7.0"
     use-sync-external-store "^1.4.0"
 
-"@tanstack/router-core@^1.112.12", "@tanstack/router-core@^1.114.12":
+"@tanstack/router-core@1.114.12", "@tanstack/router-core@^1.114.12":
   version "1.114.12"
   resolved "https://registry.yarnpkg.com/@tanstack/router-core/-/router-core-1.114.12.tgz#63191d2f6cb9ab306141e983a0c88189df199208"
   integrity sha512-cHhQJz3yJ5BkRe3JxtRfvmk4ynV89k1yudMQRK/1PeUV5eVEB0cIEECDk8Nlp3w9mPFS3U1iYby9hje4kP4h4g==
