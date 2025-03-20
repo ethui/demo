@@ -15,6 +15,7 @@ import { Route as IndexImport } from './routes/index'
 import { Route as WalletUpdateEthereumChainImport } from './routes/wallet/updateEthereumChain'
 import { Route as WalletSwitchChainImport } from './routes/wallet/switchChain'
 import { Route as WalletAddEthereumChainImport } from './routes/wallet/addEthereumChain'
+import { Route as SignaturesPlumeImport } from './routes/signatures/plume'
 import { Route as SignaturesEip712Import } from './routes/signatures/eip712'
 import { Route as SignaturesBasicImport } from './routes/signatures/basic'
 import { Route as ContractsErc721Import } from './routes/contracts/erc721'
@@ -43,6 +44,12 @@ const WalletSwitchChainRoute = WalletSwitchChainImport.update({
 const WalletAddEthereumChainRoute = WalletAddEthereumChainImport.update({
   id: '/wallet/addEthereumChain',
   path: '/wallet/addEthereumChain',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const SignaturesPlumeRoute = SignaturesPlumeImport.update({
+  id: '/signatures/plume',
+  path: '/signatures/plume',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -109,6 +116,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SignaturesEip712Import
       parentRoute: typeof rootRoute
     }
+    '/signatures/plume': {
+      id: '/signatures/plume'
+      path: '/signatures/plume'
+      fullPath: '/signatures/plume'
+      preLoaderRoute: typeof SignaturesPlumeImport
+      parentRoute: typeof rootRoute
+    }
     '/wallet/addEthereumChain': {
       id: '/wallet/addEthereumChain'
       path: '/wallet/addEthereumChain'
@@ -141,6 +155,7 @@ export interface FileRoutesByFullPath {
   '/contracts/erc721': typeof ContractsErc721Route
   '/signatures/basic': typeof SignaturesBasicRoute
   '/signatures/eip712': typeof SignaturesEip712Route
+  '/signatures/plume': typeof SignaturesPlumeRoute
   '/wallet/addEthereumChain': typeof WalletAddEthereumChainRoute
   '/wallet/switchChain': typeof WalletSwitchChainRoute
   '/wallet/updateEthereumChain': typeof WalletUpdateEthereumChainRoute
@@ -152,6 +167,7 @@ export interface FileRoutesByTo {
   '/contracts/erc721': typeof ContractsErc721Route
   '/signatures/basic': typeof SignaturesBasicRoute
   '/signatures/eip712': typeof SignaturesEip712Route
+  '/signatures/plume': typeof SignaturesPlumeRoute
   '/wallet/addEthereumChain': typeof WalletAddEthereumChainRoute
   '/wallet/switchChain': typeof WalletSwitchChainRoute
   '/wallet/updateEthereumChain': typeof WalletUpdateEthereumChainRoute
@@ -164,6 +180,7 @@ export interface FileRoutesById {
   '/contracts/erc721': typeof ContractsErc721Route
   '/signatures/basic': typeof SignaturesBasicRoute
   '/signatures/eip712': typeof SignaturesEip712Route
+  '/signatures/plume': typeof SignaturesPlumeRoute
   '/wallet/addEthereumChain': typeof WalletAddEthereumChainRoute
   '/wallet/switchChain': typeof WalletSwitchChainRoute
   '/wallet/updateEthereumChain': typeof WalletUpdateEthereumChainRoute
@@ -177,6 +194,7 @@ export interface FileRouteTypes {
     | '/contracts/erc721'
     | '/signatures/basic'
     | '/signatures/eip712'
+    | '/signatures/plume'
     | '/wallet/addEthereumChain'
     | '/wallet/switchChain'
     | '/wallet/updateEthereumChain'
@@ -187,6 +205,7 @@ export interface FileRouteTypes {
     | '/contracts/erc721'
     | '/signatures/basic'
     | '/signatures/eip712'
+    | '/signatures/plume'
     | '/wallet/addEthereumChain'
     | '/wallet/switchChain'
     | '/wallet/updateEthereumChain'
@@ -197,6 +216,7 @@ export interface FileRouteTypes {
     | '/contracts/erc721'
     | '/signatures/basic'
     | '/signatures/eip712'
+    | '/signatures/plume'
     | '/wallet/addEthereumChain'
     | '/wallet/switchChain'
     | '/wallet/updateEthereumChain'
@@ -209,6 +229,7 @@ export interface RootRouteChildren {
   ContractsErc721Route: typeof ContractsErc721Route
   SignaturesBasicRoute: typeof SignaturesBasicRoute
   SignaturesEip712Route: typeof SignaturesEip712Route
+  SignaturesPlumeRoute: typeof SignaturesPlumeRoute
   WalletAddEthereumChainRoute: typeof WalletAddEthereumChainRoute
   WalletSwitchChainRoute: typeof WalletSwitchChainRoute
   WalletUpdateEthereumChainRoute: typeof WalletUpdateEthereumChainRoute
@@ -220,6 +241,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContractsErc721Route: ContractsErc721Route,
   SignaturesBasicRoute: SignaturesBasicRoute,
   SignaturesEip712Route: SignaturesEip712Route,
+  SignaturesPlumeRoute: SignaturesPlumeRoute,
   WalletAddEthereumChainRoute: WalletAddEthereumChainRoute,
   WalletSwitchChainRoute: WalletSwitchChainRoute,
   WalletUpdateEthereumChainRoute: WalletUpdateEthereumChainRoute,
@@ -240,6 +262,7 @@ export const routeTree = rootRoute
         "/contracts/erc721",
         "/signatures/basic",
         "/signatures/eip712",
+        "/signatures/plume",
         "/wallet/addEthereumChain",
         "/wallet/switchChain",
         "/wallet/updateEthereumChain"
@@ -259,6 +282,9 @@ export const routeTree = rootRoute
     },
     "/signatures/eip712": {
       "filePath": "signatures/eip712.tsx"
+    },
+    "/signatures/plume": {
+      "filePath": "signatures/plume.tsx"
     },
     "/wallet/addEthereumChain": {
       "filePath": "wallet/addEthereumChain.tsx"

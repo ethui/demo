@@ -48,6 +48,10 @@ const data = {
           title: "EIP-712",
           to: "/signatures/eip712",
         },
+        {
+          title: "PLUME",
+          to: "/signatures/plume",
+        },
       ],
     },
     {
