@@ -9,6 +9,8 @@ import {Token} from "contracts/Token.sol";
 import {TestCalls} from "contracts/TestCalls.sol";
 import {TestCallsUpgradeable} from "contracts/TestCallsUpgradeable.sol";
 
+contract Foo {}
+
 contract DevDeployScript is Script {
     address alice = address(0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266);
     address bob = address(0x70997970C51812dc3A010C7d01b50e0d17dc79C8);
@@ -33,6 +35,8 @@ contract DevDeployScript is Script {
 
     function run() public {
         vm.startBroadcast();
+        // new Foo();
+        // new Foo();
         NFT nft = new NFT("https://assets.pokemon.com/assets/cms2/img/pokedex/detail/");
         console.log("NFT", address(nft));
 
