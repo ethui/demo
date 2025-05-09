@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
+    "@graphprotocol/graph-cli": "^0.97.0",
     "@tanstack/react-router": "^1.99.0",
     "@tanstack/router-plugin": "^1.105.0",
     "@types/lodash-es": "^4.17.12",
