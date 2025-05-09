@@ -7,7 +7,7 @@ mode=${1:-"local"}
 
 if [ "$mode" == "local" ]; then
   rpc="http://localhost:8545"
-elif [ "$mode" == "test-stacks" ]; then
+elif [ "$mode" == "local-stacks" ]; then
   rpc="http://demo.stacks.lvh.me:4000"
 fi
 
