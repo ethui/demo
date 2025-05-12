@@ -45,7 +45,7 @@ function Mint() {
   const onClick = async () => {
     if (!address) return;
     writeContract({ args: [address] });
-    queryClient.invalidateQueries(["AllPokemon"]);
+    queryClient.invalidateQueries({ queryKey: ["AllPokemon"] });
   };
 
   return (

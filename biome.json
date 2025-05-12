@@ -13,7 +13,9 @@
       "dependencies",
       "out",
       "broadcast",
-      "cache"
+      "cache",
+      ".graphclient/**/*",
+      "node_modules/**/*",
     ]
   },
   "formatter": {
