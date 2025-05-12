@@ -3,12 +3,7 @@ import baseConfig from "@ethui/ui/tailwind.config";
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ["class"],
-  content: [
-    "node_modules/@ethui/ui/**/*.js",
-    "./src/components/**/*.tsx",
-    "./src/routes/**/*.tsx",
-    "./**/*.tsx",
-  ],
+  content: ["node_modules/@ethui/ui/**/*.js", "./src/**/*.tsx"],
   presets: [baseConfig],
   plugins: [require("tailwindcss-animate")],
   theme: {
