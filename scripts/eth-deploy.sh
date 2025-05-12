@@ -14,3 +14,4 @@ fi
 forge soldeer update
 forge build
 forge script DevDeployScript --rpc-url $rpc --broadcast --mnemonics "$mnemonic" --sender $sender --slow
+yarn run wagmi generate

@@ -7,9 +7,9 @@
     "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ ethui-stacks-demo",
     "create:docker": "graph create --node http://172.22.0.4:8020 demo2",
     "deploy:docker": "graph deploy --node http://172.22.0.4:8020 --ipfs http://172.22.0.3:5001 demo2",
-    "create:stacks": "graph create --node http://graph-rpc.demo.stacks.lvh.me:4000 demo4",
+    "create:stacks": "graph create --node http://graph-rpc.demo.stacks.lvh.me:4000 demo",
     "remove:stacks": "graph remove --node http://graph-rpc.demo.stacks.lvh.me:4000 demo",
-    "deploy:stacks": "graph deploy --node http://graph-rpc.demo.stacks.lvh.me:4000 --ipfs http://172.22.0.2:5001 demo4",
+    "deploy:stacks": "graph deploy --node http://graph-rpc.demo.stacks.lvh.me:4000 --ipfs http://ipfs.stacks.lvh.me:4000 demo",
     "test": "graph test"
   },
   "dependencies": {
