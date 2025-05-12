@@ -13,10 +13,11 @@ export function handleTransfer(event: TransferEvent): void {
 
   let pokemon: Pokemon | null;
 
-  // mint
-  if (event.params.to.equals(Address.zero())) {
+  if (event.params.from.equals(Address.zero())) {
+    // mint
     pokemon = new Pokemon(id);
   } else {
+    // existing pokemon
     pokemon = Pokemon.load(id);
   }
 

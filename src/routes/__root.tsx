@@ -20,7 +20,7 @@ export const Route = createRootRouteWithContext<Context>()({
   component: Root,
 });
 
-const queryClient = new QueryClient();
+export const queryClient = new QueryClient();
 
 function Root() {
   return (

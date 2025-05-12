@@ -28,5 +28,5 @@
       "#/*": ["./src/*"]
     }
   },
-  "include": ["./src", "vite.config.ts", "wagmi.config.ts"]
+  "include": ["./src", "vite.config.ts", "wagmi.config.ts", "./.graphclient/"]
 }

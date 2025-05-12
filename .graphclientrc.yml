@@ -1,0 +1,8 @@
+sources:
+  - name: ethui-demo-stacks-local
+    handler:
+      graphql:
+        endpoint: http://graph.demo.stacks.lvh.me:4000/subgraphs/name/demo
+
+documents:
+  - ./src/queries/*.graphql

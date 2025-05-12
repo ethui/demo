@@ -1,0 +1,6 @@
+query AllPokemon {
+  pokemons {
+    id
+    owner
+  }
+}

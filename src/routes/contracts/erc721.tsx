@@ -1,15 +1,18 @@
 import { Button } from "@ethui/ui/components/shadcn/button";
 import { createFileRoute } from "@tanstack/react-router";
-import { map } from "lodash-es";
 import { Check, LoaderCircle } from "lucide-react";
-import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
-import { useReadsNftTokenUri } from "#/wagmi.extra";
-import { useWriteNftMint } from "#/wagmi.generated";
+import { useReadNftTokenUri, useWriteNftMint } from "#/wagmi.generated";
 import {
   useReadNftListTokensByAddress,
   useWatchNftTransferEvent,
 } from "#/wagmi.generated";
+
+import { getBuiltGraphSDK } from "../../../.graphclient/";
+import { useQuery } from "@tanstack/react-query";
+import { queryClient } from "../__root";
+
+const sdk = getBuiltGraphSDK();
 
 export const Route = createFileRoute("/contracts/erc721")({
   beforeLoad: () => ({ breadcrumb: "ERC721" }),
@@ -18,10 +21,20 @@ export const Route = createFileRoute("/contracts/erc721")({
 
 function ERC721() {
   return (
-    <>
-      <Mint />
-      <Owned />
-    </>
+    <div className="flex flex-col gap-8">
+      <div>
+        <h2 className="font-bold text-2xl">Mint</h2>
+        <Mint />
+      </div>
+      <div>
+        <h2 className="font-bold text-2xl">Owned</h2>
+        <Owned />
+      </div>
+      <div>
+        <h2 className="font-bold text-2xl">All</h2>
+        <All />
+      </div>
+    </div>
   );
 }
 
@@ -32,6 +45,7 @@ function Mint() {
   const onClick = async () => {
     if (!address) return;
     writeContract({ args: [address] });
+    queryClient.invalidateQueries(["AllPokemon"]);
   };
 
   return (
@@ -51,24 +65,6 @@ function Owned() {
   const { data: owned, refetch } = useReadNftListTokensByAddress({
     args: [address ?? "0x0"],
   });
-  const { data: uris } = useReadsNftTokenUri(
-    map(owned).map((id) => ({
-      args: [id],
-      enabled: !!owned,
-    })),
-  );
-
-  const [metadatas, setMetadatas] = useState<Metadata[]>([]);
-
-  useEffect(() => {
-    if (!uris) return;
-    if (uris[0]?.error) return;
-
-    const metadatas = (uris as Array<{ result: string }>).map(({ result }) =>
-      decodeMetadata(result),
-    );
-    setMetadatas(metadatas);
-  }, [uris]);
 
   useWatchNftTransferEvent({
     pollingInterval: 100,
@@ -76,12 +72,49 @@ function Owned() {
       refetch().catch(console.error);
     },
   });
+
+  if (!owned) return null;
+
   return (
     <div className="flex flex-wrap gap-2">
-      {metadatas?.map(({ name, image }) => (
-        <img key={image} alt={name} src={image} srcSet={image} width={50} />
+      {owned.map((id) => (
+        <Single key={id} id={id.toString()} />
       ))}
     </div>
+  );
+}
+
+function All() {
+  const { data } = useQuery({
+    queryKey: ["AllPokemon"],
+    queryFn: () => sdk.AllPokemon(),
+  });
+
+  if (!data) return null;
+
+  return (
+    <div className="flex flex-wrap gap-2">
+      {data.pokemons.map(({ id }) => (
+        <Single key={id} id={id} />
+      ))}
+    </div>
+  );
+}
+
+function Single({ id }: { id: string }) {
+  const { data: uri } = useReadNftTokenUri({ args: [id.toString()] });
+  const metadata = decodeMetadata(uri);
+
+  if (!metadata) return null;
+
+  return (
+    <img
+      key={metadata.image}
+      alt={metadata.name}
+      src={metadata.image}
+      srcSet={metadata.image}
+      width={50}
+    />
   );
 }
 
@@ -90,7 +123,7 @@ export interface Metadata {
   image: string;
 }
 
-export function decodeMetadata(encoded: string): Metadata {
+export function decodeMetadata(encoded?: string): Metadata {
   return (
     encoded &&
     JSON.parse(

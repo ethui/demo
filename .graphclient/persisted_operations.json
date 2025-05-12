@@ -1,0 +1,3 @@
+{
+  "49c785dfed7e9bf3a94e3c41f465868cdcbe3b8841ea4ab67c33eaaea420c320": "query AllPokemon {\n  pokemons {\n    id\n    owner\n  }\n}"
+}
