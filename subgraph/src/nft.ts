@@ -3,7 +3,7 @@ import { Transfer as TransferEvent } from "../generated/NFT/NFT";
 import { Pokemon } from "../generated/schema";
 
 export function handleTransfer(event: TransferEvent): void {
-  let id = event.params.tokenId.toString();
+  const id = event.params.tokenId.toString();
 
   // burn
   if (event.params.to.equals(Address.zero())) {

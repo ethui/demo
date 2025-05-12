@@ -78,7 +78,7 @@ function Owned() {
   return (
     <div className="flex flex-wrap gap-2">
       {owned.map((id) => (
-        <Single key={id} id={id.toString()} />
+        <Single key={id} id={BigInt(id)} />
       ))}
     </div>
   );
@@ -95,14 +95,14 @@ function All() {
   return (
     <div className="flex flex-wrap gap-2">
       {data.pokemons.map(({ id }) => (
-        <Single key={id} id={id} />
+        <Single key={id} id={BigInt(id)} />
       ))}
     </div>
   );
 }
 
-function Single({ id }: { id: string }) {
-  const { data: uri } = useReadNftTokenUri({ args: [id.toString()] });
+function Single({ id }: { id: bigint }) {
+  const { data: uri } = useReadNftTokenUri({ args: [id] });
   const metadata = decodeMetadata(uri);
 
   if (!metadata) return null;
