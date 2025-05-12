@@ -1,17 +1,29 @@
+import { Address, store } from "@graphprotocol/graph-ts";
 import { Transfer as TransferEvent } from "../generated/NFT/NFT";
-import { Transfer } from "../generated/schema";
+import { Pokemon } from "../generated/schema";
 
 export function handleTransfer(event: TransferEvent): void {
-  const entity = new Transfer(
-    event.transaction.hash.concatI32(event.logIndex.toI32()),
-  );
-  entity.from = event.params.from;
-  entity.to = event.params.to;
-  entity.tokenId = event.params.tokenId;
+  let id = event.params.tokenId.toString();
 
-  entity.blockNumber = event.block.number;
-  entity.blockTimestamp = event.block.timestamp;
-  entity.transactionHash = event.transaction.hash;
+  // burn
+  if (event.params.to.equals(Address.zero())) {
+    store.remove("Pokemon", id);
+    return;
+  }
 
-  entity.save();
+  let pokemon: Pokemon | null;
+
+  // mint
+  if (event.params.to.equals(Address.zero())) {
+    pokemon = new Pokemon(id);
+  } else {
+    pokemon = Pokemon.load(id);
+  }
+
+  if (!pokemon) {
+    throw new Error("Pokemon not found");
+  }
+
+  pokemon.owner = event.params.to;
+  pokemon.save();
 }

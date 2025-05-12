@@ -11,7 +11,17 @@ elif [ "$mode" == "local-stacks" ]; then
   rpc="http://demo.stacks.lvh.me:4000"
 fi
 
+# deploy contracts
 forge soldeer update
 forge build
 forge script DevDeployScript --rpc-url $rpc --broadcast --mnemonics "$mnemonic" --sender $sender --slow
 yarn run wagmi generate
+
+# deploy subgraph
+if [ "$mode" == "local-stacks" ]; then
+  cd subgraph
+  yarn run codegen
+  yarn run build
+  yarn run ethui-stacks:create
+  yarn run ethui-stacks:deploy
+fi

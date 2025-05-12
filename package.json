@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "eth-watch": "./scripts/eth-watch.sh",
+    "watch": "./scripts/watch.sh",
     "lint": "yarn lint:biome && yarn lint:tsc",
     "lint:biome": "biome check .",
     "lint:tsc": "tsc --noEmit",

@@ -1,23 +1,3 @@
-type Approval @entity(immutable: true) {
-  id: Bytes!
-  owner: Bytes! # address
-  approved: Bytes! # address
-  tokenId: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type ApprovalForAll @entity(immutable: true) {
-  id: Bytes!
-  owner: Bytes! # address
-  operator: Bytes! # address
-  approved: Boolean! # bool
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
 type Transfer @entity(immutable: true) {
   id: Bytes!
   from: Bytes! # address
@@ -26,4 +6,9 @@ type Transfer @entity(immutable: true) {
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!
+}
+
+type Pokemon @entity {
+  id: ID!
+  owner: Bytes! # address
 }

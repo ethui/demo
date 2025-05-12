@@ -4,4 +4,4 @@ procs:
   demo:
     cmd: ["yarn", "dev"]
   demo-contracts:
-    cmd: ["yarn", "eth-watch"]
+    cmd: ["yarn", "watch"]
