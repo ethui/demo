@@ -9,11 +9,7 @@ import { Breadcrumbs } from "#/components/breadcrumbs";
 
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import {
-  Outlet,
-  ScrollRestoration,
-  createRootRouteWithContext,
-} from "@tanstack/react-router";
+import { Outlet, createRootRouteWithContext } from "@tanstack/react-router";
 import { Ethereum } from "#/components/ethereum";
 
 type Context = {
@@ -46,7 +42,6 @@ function Root() {
             </div>
           </SidebarInset>
         </SidebarProvider>
-        <ScrollRestoration />
       </Ethereum>
     </QueryClientProvider>
   );

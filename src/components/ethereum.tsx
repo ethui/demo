@@ -7,22 +7,23 @@ interface Props {
   children: React.ReactNode;
 }
 
-const demoChain = defineChain({
+const localEthuiStacks = defineChain({
   ...anvil,
-  name: "demo",
-  id: 31338,
+  name: "local-stacks",
+  id: 0xdd7a69,
   rpcUrls: {
     default: {
-      http: ["https://anvil.demo.ethui.dev"],
-      webSocket: ["wss://anvil.demo.ethui.dev"],
+      http: ["http://demo.stacks.lvh.me:4000"],
     },
   },
+  blockExplorerUrls: {},
+  subgraphUrl: "http://demo.stacks.lvh.me:4040/subgraphs/name/demo",
 });
 
 export const config: ReturnType<typeof getDefaultConfig> = getDefaultConfig({
   appName: "ethui demo",
   projectId: "TODO",
-  chains: [demoChain, anvil, mainnet, sepolia],
+  chains: [anvil, localEthuiStacks, mainnet, sepolia],
   ssr: true,
 });
 

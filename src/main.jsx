@@ -11,6 +11,7 @@ import "@rainbow-me/rainbowkit/styles.css";
 import { routeTree } from "./routeTree.gen";
 
 const router = createRouter({
+  scrollRestoration: true,
   routeTree,
   history: createHashHistory(),
   context: {},

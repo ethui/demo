@@ -7,7 +7,7 @@ export default {
     "node_modules/@ethui/ui/**/*.js",
     "./src/components/**/*.tsx",
     "./src/routes/**/*.tsx",
-    "../**/*.tsx",
+    "./**/*.tsx",
   ],
   presets: [baseConfig],
   plugins: [require("tailwindcss-animate")],
