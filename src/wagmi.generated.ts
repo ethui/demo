@@ -2831,6 +2831,905 @@ export const testCallsUpgradeableAbi = [
 ] as const
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// TestTraces
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export const testTracesAbi = [
+  {
+    type: 'function',
+    inputs: [],
+    name: 'call_get_value',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+    stateMutability: 'pure',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'get_value',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+    stateMutability: 'pure',
+  },
+] as const
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// TestTracesDelegateCallsCallee
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export const testTracesDelegateCallsCalleeAbi = [
+  {
+    type: 'function',
+    inputs: [],
+    name: 'number',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [{ name: '_number', internalType: 'uint256', type: 'uint256' }],
+    name: 'setNumber',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+] as const
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// TestTracesDelegateCallsCaller
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export const testTracesDelegateCallsCallerAbi = [
+  {
+    type: 'function',
+    inputs: [],
+    name: 'calleeAddress',
+    outputs: [{ name: '', internalType: 'address', type: 'address' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [{ name: '_number', internalType: 'uint256', type: 'uint256' }],
+    name: 'delegateSetNumber',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'number',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: '_calleeAddress', internalType: 'address', type: 'address' },
+    ],
+    name: 'setCalleeAddress',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+] as const
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// TestTracesDelegateCallsTest
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export const testTracesDelegateCallsTestAbi = [
+  {
+    type: 'function',
+    inputs: [],
+    name: 'IS_TEST',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'excludeArtifacts',
+    outputs: [
+      {
+        name: 'excludedArtifacts_',
+        internalType: 'string[]',
+        type: 'string[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'excludeContracts',
+    outputs: [
+      {
+        name: 'excludedContracts_',
+        internalType: 'address[]',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'excludeSelectors',
+    outputs: [
+      {
+        name: 'excludedSelectors_',
+        internalType: 'struct StdInvariant.FuzzSelector[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'addr', internalType: 'address', type: 'address' },
+          { name: 'selectors', internalType: 'bytes4[]', type: 'bytes4[]' },
+        ],
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'excludeSenders',
+    outputs: [
+      {
+        name: 'excludedSenders_',
+        internalType: 'address[]',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'failed',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'setUp',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetArtifactSelectors',
+    outputs: [
+      {
+        name: 'targetedArtifactSelectors_',
+        internalType: 'struct StdInvariant.FuzzArtifactSelector[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'artifact', internalType: 'string', type: 'string' },
+          { name: 'selectors', internalType: 'bytes4[]', type: 'bytes4[]' },
+        ],
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetArtifacts',
+    outputs: [
+      {
+        name: 'targetedArtifacts_',
+        internalType: 'string[]',
+        type: 'string[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetContracts',
+    outputs: [
+      {
+        name: 'targetedContracts_',
+        internalType: 'address[]',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetInterfaces',
+    outputs: [
+      {
+        name: 'targetedInterfaces_',
+        internalType: 'struct StdInvariant.FuzzInterface[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'addr', internalType: 'address', type: 'address' },
+          { name: 'artifacts', internalType: 'string[]', type: 'string[]' },
+        ],
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetSelectors',
+    outputs: [
+      {
+        name: 'targetedSelectors_',
+        internalType: 'struct StdInvariant.FuzzSelector[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'addr', internalType: 'address', type: 'address' },
+          { name: 'selectors', internalType: 'bytes4[]', type: 'bytes4[]' },
+        ],
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetSenders',
+    outputs: [
+      {
+        name: 'targetedSenders_',
+        internalType: 'address[]',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'test_delegate_call',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'string', type: 'string', indexed: false },
+    ],
+    name: 'log',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'address', type: 'address', indexed: false },
+    ],
+    name: 'log_address',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'val',
+        internalType: 'uint256[]',
+        type: 'uint256[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'val',
+        internalType: 'int256[]',
+        type: 'int256[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'val',
+        internalType: 'address[]',
+        type: 'address[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'bytes', type: 'bytes', indexed: false },
+    ],
+    name: 'log_bytes',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'bytes32', type: 'bytes32', indexed: false },
+    ],
+    name: 'log_bytes32',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'int256', type: 'int256', indexed: false },
+    ],
+    name: 'log_int',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'address', type: 'address', indexed: false },
+    ],
+    name: 'log_named_address',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      {
+        name: 'val',
+        internalType: 'uint256[]',
+        type: 'uint256[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      {
+        name: 'val',
+        internalType: 'int256[]',
+        type: 'int256[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      {
+        name: 'val',
+        internalType: 'address[]',
+        type: 'address[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'bytes', type: 'bytes', indexed: false },
+    ],
+    name: 'log_named_bytes',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'bytes32', type: 'bytes32', indexed: false },
+    ],
+    name: 'log_named_bytes32',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'int256', type: 'int256', indexed: false },
+      {
+        name: 'decimals',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_decimal_int',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'uint256', type: 'uint256', indexed: false },
+      {
+        name: 'decimals',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_decimal_uint',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'int256', type: 'int256', indexed: false },
+    ],
+    name: 'log_named_int',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'string', type: 'string', indexed: false },
+    ],
+    name: 'log_named_string',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'uint256', type: 'uint256', indexed: false },
+    ],
+    name: 'log_named_uint',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'string', type: 'string', indexed: false },
+    ],
+    name: 'log_string',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'uint256', type: 'uint256', indexed: false },
+    ],
+    name: 'log_uint',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'bytes', type: 'bytes', indexed: false },
+    ],
+    name: 'logs',
+  },
+] as const
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// TestTracesTest
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export const testTracesTestAbi = [
+  {
+    type: 'function',
+    inputs: [],
+    name: 'IS_TEST',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'excludeArtifacts',
+    outputs: [
+      {
+        name: 'excludedArtifacts_',
+        internalType: 'string[]',
+        type: 'string[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'excludeContracts',
+    outputs: [
+      {
+        name: 'excludedContracts_',
+        internalType: 'address[]',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'excludeSelectors',
+    outputs: [
+      {
+        name: 'excludedSelectors_',
+        internalType: 'struct StdInvariant.FuzzSelector[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'addr', internalType: 'address', type: 'address' },
+          { name: 'selectors', internalType: 'bytes4[]', type: 'bytes4[]' },
+        ],
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'excludeSenders',
+    outputs: [
+      {
+        name: 'excludedSenders_',
+        internalType: 'address[]',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'failed',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'setUp',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetArtifactSelectors',
+    outputs: [
+      {
+        name: 'targetedArtifactSelectors_',
+        internalType: 'struct StdInvariant.FuzzArtifactSelector[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'artifact', internalType: 'string', type: 'string' },
+          { name: 'selectors', internalType: 'bytes4[]', type: 'bytes4[]' },
+        ],
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetArtifacts',
+    outputs: [
+      {
+        name: 'targetedArtifacts_',
+        internalType: 'string[]',
+        type: 'string[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetContracts',
+    outputs: [
+      {
+        name: 'targetedContracts_',
+        internalType: 'address[]',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetInterfaces',
+    outputs: [
+      {
+        name: 'targetedInterfaces_',
+        internalType: 'struct StdInvariant.FuzzInterface[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'addr', internalType: 'address', type: 'address' },
+          { name: 'artifacts', internalType: 'string[]', type: 'string[]' },
+        ],
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetSelectors',
+    outputs: [
+      {
+        name: 'targetedSelectors_',
+        internalType: 'struct StdInvariant.FuzzSelector[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'addr', internalType: 'address', type: 'address' },
+          { name: 'selectors', internalType: 'bytes4[]', type: 'bytes4[]' },
+        ],
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetSenders',
+    outputs: [
+      {
+        name: 'targetedSenders_',
+        internalType: 'address[]',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'test_call_function',
+    outputs: [],
+    stateMutability: 'view',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'string', type: 'string', indexed: false },
+    ],
+    name: 'log',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'address', type: 'address', indexed: false },
+    ],
+    name: 'log_address',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'val',
+        internalType: 'uint256[]',
+        type: 'uint256[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'val',
+        internalType: 'int256[]',
+        type: 'int256[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'val',
+        internalType: 'address[]',
+        type: 'address[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'bytes', type: 'bytes', indexed: false },
+    ],
+    name: 'log_bytes',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'bytes32', type: 'bytes32', indexed: false },
+    ],
+    name: 'log_bytes32',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'int256', type: 'int256', indexed: false },
+    ],
+    name: 'log_int',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'address', type: 'address', indexed: false },
+    ],
+    name: 'log_named_address',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      {
+        name: 'val',
+        internalType: 'uint256[]',
+        type: 'uint256[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      {
+        name: 'val',
+        internalType: 'int256[]',
+        type: 'int256[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      {
+        name: 'val',
+        internalType: 'address[]',
+        type: 'address[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'bytes', type: 'bytes', indexed: false },
+    ],
+    name: 'log_named_bytes',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'bytes32', type: 'bytes32', indexed: false },
+    ],
+    name: 'log_named_bytes32',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'int256', type: 'int256', indexed: false },
+      {
+        name: 'decimals',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_decimal_int',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'uint256', type: 'uint256', indexed: false },
+      {
+        name: 'decimals',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_decimal_uint',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'int256', type: 'int256', indexed: false },
+    ],
+    name: 'log_named_int',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'string', type: 'string', indexed: false },
+    ],
+    name: 'log_named_string',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'uint256', type: 'uint256', indexed: false },
+    ],
+    name: 'log_named_uint',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'string', type: 'string', indexed: false },
+    ],
+    name: 'log_string',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'uint256', type: 'uint256', indexed: false },
+    ],
+    name: 'log_uint',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'bytes', type: 'bytes', indexed: false },
+    ],
+    name: 'logs',
+  },
+] as const
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Token
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -6205,6 +7104,808 @@ export const useWatchTestCallsUpgradeableInitializedEvent =
   /*#__PURE__*/ createUseWatchContractEvent({
     abi: testCallsUpgradeableAbi,
     eventName: 'Initialized',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesAbi}__
+ */
+export const useReadTestTraces = /*#__PURE__*/ createUseReadContract({
+  abi: testTracesAbi,
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesAbi}__ and `functionName` set to `"call_get_value"`
+ */
+export const useReadTestTracesCallGetValue =
+  /*#__PURE__*/ createUseReadContract({
+    abi: testTracesAbi,
+    functionName: 'call_get_value',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesAbi}__ and `functionName` set to `"get_value"`
+ */
+export const useReadTestTracesGetValue = /*#__PURE__*/ createUseReadContract({
+  abi: testTracesAbi,
+  functionName: 'get_value',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesDelegateCallsCalleeAbi}__
+ */
+export const useReadTestTracesDelegateCallsCallee =
+  /*#__PURE__*/ createUseReadContract({ abi: testTracesDelegateCallsCalleeAbi })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesDelegateCallsCalleeAbi}__ and `functionName` set to `"number"`
+ */
+export const useReadTestTracesDelegateCallsCalleeNumber =
+  /*#__PURE__*/ createUseReadContract({
+    abi: testTracesDelegateCallsCalleeAbi,
+    functionName: 'number',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link testTracesDelegateCallsCalleeAbi}__
+ */
+export const useWriteTestTracesDelegateCallsCallee =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: testTracesDelegateCallsCalleeAbi,
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link testTracesDelegateCallsCalleeAbi}__ and `functionName` set to `"setNumber"`
+ */
+export const useWriteTestTracesDelegateCallsCalleeSetNumber =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: testTracesDelegateCallsCalleeAbi,
+    functionName: 'setNumber',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link testTracesDelegateCallsCalleeAbi}__
+ */
+export const useSimulateTestTracesDelegateCallsCallee =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: testTracesDelegateCallsCalleeAbi,
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link testTracesDelegateCallsCalleeAbi}__ and `functionName` set to `"setNumber"`
+ */
+export const useSimulateTestTracesDelegateCallsCalleeSetNumber =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: testTracesDelegateCallsCalleeAbi,
+    functionName: 'setNumber',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesDelegateCallsCallerAbi}__
+ */
+export const useReadTestTracesDelegateCallsCaller =
+  /*#__PURE__*/ createUseReadContract({ abi: testTracesDelegateCallsCallerAbi })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesDelegateCallsCallerAbi}__ and `functionName` set to `"calleeAddress"`
+ */
+export const useReadTestTracesDelegateCallsCallerCalleeAddress =
+  /*#__PURE__*/ createUseReadContract({
+    abi: testTracesDelegateCallsCallerAbi,
+    functionName: 'calleeAddress',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesDelegateCallsCallerAbi}__ and `functionName` set to `"number"`
+ */
+export const useReadTestTracesDelegateCallsCallerNumber =
+  /*#__PURE__*/ createUseReadContract({
+    abi: testTracesDelegateCallsCallerAbi,
+    functionName: 'number',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link testTracesDelegateCallsCallerAbi}__
+ */
+export const useWriteTestTracesDelegateCallsCaller =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: testTracesDelegateCallsCallerAbi,
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link testTracesDelegateCallsCallerAbi}__ and `functionName` set to `"delegateSetNumber"`
+ */
+export const useWriteTestTracesDelegateCallsCallerDelegateSetNumber =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: testTracesDelegateCallsCallerAbi,
+    functionName: 'delegateSetNumber',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link testTracesDelegateCallsCallerAbi}__ and `functionName` set to `"setCalleeAddress"`
+ */
+export const useWriteTestTracesDelegateCallsCallerSetCalleeAddress =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: testTracesDelegateCallsCallerAbi,
+    functionName: 'setCalleeAddress',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link testTracesDelegateCallsCallerAbi}__
+ */
+export const useSimulateTestTracesDelegateCallsCaller =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: testTracesDelegateCallsCallerAbi,
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link testTracesDelegateCallsCallerAbi}__ and `functionName` set to `"delegateSetNumber"`
+ */
+export const useSimulateTestTracesDelegateCallsCallerDelegateSetNumber =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: testTracesDelegateCallsCallerAbi,
+    functionName: 'delegateSetNumber',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link testTracesDelegateCallsCallerAbi}__ and `functionName` set to `"setCalleeAddress"`
+ */
+export const useSimulateTestTracesDelegateCallsCallerSetCalleeAddress =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: testTracesDelegateCallsCallerAbi,
+    functionName: 'setCalleeAddress',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__
+ */
+export const useReadTestTracesDelegateCallsTest =
+  /*#__PURE__*/ createUseReadContract({ abi: testTracesDelegateCallsTestAbi })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__ and `functionName` set to `"IS_TEST"`
+ */
+export const useReadTestTracesDelegateCallsTestIsTest =
+  /*#__PURE__*/ createUseReadContract({
+    abi: testTracesDelegateCallsTestAbi,
+    functionName: 'IS_TEST',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__ and `functionName` set to `"excludeArtifacts"`
+ */
+export const useReadTestTracesDelegateCallsTestExcludeArtifacts =
+  /*#__PURE__*/ createUseReadContract({
+    abi: testTracesDelegateCallsTestAbi,
+    functionName: 'excludeArtifacts',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__ and `functionName` set to `"excludeContracts"`
+ */
+export const useReadTestTracesDelegateCallsTestExcludeContracts =
+  /*#__PURE__*/ createUseReadContract({
+    abi: testTracesDelegateCallsTestAbi,
+    functionName: 'excludeContracts',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__ and `functionName` set to `"excludeSelectors"`
+ */
+export const useReadTestTracesDelegateCallsTestExcludeSelectors =
+  /*#__PURE__*/ createUseReadContract({
+    abi: testTracesDelegateCallsTestAbi,
+    functionName: 'excludeSelectors',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__ and `functionName` set to `"excludeSenders"`
+ */
+export const useReadTestTracesDelegateCallsTestExcludeSenders =
+  /*#__PURE__*/ createUseReadContract({
+    abi: testTracesDelegateCallsTestAbi,
+    functionName: 'excludeSenders',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__ and `functionName` set to `"failed"`
+ */
+export const useReadTestTracesDelegateCallsTestFailed =
+  /*#__PURE__*/ createUseReadContract({
+    abi: testTracesDelegateCallsTestAbi,
+    functionName: 'failed',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__ and `functionName` set to `"targetArtifactSelectors"`
+ */
+export const useReadTestTracesDelegateCallsTestTargetArtifactSelectors =
+  /*#__PURE__*/ createUseReadContract({
+    abi: testTracesDelegateCallsTestAbi,
+    functionName: 'targetArtifactSelectors',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__ and `functionName` set to `"targetArtifacts"`
+ */
+export const useReadTestTracesDelegateCallsTestTargetArtifacts =
+  /*#__PURE__*/ createUseReadContract({
+    abi: testTracesDelegateCallsTestAbi,
+    functionName: 'targetArtifacts',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__ and `functionName` set to `"targetContracts"`
+ */
+export const useReadTestTracesDelegateCallsTestTargetContracts =
+  /*#__PURE__*/ createUseReadContract({
+    abi: testTracesDelegateCallsTestAbi,
+    functionName: 'targetContracts',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__ and `functionName` set to `"targetInterfaces"`
+ */
+export const useReadTestTracesDelegateCallsTestTargetInterfaces =
+  /*#__PURE__*/ createUseReadContract({
+    abi: testTracesDelegateCallsTestAbi,
+    functionName: 'targetInterfaces',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__ and `functionName` set to `"targetSelectors"`
+ */
+export const useReadTestTracesDelegateCallsTestTargetSelectors =
+  /*#__PURE__*/ createUseReadContract({
+    abi: testTracesDelegateCallsTestAbi,
+    functionName: 'targetSelectors',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__ and `functionName` set to `"targetSenders"`
+ */
+export const useReadTestTracesDelegateCallsTestTargetSenders =
+  /*#__PURE__*/ createUseReadContract({
+    abi: testTracesDelegateCallsTestAbi,
+    functionName: 'targetSenders',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__
+ */
+export const useWriteTestTracesDelegateCallsTest =
+  /*#__PURE__*/ createUseWriteContract({ abi: testTracesDelegateCallsTestAbi })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__ and `functionName` set to `"setUp"`
+ */
+export const useWriteTestTracesDelegateCallsTestSetUp =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: testTracesDelegateCallsTestAbi,
+    functionName: 'setUp',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__ and `functionName` set to `"test_delegate_call"`
+ */
+export const useWriteTestTracesDelegateCallsTestTestDelegateCall =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: testTracesDelegateCallsTestAbi,
+    functionName: 'test_delegate_call',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__
+ */
+export const useSimulateTestTracesDelegateCallsTest =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: testTracesDelegateCallsTestAbi,
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__ and `functionName` set to `"setUp"`
+ */
+export const useSimulateTestTracesDelegateCallsTestSetUp =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: testTracesDelegateCallsTestAbi,
+    functionName: 'setUp',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__ and `functionName` set to `"test_delegate_call"`
+ */
+export const useSimulateTestTracesDelegateCallsTestTestDelegateCall =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: testTracesDelegateCallsTestAbi,
+    functionName: 'test_delegate_call',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__
+ */
+export const useWatchTestTracesDelegateCallsTestEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesDelegateCallsTestAbi,
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__ and `eventName` set to `"log"`
+ */
+export const useWatchTestTracesDelegateCallsTestLogEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesDelegateCallsTestAbi,
+    eventName: 'log',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__ and `eventName` set to `"log_address"`
+ */
+export const useWatchTestTracesDelegateCallsTestLogAddressEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesDelegateCallsTestAbi,
+    eventName: 'log_address',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__ and `eventName` set to `"log_array"`
+ */
+export const useWatchTestTracesDelegateCallsTestLogArrayEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesDelegateCallsTestAbi,
+    eventName: 'log_array',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__ and `eventName` set to `"log_bytes"`
+ */
+export const useWatchTestTracesDelegateCallsTestLogBytesEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesDelegateCallsTestAbi,
+    eventName: 'log_bytes',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__ and `eventName` set to `"log_bytes32"`
+ */
+export const useWatchTestTracesDelegateCallsTestLogBytes32Event =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesDelegateCallsTestAbi,
+    eventName: 'log_bytes32',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__ and `eventName` set to `"log_int"`
+ */
+export const useWatchTestTracesDelegateCallsTestLogIntEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesDelegateCallsTestAbi,
+    eventName: 'log_int',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__ and `eventName` set to `"log_named_address"`
+ */
+export const useWatchTestTracesDelegateCallsTestLogNamedAddressEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesDelegateCallsTestAbi,
+    eventName: 'log_named_address',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__ and `eventName` set to `"log_named_array"`
+ */
+export const useWatchTestTracesDelegateCallsTestLogNamedArrayEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesDelegateCallsTestAbi,
+    eventName: 'log_named_array',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__ and `eventName` set to `"log_named_bytes"`
+ */
+export const useWatchTestTracesDelegateCallsTestLogNamedBytesEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesDelegateCallsTestAbi,
+    eventName: 'log_named_bytes',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__ and `eventName` set to `"log_named_bytes32"`
+ */
+export const useWatchTestTracesDelegateCallsTestLogNamedBytes32Event =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesDelegateCallsTestAbi,
+    eventName: 'log_named_bytes32',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__ and `eventName` set to `"log_named_decimal_int"`
+ */
+export const useWatchTestTracesDelegateCallsTestLogNamedDecimalIntEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesDelegateCallsTestAbi,
+    eventName: 'log_named_decimal_int',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__ and `eventName` set to `"log_named_decimal_uint"`
+ */
+export const useWatchTestTracesDelegateCallsTestLogNamedDecimalUintEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesDelegateCallsTestAbi,
+    eventName: 'log_named_decimal_uint',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__ and `eventName` set to `"log_named_int"`
+ */
+export const useWatchTestTracesDelegateCallsTestLogNamedIntEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesDelegateCallsTestAbi,
+    eventName: 'log_named_int',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__ and `eventName` set to `"log_named_string"`
+ */
+export const useWatchTestTracesDelegateCallsTestLogNamedStringEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesDelegateCallsTestAbi,
+    eventName: 'log_named_string',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__ and `eventName` set to `"log_named_uint"`
+ */
+export const useWatchTestTracesDelegateCallsTestLogNamedUintEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesDelegateCallsTestAbi,
+    eventName: 'log_named_uint',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__ and `eventName` set to `"log_string"`
+ */
+export const useWatchTestTracesDelegateCallsTestLogStringEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesDelegateCallsTestAbi,
+    eventName: 'log_string',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__ and `eventName` set to `"log_uint"`
+ */
+export const useWatchTestTracesDelegateCallsTestLogUintEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesDelegateCallsTestAbi,
+    eventName: 'log_uint',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesDelegateCallsTestAbi}__ and `eventName` set to `"logs"`
+ */
+export const useWatchTestTracesDelegateCallsTestLogsEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesDelegateCallsTestAbi,
+    eventName: 'logs',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesTestAbi}__
+ */
+export const useReadTestTracesTest = /*#__PURE__*/ createUseReadContract({
+  abi: testTracesTestAbi,
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesTestAbi}__ and `functionName` set to `"IS_TEST"`
+ */
+export const useReadTestTracesTestIsTest = /*#__PURE__*/ createUseReadContract({
+  abi: testTracesTestAbi,
+  functionName: 'IS_TEST',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesTestAbi}__ and `functionName` set to `"excludeArtifacts"`
+ */
+export const useReadTestTracesTestExcludeArtifacts =
+  /*#__PURE__*/ createUseReadContract({
+    abi: testTracesTestAbi,
+    functionName: 'excludeArtifacts',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesTestAbi}__ and `functionName` set to `"excludeContracts"`
+ */
+export const useReadTestTracesTestExcludeContracts =
+  /*#__PURE__*/ createUseReadContract({
+    abi: testTracesTestAbi,
+    functionName: 'excludeContracts',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesTestAbi}__ and `functionName` set to `"excludeSelectors"`
+ */
+export const useReadTestTracesTestExcludeSelectors =
+  /*#__PURE__*/ createUseReadContract({
+    abi: testTracesTestAbi,
+    functionName: 'excludeSelectors',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesTestAbi}__ and `functionName` set to `"excludeSenders"`
+ */
+export const useReadTestTracesTestExcludeSenders =
+  /*#__PURE__*/ createUseReadContract({
+    abi: testTracesTestAbi,
+    functionName: 'excludeSenders',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesTestAbi}__ and `functionName` set to `"failed"`
+ */
+export const useReadTestTracesTestFailed = /*#__PURE__*/ createUseReadContract({
+  abi: testTracesTestAbi,
+  functionName: 'failed',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesTestAbi}__ and `functionName` set to `"targetArtifactSelectors"`
+ */
+export const useReadTestTracesTestTargetArtifactSelectors =
+  /*#__PURE__*/ createUseReadContract({
+    abi: testTracesTestAbi,
+    functionName: 'targetArtifactSelectors',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesTestAbi}__ and `functionName` set to `"targetArtifacts"`
+ */
+export const useReadTestTracesTestTargetArtifacts =
+  /*#__PURE__*/ createUseReadContract({
+    abi: testTracesTestAbi,
+    functionName: 'targetArtifacts',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesTestAbi}__ and `functionName` set to `"targetContracts"`
+ */
+export const useReadTestTracesTestTargetContracts =
+  /*#__PURE__*/ createUseReadContract({
+    abi: testTracesTestAbi,
+    functionName: 'targetContracts',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesTestAbi}__ and `functionName` set to `"targetInterfaces"`
+ */
+export const useReadTestTracesTestTargetInterfaces =
+  /*#__PURE__*/ createUseReadContract({
+    abi: testTracesTestAbi,
+    functionName: 'targetInterfaces',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesTestAbi}__ and `functionName` set to `"targetSelectors"`
+ */
+export const useReadTestTracesTestTargetSelectors =
+  /*#__PURE__*/ createUseReadContract({
+    abi: testTracesTestAbi,
+    functionName: 'targetSelectors',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesTestAbi}__ and `functionName` set to `"targetSenders"`
+ */
+export const useReadTestTracesTestTargetSenders =
+  /*#__PURE__*/ createUseReadContract({
+    abi: testTracesTestAbi,
+    functionName: 'targetSenders',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link testTracesTestAbi}__ and `functionName` set to `"test_call_function"`
+ */
+export const useReadTestTracesTestTestCallFunction =
+  /*#__PURE__*/ createUseReadContract({
+    abi: testTracesTestAbi,
+    functionName: 'test_call_function',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link testTracesTestAbi}__
+ */
+export const useWriteTestTracesTest = /*#__PURE__*/ createUseWriteContract({
+  abi: testTracesTestAbi,
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link testTracesTestAbi}__ and `functionName` set to `"setUp"`
+ */
+export const useWriteTestTracesTestSetUp = /*#__PURE__*/ createUseWriteContract(
+  { abi: testTracesTestAbi, functionName: 'setUp' },
+)
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link testTracesTestAbi}__
+ */
+export const useSimulateTestTracesTest =
+  /*#__PURE__*/ createUseSimulateContract({ abi: testTracesTestAbi })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link testTracesTestAbi}__ and `functionName` set to `"setUp"`
+ */
+export const useSimulateTestTracesTestSetUp =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: testTracesTestAbi,
+    functionName: 'setUp',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesTestAbi}__
+ */
+export const useWatchTestTracesTestEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({ abi: testTracesTestAbi })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesTestAbi}__ and `eventName` set to `"log"`
+ */
+export const useWatchTestTracesTestLogEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesTestAbi,
+    eventName: 'log',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesTestAbi}__ and `eventName` set to `"log_address"`
+ */
+export const useWatchTestTracesTestLogAddressEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesTestAbi,
+    eventName: 'log_address',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesTestAbi}__ and `eventName` set to `"log_array"`
+ */
+export const useWatchTestTracesTestLogArrayEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesTestAbi,
+    eventName: 'log_array',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesTestAbi}__ and `eventName` set to `"log_bytes"`
+ */
+export const useWatchTestTracesTestLogBytesEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesTestAbi,
+    eventName: 'log_bytes',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesTestAbi}__ and `eventName` set to `"log_bytes32"`
+ */
+export const useWatchTestTracesTestLogBytes32Event =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesTestAbi,
+    eventName: 'log_bytes32',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesTestAbi}__ and `eventName` set to `"log_int"`
+ */
+export const useWatchTestTracesTestLogIntEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesTestAbi,
+    eventName: 'log_int',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesTestAbi}__ and `eventName` set to `"log_named_address"`
+ */
+export const useWatchTestTracesTestLogNamedAddressEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesTestAbi,
+    eventName: 'log_named_address',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesTestAbi}__ and `eventName` set to `"log_named_array"`
+ */
+export const useWatchTestTracesTestLogNamedArrayEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesTestAbi,
+    eventName: 'log_named_array',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesTestAbi}__ and `eventName` set to `"log_named_bytes"`
+ */
+export const useWatchTestTracesTestLogNamedBytesEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesTestAbi,
+    eventName: 'log_named_bytes',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesTestAbi}__ and `eventName` set to `"log_named_bytes32"`
+ */
+export const useWatchTestTracesTestLogNamedBytes32Event =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesTestAbi,
+    eventName: 'log_named_bytes32',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesTestAbi}__ and `eventName` set to `"log_named_decimal_int"`
+ */
+export const useWatchTestTracesTestLogNamedDecimalIntEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesTestAbi,
+    eventName: 'log_named_decimal_int',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesTestAbi}__ and `eventName` set to `"log_named_decimal_uint"`
+ */
+export const useWatchTestTracesTestLogNamedDecimalUintEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesTestAbi,
+    eventName: 'log_named_decimal_uint',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesTestAbi}__ and `eventName` set to `"log_named_int"`
+ */
+export const useWatchTestTracesTestLogNamedIntEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesTestAbi,
+    eventName: 'log_named_int',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesTestAbi}__ and `eventName` set to `"log_named_string"`
+ */
+export const useWatchTestTracesTestLogNamedStringEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesTestAbi,
+    eventName: 'log_named_string',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesTestAbi}__ and `eventName` set to `"log_named_uint"`
+ */
+export const useWatchTestTracesTestLogNamedUintEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesTestAbi,
+    eventName: 'log_named_uint',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesTestAbi}__ and `eventName` set to `"log_string"`
+ */
+export const useWatchTestTracesTestLogStringEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesTestAbi,
+    eventName: 'log_string',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesTestAbi}__ and `eventName` set to `"log_uint"`
+ */
+export const useWatchTestTracesTestLogUintEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesTestAbi,
+    eventName: 'log_uint',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link testTracesTestAbi}__ and `eventName` set to `"logs"`
+ */
+export const useWatchTestTracesTestLogsEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: testTracesTestAbi,
+    eventName: 'logs',
   })
 
 /**

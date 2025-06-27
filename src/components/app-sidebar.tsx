@@ -65,6 +65,14 @@ const data = {
         },
       ],
     },
+    {
+      title: "ethui_*",
+      url: "#",
+      items: [
+        { title: "getProviderState", to: "/ethui/getProviderState" },
+        { title: "getContractAbi", to: "/ethui/getContractAbi" },
+      ],
+    },
   ],
 };
 

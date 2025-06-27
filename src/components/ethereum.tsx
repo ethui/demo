@@ -7,22 +7,15 @@ interface Props {
   children: React.ReactNode;
 }
 
-const demoChain = defineChain({
-  ...anvil,
-  name: "demo",
-  id: 31338,
-  rpcUrls: {
-    default: {
-      http: ["https://anvil.demo.ethui.dev"],
-      webSocket: ["wss://anvil.demo.ethui.dev"],
-    },
-  },
-});
+const WALLETCONNECT_PROJECT_ID =
+  import.meta.env.MODE === "development"
+    ? "eacdee41b7fa8ba5ea1e037b1f9f4366"
+    : "";
 
 export const config: ReturnType<typeof getDefaultConfig> = getDefaultConfig({
   appName: "ethui demo",
-  projectId: "TODO",
-  chains: [demoChain, anvil, mainnet, sepolia],
+  projectId: WALLETCONNECT_PROJECT_ID,
+  chains: [anvil, mainnet, sepolia],
   ssr: true,
 });
 

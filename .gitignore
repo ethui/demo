@@ -36,3 +36,4 @@ next-env.d.ts
 broadcast/
 dist
 dependencies
+subgraph/node_modules
