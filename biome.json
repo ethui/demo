@@ -13,7 +13,8 @@
       "dependencies",
       "out",
       "broadcast",
-      "cache"
+      "cache",
+      "subgraph"
     ]
   },
   "formatter": {
