@@ -5,10 +5,10 @@ import { Check, LoaderCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 import { useReadsNftTokenUri } from "#/wagmi.extra";
-import { useWriteNftMint } from "#/wagmi.generated";
 import {
   useReadNftListTokensByAddress,
   useWatchNftTransferEvent,
+  useWriteNftMint,
 } from "#/wagmi.generated";
 
 export const Route = createFileRoute("/contracts/erc721")({
@@ -35,14 +35,12 @@ function Mint() {
   };
 
   return (
-    <>
-      <div className="flex gap-2">
-        <Button disabled={!address || isPending} onClick={onClick}>
-          {isPending ? <LoaderCircle className="animate-spin" /> : <Check />}
-          Mint Pokemon
-        </Button>
-      </div>
-    </>
+    <div className="flex gap-2">
+      <Button disabled={!address || isPending} onClick={onClick}>
+        {isPending ? <LoaderCircle className="animate-spin" /> : <Check />}
+        Mint Pokemon
+      </Button>
+    </div>
   );
 }
 

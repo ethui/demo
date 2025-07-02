@@ -1,4 +1,4 @@
-import { RainbowKitProvider, getDefaultConfig } from "@rainbow-me/rainbowkit";
+import { getDefaultConfig, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { anvil, mainnet, sepolia } from "viem/chains";
 import { WagmiProvider } from "wagmi";
 

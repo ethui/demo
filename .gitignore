@@ -37,3 +37,4 @@ broadcast/
 dist
 dependencies
 subgraph/node_modules
+.claude
