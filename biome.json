@@ -1,20 +1,21 @@
 {
   "files": {
-    "ignore": [
-      ".sqlx",
-      ".direnv",
-      ".pnp.cjs",
-      ".pnp.loader.mjs",
-      "**/*.gen.ts",
-      "*.generated.ts",
-      "extension/dist",
-      "gui/dist",
-      "bin/gen",
-      "dependencies",
-      "out",
-      "broadcast",
-      "cache",
-      "subgraph"
+    "includes": [
+      "**",
+      "!**/.sqlx",
+      "!**/.direnv",
+      "!**/.pnp.cjs",
+      "!**/.pnp.loader.mjs",
+      "!**/*.gen.ts",
+      "!**/*.generated.ts",
+      "!**/extension/dist",
+      "!**/gui/dist",
+      "!**/bin/gen",
+      "!**/dependencies",
+      "!**/out",
+      "!**/broadcast",
+      "!**/cache",
+      "!**/subgraph"
     ]
   },
   "formatter": {
@@ -30,7 +31,16 @@
       },
       "style": {
         "noUselessElse": "off",
-        "noNonNullAssertion": "off"
+        "noNonNullAssertion": "off",
+        "noParameterAssign": "error",
+        "useAsConstAssertion": "error",
+        "useDefaultParameterLast": "error",
+        "useEnumInitializers": "error",
+        "useSelfClosingElements": "error",
+        "useSingleVarDeclarator": "error",
+        "noUnusedTemplateLiteral": "error",
+        "useNumberNamespace": "error",
+        "noInferrableTypes": "error"
       },
       "performance": {
         "noAccumulatingSpread": "error",

@@ -4,16 +4,15 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@ethui/ui/components/shadcn/sidebar";
-import { AppSidebar } from "#/components/app-sidebar";
-import { Breadcrumbs } from "#/components/breadcrumbs";
-
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
+  createRootRouteWithContext,
   Outlet,
   ScrollRestoration,
-  createRootRouteWithContext,
 } from "@tanstack/react-router";
+import { AppSidebar } from "#/components/app-sidebar";
+import { Breadcrumbs } from "#/components/breadcrumbs";
 import { Ethereum } from "#/components/ethereum";
 
 type Context = {
