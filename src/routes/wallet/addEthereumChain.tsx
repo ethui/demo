@@ -71,7 +71,7 @@ function RouteComponent() {
         <Form.Text label="name" name="chainName" className="col-span-1" />
       </div>
       <Form.Text label="RPC Url" name="rpcUrls.0" className="w-full" />
-      <Form.Text label="WS Url" name="rpcUrls.1" className=" w-full" />
+      <Form.Text label="WS Url" name="rpcUrls.1" className="w-full" />
       <Form.Text
         label="Block Explorer"
         name="blockExplorerUrls[0]"
