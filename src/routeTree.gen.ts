@@ -8,160 +8,69 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-// Import Routes
+import { Route as rootRouteImport } from './routes/__root'
+import { Route as IndexRouteImport } from './routes/index'
+import { Route as WalletUpdateEthereumChainRouteImport } from './routes/wallet/updateEthereumChain'
+import { Route as WalletSwitchChainRouteImport } from './routes/wallet/switchChain'
+import { Route as WalletAddEthereumChainRouteImport } from './routes/wallet/addEthereumChain'
+import { Route as SignaturesEip712RouteImport } from './routes/signatures/eip712'
+import { Route as SignaturesBasicRouteImport } from './routes/signatures/basic'
+import { Route as EthuiGetProviderStateRouteImport } from './routes/ethui/getProviderState'
+import { Route as EthuiGetContractAbiRouteImport } from './routes/ethui/getContractAbi'
+import { Route as ContractsErc721RouteImport } from './routes/contracts/erc721'
+import { Route as ContractsErc20RouteImport } from './routes/contracts/erc20'
 
-import { Route as rootRoute } from './routes/__root'
-import { Route as IndexImport } from './routes/index'
-import { Route as WalletUpdateEthereumChainImport } from './routes/wallet/updateEthereumChain'
-import { Route as WalletSwitchChainImport } from './routes/wallet/switchChain'
-import { Route as WalletAddEthereumChainImport } from './routes/wallet/addEthereumChain'
-import { Route as SignaturesEip712Import } from './routes/signatures/eip712'
-import { Route as SignaturesBasicImport } from './routes/signatures/basic'
-import { Route as EthuiGetProviderStateImport } from './routes/ethui/getProviderState'
-import { Route as EthuiGetContractAbiImport } from './routes/ethui/getContractAbi'
-import { Route as ContractsErc721Import } from './routes/contracts/erc721'
-import { Route as ContractsErc20Import } from './routes/contracts/erc20'
-
-// Create/Update Routes
-
-const IndexRoute = IndexImport.update({
+const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const WalletUpdateEthereumChainRoute = WalletUpdateEthereumChainImport.update({
-  id: '/wallet/updateEthereumChain',
-  path: '/wallet/updateEthereumChain',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const WalletSwitchChainRoute = WalletSwitchChainImport.update({
+const WalletUpdateEthereumChainRoute =
+  WalletUpdateEthereumChainRouteImport.update({
+    id: '/wallet/updateEthereumChain',
+    path: '/wallet/updateEthereumChain',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const WalletSwitchChainRoute = WalletSwitchChainRouteImport.update({
   id: '/wallet/switchChain',
   path: '/wallet/switchChain',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const WalletAddEthereumChainRoute = WalletAddEthereumChainImport.update({
+const WalletAddEthereumChainRoute = WalletAddEthereumChainRouteImport.update({
   id: '/wallet/addEthereumChain',
   path: '/wallet/addEthereumChain',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const SignaturesEip712Route = SignaturesEip712Import.update({
+const SignaturesEip712Route = SignaturesEip712RouteImport.update({
   id: '/signatures/eip712',
   path: '/signatures/eip712',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const SignaturesBasicRoute = SignaturesBasicImport.update({
+const SignaturesBasicRoute = SignaturesBasicRouteImport.update({
   id: '/signatures/basic',
   path: '/signatures/basic',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const EthuiGetProviderStateRoute = EthuiGetProviderStateImport.update({
+const EthuiGetProviderStateRoute = EthuiGetProviderStateRouteImport.update({
   id: '/ethui/getProviderState',
   path: '/ethui/getProviderState',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const EthuiGetContractAbiRoute = EthuiGetContractAbiImport.update({
+const EthuiGetContractAbiRoute = EthuiGetContractAbiRouteImport.update({
   id: '/ethui/getContractAbi',
   path: '/ethui/getContractAbi',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const ContractsErc721Route = ContractsErc721Import.update({
+const ContractsErc721Route = ContractsErc721RouteImport.update({
   id: '/contracts/erc721',
   path: '/contracts/erc721',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const ContractsErc20Route = ContractsErc20Import.update({
+const ContractsErc20Route = ContractsErc20RouteImport.update({
   id: '/contracts/erc20',
   path: '/contracts/erc20',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-// Populate the FileRoutesByPath interface
-
-declare module '@tanstack/react-router' {
-  interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/contracts/erc20': {
-      id: '/contracts/erc20'
-      path: '/contracts/erc20'
-      fullPath: '/contracts/erc20'
-      preLoaderRoute: typeof ContractsErc20Import
-      parentRoute: typeof rootRoute
-    }
-    '/contracts/erc721': {
-      id: '/contracts/erc721'
-      path: '/contracts/erc721'
-      fullPath: '/contracts/erc721'
-      preLoaderRoute: typeof ContractsErc721Import
-      parentRoute: typeof rootRoute
-    }
-    '/ethui/getContractAbi': {
-      id: '/ethui/getContractAbi'
-      path: '/ethui/getContractAbi'
-      fullPath: '/ethui/getContractAbi'
-      preLoaderRoute: typeof EthuiGetContractAbiImport
-      parentRoute: typeof rootRoute
-    }
-    '/ethui/getProviderState': {
-      id: '/ethui/getProviderState'
-      path: '/ethui/getProviderState'
-      fullPath: '/ethui/getProviderState'
-      preLoaderRoute: typeof EthuiGetProviderStateImport
-      parentRoute: typeof rootRoute
-    }
-    '/signatures/basic': {
-      id: '/signatures/basic'
-      path: '/signatures/basic'
-      fullPath: '/signatures/basic'
-      preLoaderRoute: typeof SignaturesBasicImport
-      parentRoute: typeof rootRoute
-    }
-    '/signatures/eip712': {
-      id: '/signatures/eip712'
-      path: '/signatures/eip712'
-      fullPath: '/signatures/eip712'
-      preLoaderRoute: typeof SignaturesEip712Import
-      parentRoute: typeof rootRoute
-    }
-    '/wallet/addEthereumChain': {
-      id: '/wallet/addEthereumChain'
-      path: '/wallet/addEthereumChain'
-      fullPath: '/wallet/addEthereumChain'
-      preLoaderRoute: typeof WalletAddEthereumChainImport
-      parentRoute: typeof rootRoute
-    }
-    '/wallet/switchChain': {
-      id: '/wallet/switchChain'
-      path: '/wallet/switchChain'
-      fullPath: '/wallet/switchChain'
-      preLoaderRoute: typeof WalletSwitchChainImport
-      parentRoute: typeof rootRoute
-    }
-    '/wallet/updateEthereumChain': {
-      id: '/wallet/updateEthereumChain'
-      path: '/wallet/updateEthereumChain'
-      fullPath: '/wallet/updateEthereumChain'
-      preLoaderRoute: typeof WalletUpdateEthereumChainImport
-      parentRoute: typeof rootRoute
-    }
-  }
-}
-
-// Create and export the route tree
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -175,7 +84,6 @@ export interface FileRoutesByFullPath {
   '/wallet/switchChain': typeof WalletSwitchChainRoute
   '/wallet/updateEthereumChain': typeof WalletUpdateEthereumChainRoute
 }
-
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contracts/erc20': typeof ContractsErc20Route
@@ -188,9 +96,8 @@ export interface FileRoutesByTo {
   '/wallet/switchChain': typeof WalletSwitchChainRoute
   '/wallet/updateEthereumChain': typeof WalletUpdateEthereumChainRoute
 }
-
 export interface FileRoutesById {
-  __root__: typeof rootRoute
+  __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/contracts/erc20': typeof ContractsErc20Route
   '/contracts/erc721': typeof ContractsErc721Route
@@ -202,7 +109,6 @@ export interface FileRoutesById {
   '/wallet/switchChain': typeof WalletSwitchChainRoute
   '/wallet/updateEthereumChain': typeof WalletUpdateEthereumChainRoute
 }
-
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
@@ -242,7 +148,6 @@ export interface FileRouteTypes {
     | '/wallet/updateEthereumChain'
   fileRoutesById: FileRoutesById
 }
-
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContractsErc20Route: typeof ContractsErc20Route
@@ -254,6 +159,81 @@ export interface RootRouteChildren {
   WalletAddEthereumChainRoute: typeof WalletAddEthereumChainRoute
   WalletSwitchChainRoute: typeof WalletSwitchChainRoute
   WalletUpdateEthereumChainRoute: typeof WalletUpdateEthereumChainRoute
+}
+
+declare module '@tanstack/react-router' {
+  interface FileRoutesByPath {
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wallet/updateEthereumChain': {
+      id: '/wallet/updateEthereumChain'
+      path: '/wallet/updateEthereumChain'
+      fullPath: '/wallet/updateEthereumChain'
+      preLoaderRoute: typeof WalletUpdateEthereumChainRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wallet/switchChain': {
+      id: '/wallet/switchChain'
+      path: '/wallet/switchChain'
+      fullPath: '/wallet/switchChain'
+      preLoaderRoute: typeof WalletSwitchChainRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wallet/addEthereumChain': {
+      id: '/wallet/addEthereumChain'
+      path: '/wallet/addEthereumChain'
+      fullPath: '/wallet/addEthereumChain'
+      preLoaderRoute: typeof WalletAddEthereumChainRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/signatures/eip712': {
+      id: '/signatures/eip712'
+      path: '/signatures/eip712'
+      fullPath: '/signatures/eip712'
+      preLoaderRoute: typeof SignaturesEip712RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/signatures/basic': {
+      id: '/signatures/basic'
+      path: '/signatures/basic'
+      fullPath: '/signatures/basic'
+      preLoaderRoute: typeof SignaturesBasicRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ethui/getProviderState': {
+      id: '/ethui/getProviderState'
+      path: '/ethui/getProviderState'
+      fullPath: '/ethui/getProviderState'
+      preLoaderRoute: typeof EthuiGetProviderStateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ethui/getContractAbi': {
+      id: '/ethui/getContractAbi'
+      path: '/ethui/getContractAbi'
+      fullPath: '/ethui/getContractAbi'
+      preLoaderRoute: typeof EthuiGetContractAbiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contracts/erc721': {
+      id: '/contracts/erc721'
+      path: '/contracts/erc721'
+      fullPath: '/contracts/erc721'
+      preLoaderRoute: typeof ContractsErc721RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contracts/erc20': {
+      id: '/contracts/erc20'
+      path: '/contracts/erc20'
+      fullPath: '/contracts/erc20'
+      preLoaderRoute: typeof ContractsErc20RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+  }
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -268,59 +248,6 @@ const rootRouteChildren: RootRouteChildren = {
   WalletSwitchChainRoute: WalletSwitchChainRoute,
   WalletUpdateEthereumChainRoute: WalletUpdateEthereumChainRoute,
 }
-
-export const routeTree = rootRoute
+export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-/* ROUTE_MANIFEST_START
-{
-  "routes": {
-    "__root__": {
-      "filePath": "__root.tsx",
-      "children": [
-        "/",
-        "/contracts/erc20",
-        "/contracts/erc721",
-        "/ethui/getContractAbi",
-        "/ethui/getProviderState",
-        "/signatures/basic",
-        "/signatures/eip712",
-        "/wallet/addEthereumChain",
-        "/wallet/switchChain",
-        "/wallet/updateEthereumChain"
-      ]
-    },
-    "/": {
-      "filePath": "index.tsx"
-    },
-    "/contracts/erc20": {
-      "filePath": "contracts/erc20.tsx"
-    },
-    "/contracts/erc721": {
-      "filePath": "contracts/erc721.tsx"
-    },
-    "/ethui/getContractAbi": {
-      "filePath": "ethui/getContractAbi.tsx"
-    },
-    "/ethui/getProviderState": {
-      "filePath": "ethui/getProviderState.tsx"
-    },
-    "/signatures/basic": {
-      "filePath": "signatures/basic.tsx"
-    },
-    "/signatures/eip712": {
-      "filePath": "signatures/eip712.tsx"
-    },
-    "/wallet/addEthereumChain": {
-      "filePath": "wallet/addEthereumChain.tsx"
-    },
-    "/wallet/switchChain": {
-      "filePath": "wallet/switchChain.tsx"
-    },
-    "/wallet/updateEthereumChain": {
-      "filePath": "wallet/updateEthereumChain.tsx"
-    }
-  }
-}
-ROUTE_MANIFEST_END */

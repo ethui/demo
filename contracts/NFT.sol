@@ -29,6 +29,7 @@ contract NFT is ERC721Enumerable {
         // ensure baseURI ends with a slash,
         // otherwise metadata will turn out wrong
         bytes memory b = bytes(_baseImageURI);
+        // forge-lint: disable-next-line(unsafe-typecast)
         if (b[b.length - 1] != bytes1("/")) {
             revert InvalidArguments();
         }
