@@ -28,7 +28,7 @@
     "tailwindcss": "3",
     "viem": "^2.37.0",
     "vite-tsconfig-paths": "^5.1.4",
-    "wagmi": "^2.16.1",
+    "wagmi": "^2.17.5",
     "zod": "^4.1.5"
   },
   "devDependencies": {
@@ -40,7 +40,7 @@
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.1",
     "@vitejs/plugin-react": "^4.7.0",
-    "@wagmi/cli": "^2.5.0",
+    "@wagmi/cli": "^2.6.0",
     "globals": "^16.4.0",
     "ts-unused-exports": "^11.0.1",
     "tsc": "^2.0.4",
