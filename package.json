@@ -39,7 +39,7 @@
     "@types/node": "^22.13.5",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.1",
-    "@vitejs/plugin-react": "^4.7.0",
+    "@vitejs/plugin-react": "^5.0.2",
     "@wagmi/cli": "^2.5.0",
     "globals": "^16.4.0",
     "ts-unused-exports": "^11.0.1",
