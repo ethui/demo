@@ -7,17 +7,30 @@ forge soldeer update
 
 forge build
 sleep 0.2
-out=$(forge script DevDeployScript \
-  --rpc-url http://localhost:8545 \
-  --broadcast \
-  --mnemonics "$MNEMONIC" \
-  --sender "$SENDER")
-result=$?
+
+
+function deploy {
+  rpc=$1
+  cast rpc anvil_reset --rpc-url $rpc
+  forge script DevDeployScript \
+    --rpc-url $rpc \
+    --broadcast \
+    --mnemonics "$MNEMONIC" \
+    --sender "$SENDER"
+}
+
+# deploy to local anvil
+local=$(deploy "http://localhost:8545")
+local_result=$?
+
+# deploy to remote stack
+stack=$(deploy "https://hello-world.stacks.ethui.dev/FonXHADNhx3vSzQECV6uz4vNxndkdk36c")
+stack_result=$?
 
 yarn run wagmi generate
 
-if [ $result -eq 0 ]; then
+if [ $result -eq 0 ] && [ $stack_result -eq 0 ]; then
   clear
 fi
 
-echo "$out" | grep -A 5 "Logs"
+echo "Local:\n$local\n\nStack:\n$stack" | grep -A 5 "Logs"
