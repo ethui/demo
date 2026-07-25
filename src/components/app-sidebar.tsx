@@ -73,6 +73,11 @@ const data = {
         { title: "getContractAbi", to: "/ethui/getContractAbi" },
       ],
     },
+    {
+      title: "Bugs",
+      url: "#",
+      items: [{ title: "Stale address", to: "/bugs/stale-address" }],
+    },
   ],
 };
 
