@@ -19,6 +19,10 @@ const config: ReturnType<typeof defineConfig> = defineConfig({
           31337: "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
           31338: "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
         },
+        OwnedRegistry: {
+          31337: "0x3347B4d90ebe72BeFb30444C9966B2B990aE9FcB",
+          31338: "0x3347B4d90ebe72BeFb30444C9966B2B990aE9FcB",
+        },
       },
     }),
     react(),

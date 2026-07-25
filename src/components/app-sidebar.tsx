@@ -76,7 +76,10 @@ const data = {
     {
       title: "Bugs",
       url: "#",
-      items: [{ title: "Stale address", to: "/bugs/stale-address" }],
+      items: [
+        { title: "Stale address", to: "/bugs/stale-address" },
+        { title: "Access control", to: "/bugs/access-control" },
+      ],
     },
   ],
 };

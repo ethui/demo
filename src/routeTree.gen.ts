@@ -21,6 +21,7 @@ import { Route as EthuiGetContractAbiRouteImport } from './routes/ethui/getContr
 import { Route as ContractsErc721RouteImport } from './routes/contracts/erc721'
 import { Route as ContractsErc20RouteImport } from './routes/contracts/erc20'
 import { Route as BugsStaleAddressRouteImport } from './routes/bugs/stale-address'
+import { Route as BugsAccessControlRouteImport } from './routes/bugs/access-control'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -83,9 +84,15 @@ const BugsStaleAddressRoute = BugsStaleAddressRouteImport.update({
   path: '/bugs/stale-address',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BugsAccessControlRoute = BugsAccessControlRouteImport.update({
+  id: '/bugs/access-control',
+  path: '/bugs/access-control',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/bugs/access-control': typeof BugsAccessControlRoute
   '/bugs/stale-address': typeof BugsStaleAddressRoute
   '/contracts/erc20': typeof ContractsErc20Route
   '/contracts/erc721': typeof ContractsErc721Route
@@ -100,6 +107,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/bugs/access-control': typeof BugsAccessControlRoute
   '/bugs/stale-address': typeof BugsStaleAddressRoute
   '/contracts/erc20': typeof ContractsErc20Route
   '/contracts/erc721': typeof ContractsErc721Route
@@ -115,6 +123,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/bugs/access-control': typeof BugsAccessControlRoute
   '/bugs/stale-address': typeof BugsStaleAddressRoute
   '/contracts/erc20': typeof ContractsErc20Route
   '/contracts/erc721': typeof ContractsErc721Route
@@ -131,6 +140,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/bugs/access-control'
     | '/bugs/stale-address'
     | '/contracts/erc20'
     | '/contracts/erc721'
@@ -145,6 +155,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/bugs/access-control'
     | '/bugs/stale-address'
     | '/contracts/erc20'
     | '/contracts/erc721'
@@ -159,6 +170,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/bugs/access-control'
     | '/bugs/stale-address'
     | '/contracts/erc20'
     | '/contracts/erc721'
@@ -174,6 +186,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BugsAccessControlRoute: typeof BugsAccessControlRoute
   BugsStaleAddressRoute: typeof BugsStaleAddressRoute
   ContractsErc20Route: typeof ContractsErc20Route
   ContractsErc721Route: typeof ContractsErc721Route
@@ -273,11 +286,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BugsStaleAddressRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/bugs/access-control': {
+      id: '/bugs/access-control'
+      path: '/bugs/access-control'
+      fullPath: '/bugs/access-control'
+      preLoaderRoute: typeof BugsAccessControlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BugsAccessControlRoute: BugsAccessControlRoute,
   BugsStaleAddressRoute: BugsStaleAddressRoute,
   ContractsErc20Route: ContractsErc20Route,
   ContractsErc721Route: ContractsErc721Route,

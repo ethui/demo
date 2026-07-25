@@ -14,6 +14,13 @@ out=$(forge script DevDeployScript \
   --sender "$SENDER")
 result=$?
 
+bugs_out=$(forge script BugsDeployScript \
+  --rpc-url http://localhost:8545 \
+  --broadcast \
+  --mnemonics "$MNEMONIC" \
+  --sender "$SENDER")
+result=$((result + $?))
+
 yarn run wagmi generate
 
 if [ $result -eq 0 ]; then
@@ -21,3 +28,4 @@ if [ $result -eq 0 ]; then
 fi
 
 echo "$out" | grep -A 5 "Logs"
+echo "$bugs_out" | grep -A 10 "Logs"
