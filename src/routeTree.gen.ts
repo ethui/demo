@@ -22,6 +22,7 @@ import { Route as ContractsErc721RouteImport } from './routes/contracts/erc721'
 import { Route as ContractsErc20RouteImport } from './routes/contracts/erc20'
 import { Route as BugsStaleAddressRouteImport } from './routes/bugs/stale-address'
 import { Route as BugsDecimalsRouteImport } from './routes/bugs/decimals'
+import { Route as BugsAllowanceRouteImport } from './routes/bugs/allowance'
 import { Route as BugsAccessControlRouteImport } from './routes/bugs/access-control'
 
 const IndexRoute = IndexRouteImport.update({
@@ -90,6 +91,11 @@ const BugsDecimalsRoute = BugsDecimalsRouteImport.update({
   path: '/bugs/decimals',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BugsAllowanceRoute = BugsAllowanceRouteImport.update({
+  id: '/bugs/allowance',
+  path: '/bugs/allowance',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BugsAccessControlRoute = BugsAccessControlRouteImport.update({
   id: '/bugs/access-control',
   path: '/bugs/access-control',
@@ -99,6 +105,7 @@ const BugsAccessControlRoute = BugsAccessControlRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/bugs/access-control': typeof BugsAccessControlRoute
+  '/bugs/allowance': typeof BugsAllowanceRoute
   '/bugs/decimals': typeof BugsDecimalsRoute
   '/bugs/stale-address': typeof BugsStaleAddressRoute
   '/contracts/erc20': typeof ContractsErc20Route
@@ -115,6 +122,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/bugs/access-control': typeof BugsAccessControlRoute
+  '/bugs/allowance': typeof BugsAllowanceRoute
   '/bugs/decimals': typeof BugsDecimalsRoute
   '/bugs/stale-address': typeof BugsStaleAddressRoute
   '/contracts/erc20': typeof ContractsErc20Route
@@ -132,6 +140,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/bugs/access-control': typeof BugsAccessControlRoute
+  '/bugs/allowance': typeof BugsAllowanceRoute
   '/bugs/decimals': typeof BugsDecimalsRoute
   '/bugs/stale-address': typeof BugsStaleAddressRoute
   '/contracts/erc20': typeof ContractsErc20Route
@@ -150,6 +159,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/bugs/access-control'
+    | '/bugs/allowance'
     | '/bugs/decimals'
     | '/bugs/stale-address'
     | '/contracts/erc20'
@@ -166,6 +176,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/bugs/access-control'
+    | '/bugs/allowance'
     | '/bugs/decimals'
     | '/bugs/stale-address'
     | '/contracts/erc20'
@@ -182,6 +193,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/bugs/access-control'
+    | '/bugs/allowance'
     | '/bugs/decimals'
     | '/bugs/stale-address'
     | '/contracts/erc20'
@@ -199,6 +211,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BugsAccessControlRoute: typeof BugsAccessControlRoute
+  BugsAllowanceRoute: typeof BugsAllowanceRoute
   BugsDecimalsRoute: typeof BugsDecimalsRoute
   BugsStaleAddressRoute: typeof BugsStaleAddressRoute
   ContractsErc20Route: typeof ContractsErc20Route
@@ -306,6 +319,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BugsDecimalsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/bugs/allowance': {
+      id: '/bugs/allowance'
+      path: '/bugs/allowance'
+      fullPath: '/bugs/allowance'
+      preLoaderRoute: typeof BugsAllowanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/bugs/access-control': {
       id: '/bugs/access-control'
       path: '/bugs/access-control'
@@ -319,6 +339,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BugsAccessControlRoute: BugsAccessControlRoute,
+  BugsAllowanceRoute: BugsAllowanceRoute,
   BugsDecimalsRoute: BugsDecimalsRoute,
   BugsStaleAddressRoute: BugsStaleAddressRoute,
   ContractsErc20Route: ContractsErc20Route,

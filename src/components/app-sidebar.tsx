@@ -80,6 +80,7 @@ const data = {
         { title: "Stale address", to: "/bugs/stale-address" },
         { title: "Access control", to: "/bugs/access-control" },
         { title: "Decimals", to: "/bugs/decimals" },
+        { title: "Allowance", to: "/bugs/allowance" },
       ],
     },
   ],

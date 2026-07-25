@@ -5,6 +5,8 @@ import {Script, console} from "forge-std/Script.sol";
 
 import {OwnedRegistry} from "contracts/bugs/OwnedRegistry.sol";
 import {SixDecimalToken} from "contracts/bugs/SixDecimalToken.sol";
+import {Vault} from "contracts/bugs/Vault.sol";
+import {VaultToken} from "contracts/bugs/VaultToken.sol";
 
 // Seeds the broken on-chain state the MCP debug demo relies on.
 // See docs/mcp-debug-runbook.md.
@@ -24,6 +26,14 @@ contract BugsDeployScript is Script {
         sixDecimalToken.mint(alice, 100e6);
         sixDecimalToken.mint(bob, 100e6);
         console.log("SixDecimalToken", address(sixDecimalToken));
+
+        // Scenario 4: funded accounts, deliberately zero approvals.
+        VaultToken vaultToken = new VaultToken();
+        vaultToken.mint(alice, 100e18);
+        vaultToken.mint(bob, 100e18);
+        Vault vault = new Vault(vaultToken);
+        console.log("VaultToken", address(vaultToken));
+        console.log("Vault", address(vault));
 
         vm.stopBroadcast();
     }

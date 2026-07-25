@@ -5232,6 +5232,678 @@ export const upgradeableBeaconAbi = [
 ] as const
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Vault
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ *
+ */
+export const vaultAbi = [
+  {
+    type: 'constructor',
+    inputs: [
+      { name: 'token_', internalType: 'contract IERC20', type: 'address' },
+    ],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [{ name: 'amount', internalType: 'uint256', type: 'uint256' }],
+    name: 'deposit',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [{ name: '', internalType: 'address', type: 'address' }],
+    name: 'deposits',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'token',
+    outputs: [{ name: '', internalType: 'contract IERC20', type: 'address' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'from', internalType: 'address', type: 'address', indexed: true },
+      {
+        name: 'amount',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'Deposited',
+  },
+] as const
+
+/**
+ *
+ */
+export const vaultAddress = {
+  31337: '0xCBBe2A5c3A22BE749D5DDF24e9534f98951983e2',
+  31338: '0xCBBe2A5c3A22BE749D5DDF24e9534f98951983e2',
+} as const
+
+/**
+ *
+ */
+export const vaultConfig = { address: vaultAddress, abi: vaultAbi } as const
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// VaultTest
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export const vaultTestAbi = [
+  {
+    type: 'function',
+    inputs: [],
+    name: 'IS_TEST',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'excludeArtifacts',
+    outputs: [
+      {
+        name: 'excludedArtifacts_',
+        internalType: 'string[]',
+        type: 'string[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'excludeContracts',
+    outputs: [
+      {
+        name: 'excludedContracts_',
+        internalType: 'address[]',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'excludeSelectors',
+    outputs: [
+      {
+        name: 'excludedSelectors_',
+        internalType: 'struct StdInvariant.FuzzSelector[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'addr', internalType: 'address', type: 'address' },
+          { name: 'selectors', internalType: 'bytes4[]', type: 'bytes4[]' },
+        ],
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'excludeSenders',
+    outputs: [
+      {
+        name: 'excludedSenders_',
+        internalType: 'address[]',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'failed',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'setUp',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetArtifactSelectors',
+    outputs: [
+      {
+        name: 'targetedArtifactSelectors_',
+        internalType: 'struct StdInvariant.FuzzArtifactSelector[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'artifact', internalType: 'string', type: 'string' },
+          { name: 'selectors', internalType: 'bytes4[]', type: 'bytes4[]' },
+        ],
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetArtifacts',
+    outputs: [
+      {
+        name: 'targetedArtifacts_',
+        internalType: 'string[]',
+        type: 'string[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetContracts',
+    outputs: [
+      {
+        name: 'targetedContracts_',
+        internalType: 'address[]',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetInterfaces',
+    outputs: [
+      {
+        name: 'targetedInterfaces_',
+        internalType: 'struct StdInvariant.FuzzInterface[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'addr', internalType: 'address', type: 'address' },
+          { name: 'artifacts', internalType: 'string[]', type: 'string[]' },
+        ],
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetSelectors',
+    outputs: [
+      {
+        name: 'targetedSelectors_',
+        internalType: 'struct StdInvariant.FuzzSelector[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'addr', internalType: 'address', type: 'address' },
+          { name: 'selectors', internalType: 'bytes4[]', type: 'bytes4[]' },
+        ],
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetSenders',
+    outputs: [
+      {
+        name: 'targetedSenders_',
+        internalType: 'address[]',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'test_deposit_revertsWithoutApproval',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'test_deposit_succeedsAfterApproval',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'string', type: 'string', indexed: false },
+    ],
+    name: 'log',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'address', type: 'address', indexed: false },
+    ],
+    name: 'log_address',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'val',
+        internalType: 'uint256[]',
+        type: 'uint256[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'val',
+        internalType: 'int256[]',
+        type: 'int256[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'val',
+        internalType: 'address[]',
+        type: 'address[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'bytes', type: 'bytes', indexed: false },
+    ],
+    name: 'log_bytes',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'bytes32', type: 'bytes32', indexed: false },
+    ],
+    name: 'log_bytes32',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'int256', type: 'int256', indexed: false },
+    ],
+    name: 'log_int',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'address', type: 'address', indexed: false },
+    ],
+    name: 'log_named_address',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      {
+        name: 'val',
+        internalType: 'uint256[]',
+        type: 'uint256[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      {
+        name: 'val',
+        internalType: 'int256[]',
+        type: 'int256[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      {
+        name: 'val',
+        internalType: 'address[]',
+        type: 'address[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'bytes', type: 'bytes', indexed: false },
+    ],
+    name: 'log_named_bytes',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'bytes32', type: 'bytes32', indexed: false },
+    ],
+    name: 'log_named_bytes32',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'int256', type: 'int256', indexed: false },
+      {
+        name: 'decimals',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_decimal_int',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'uint256', type: 'uint256', indexed: false },
+      {
+        name: 'decimals',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_decimal_uint',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'int256', type: 'int256', indexed: false },
+    ],
+    name: 'log_named_int',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'string', type: 'string', indexed: false },
+    ],
+    name: 'log_named_string',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'uint256', type: 'uint256', indexed: false },
+    ],
+    name: 'log_named_uint',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'string', type: 'string', indexed: false },
+    ],
+    name: 'log_string',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'uint256', type: 'uint256', indexed: false },
+    ],
+    name: 'log_uint',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'bytes', type: 'bytes', indexed: false },
+    ],
+    name: 'logs',
+  },
+] as const
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// VaultToken
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ *
+ */
+export const vaultTokenAbi = [
+  {
+    type: 'function',
+    inputs: [
+      { name: 'owner', internalType: 'address', type: 'address' },
+      { name: 'spender', internalType: 'address', type: 'address' },
+    ],
+    name: 'allowance',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'spender', internalType: 'address', type: 'address' },
+      { name: 'value', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'approve',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [{ name: 'account', internalType: 'address', type: 'address' }],
+    name: 'balanceOf',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'decimals',
+    outputs: [{ name: '', internalType: 'uint8', type: 'uint8' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'to', internalType: 'address', type: 'address' },
+      { name: 'amount', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'mint',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'name',
+    outputs: [{ name: '', internalType: 'string', type: 'string' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'symbol',
+    outputs: [{ name: '', internalType: 'string', type: 'string' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'totalSupply',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'to', internalType: 'address', type: 'address' },
+      { name: 'value', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'transfer',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'from', internalType: 'address', type: 'address' },
+      { name: 'to', internalType: 'address', type: 'address' },
+      { name: 'value', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'transferFrom',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'owner',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      {
+        name: 'spender',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      {
+        name: 'value',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'Approval',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'from', internalType: 'address', type: 'address', indexed: true },
+      { name: 'to', internalType: 'address', type: 'address', indexed: true },
+      {
+        name: 'value',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'Transfer',
+  },
+  {
+    type: 'error',
+    inputs: [
+      { name: 'spender', internalType: 'address', type: 'address' },
+      { name: 'allowance', internalType: 'uint256', type: 'uint256' },
+      { name: 'needed', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'ERC20InsufficientAllowance',
+  },
+  {
+    type: 'error',
+    inputs: [
+      { name: 'sender', internalType: 'address', type: 'address' },
+      { name: 'balance', internalType: 'uint256', type: 'uint256' },
+      { name: 'needed', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'ERC20InsufficientBalance',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'approver', internalType: 'address', type: 'address' }],
+    name: 'ERC20InvalidApprover',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'receiver', internalType: 'address', type: 'address' }],
+    name: 'ERC20InvalidReceiver',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'sender', internalType: 'address', type: 'address' }],
+    name: 'ERC20InvalidSender',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'spender', internalType: 'address', type: 'address' }],
+    name: 'ERC20InvalidSpender',
+  },
+] as const
+
+/**
+ *
+ */
+export const vaultTokenAddress = {
+  31337: '0xd3FFD73C53F139cEBB80b6A524bE280955b3f4db',
+  31338: '0xd3FFD73C53F139cEBB80b6A524bE280955b3f4db',
+} as const
+
+/**
+ *
+ */
+export const vaultTokenConfig = {
+  address: vaultTokenAddress,
+  abi: vaultTokenAbi,
+} as const
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // React
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -10505,4 +11177,675 @@ export const useWatchUpgradeableBeaconUpgradedEvent =
   /*#__PURE__*/ createUseWatchContractEvent({
     abi: upgradeableBeaconAbi,
     eventName: 'Upgraded',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultAbi}__
+ *
+ *
+ */
+export const useReadVault = /*#__PURE__*/ createUseReadContract({
+  abi: vaultAbi,
+  address: vaultAddress,
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultAbi}__ and `functionName` set to `"deposits"`
+ *
+ *
+ */
+export const useReadVaultDeposits = /*#__PURE__*/ createUseReadContract({
+  abi: vaultAbi,
+  address: vaultAddress,
+  functionName: 'deposits',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultAbi}__ and `functionName` set to `"token"`
+ *
+ *
+ */
+export const useReadVaultTokenAddress = /*#__PURE__*/ createUseReadContract({
+  abi: vaultAbi,
+  address: vaultAddress,
+  functionName: 'token',
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link vaultAbi}__
+ *
+ *
+ */
+export const useWriteVault = /*#__PURE__*/ createUseWriteContract({
+  abi: vaultAbi,
+  address: vaultAddress,
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link vaultAbi}__ and `functionName` set to `"deposit"`
+ *
+ *
+ */
+export const useWriteVaultDeposit = /*#__PURE__*/ createUseWriteContract({
+  abi: vaultAbi,
+  address: vaultAddress,
+  functionName: 'deposit',
+})
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link vaultAbi}__
+ *
+ *
+ */
+export const useSimulateVault = /*#__PURE__*/ createUseSimulateContract({
+  abi: vaultAbi,
+  address: vaultAddress,
+})
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link vaultAbi}__ and `functionName` set to `"deposit"`
+ *
+ *
+ */
+export const useSimulateVaultDeposit = /*#__PURE__*/ createUseSimulateContract({
+  abi: vaultAbi,
+  address: vaultAddress,
+  functionName: 'deposit',
+})
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultAbi}__
+ *
+ *
+ */
+export const useWatchVaultEvent = /*#__PURE__*/ createUseWatchContractEvent({
+  abi: vaultAbi,
+  address: vaultAddress,
+})
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultAbi}__ and `eventName` set to `"Deposited"`
+ *
+ *
+ */
+export const useWatchVaultDepositedEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultAbi,
+    address: vaultAddress,
+    eventName: 'Deposited',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTestAbi}__
+ */
+export const useReadVaultTest = /*#__PURE__*/ createUseReadContract({
+  abi: vaultTestAbi,
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"IS_TEST"`
+ */
+export const useReadVaultTestIsTest = /*#__PURE__*/ createUseReadContract({
+  abi: vaultTestAbi,
+  functionName: 'IS_TEST',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"excludeArtifacts"`
+ */
+export const useReadVaultTestExcludeArtifacts =
+  /*#__PURE__*/ createUseReadContract({
+    abi: vaultTestAbi,
+    functionName: 'excludeArtifacts',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"excludeContracts"`
+ */
+export const useReadVaultTestExcludeContracts =
+  /*#__PURE__*/ createUseReadContract({
+    abi: vaultTestAbi,
+    functionName: 'excludeContracts',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"excludeSelectors"`
+ */
+export const useReadVaultTestExcludeSelectors =
+  /*#__PURE__*/ createUseReadContract({
+    abi: vaultTestAbi,
+    functionName: 'excludeSelectors',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"excludeSenders"`
+ */
+export const useReadVaultTestExcludeSenders =
+  /*#__PURE__*/ createUseReadContract({
+    abi: vaultTestAbi,
+    functionName: 'excludeSenders',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"failed"`
+ */
+export const useReadVaultTestFailed = /*#__PURE__*/ createUseReadContract({
+  abi: vaultTestAbi,
+  functionName: 'failed',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"targetArtifactSelectors"`
+ */
+export const useReadVaultTestTargetArtifactSelectors =
+  /*#__PURE__*/ createUseReadContract({
+    abi: vaultTestAbi,
+    functionName: 'targetArtifactSelectors',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"targetArtifacts"`
+ */
+export const useReadVaultTestTargetArtifacts =
+  /*#__PURE__*/ createUseReadContract({
+    abi: vaultTestAbi,
+    functionName: 'targetArtifacts',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"targetContracts"`
+ */
+export const useReadVaultTestTargetContracts =
+  /*#__PURE__*/ createUseReadContract({
+    abi: vaultTestAbi,
+    functionName: 'targetContracts',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"targetInterfaces"`
+ */
+export const useReadVaultTestTargetInterfaces =
+  /*#__PURE__*/ createUseReadContract({
+    abi: vaultTestAbi,
+    functionName: 'targetInterfaces',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"targetSelectors"`
+ */
+export const useReadVaultTestTargetSelectors =
+  /*#__PURE__*/ createUseReadContract({
+    abi: vaultTestAbi,
+    functionName: 'targetSelectors',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"targetSenders"`
+ */
+export const useReadVaultTestTargetSenders =
+  /*#__PURE__*/ createUseReadContract({
+    abi: vaultTestAbi,
+    functionName: 'targetSenders',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link vaultTestAbi}__
+ */
+export const useWriteVaultTest = /*#__PURE__*/ createUseWriteContract({
+  abi: vaultTestAbi,
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"setUp"`
+ */
+export const useWriteVaultTestSetUp = /*#__PURE__*/ createUseWriteContract({
+  abi: vaultTestAbi,
+  functionName: 'setUp',
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"test_deposit_revertsWithoutApproval"`
+ */
+export const useWriteVaultTestTestDepositRevertsWithoutApproval =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: vaultTestAbi,
+    functionName: 'test_deposit_revertsWithoutApproval',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"test_deposit_succeedsAfterApproval"`
+ */
+export const useWriteVaultTestTestDepositSucceedsAfterApproval =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: vaultTestAbi,
+    functionName: 'test_deposit_succeedsAfterApproval',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link vaultTestAbi}__
+ */
+export const useSimulateVaultTest = /*#__PURE__*/ createUseSimulateContract({
+  abi: vaultTestAbi,
+})
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"setUp"`
+ */
+export const useSimulateVaultTestSetUp =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: vaultTestAbi,
+    functionName: 'setUp',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"test_deposit_revertsWithoutApproval"`
+ */
+export const useSimulateVaultTestTestDepositRevertsWithoutApproval =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: vaultTestAbi,
+    functionName: 'test_deposit_revertsWithoutApproval',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"test_deposit_succeedsAfterApproval"`
+ */
+export const useSimulateVaultTestTestDepositSucceedsAfterApproval =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: vaultTestAbi,
+    functionName: 'test_deposit_succeedsAfterApproval',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__
+ */
+export const useWatchVaultTestEvent = /*#__PURE__*/ createUseWatchContractEvent(
+  { abi: vaultTestAbi },
+)
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"log"`
+ */
+export const useWatchVaultTestLogEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'log',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"log_address"`
+ */
+export const useWatchVaultTestLogAddressEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'log_address',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"log_array"`
+ */
+export const useWatchVaultTestLogArrayEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'log_array',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"log_bytes"`
+ */
+export const useWatchVaultTestLogBytesEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'log_bytes',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"log_bytes32"`
+ */
+export const useWatchVaultTestLogBytes32Event =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'log_bytes32',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"log_int"`
+ */
+export const useWatchVaultTestLogIntEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'log_int',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"log_named_address"`
+ */
+export const useWatchVaultTestLogNamedAddressEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'log_named_address',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"log_named_array"`
+ */
+export const useWatchVaultTestLogNamedArrayEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'log_named_array',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"log_named_bytes"`
+ */
+export const useWatchVaultTestLogNamedBytesEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'log_named_bytes',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"log_named_bytes32"`
+ */
+export const useWatchVaultTestLogNamedBytes32Event =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'log_named_bytes32',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"log_named_decimal_int"`
+ */
+export const useWatchVaultTestLogNamedDecimalIntEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'log_named_decimal_int',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"log_named_decimal_uint"`
+ */
+export const useWatchVaultTestLogNamedDecimalUintEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'log_named_decimal_uint',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"log_named_int"`
+ */
+export const useWatchVaultTestLogNamedIntEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'log_named_int',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"log_named_string"`
+ */
+export const useWatchVaultTestLogNamedStringEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'log_named_string',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"log_named_uint"`
+ */
+export const useWatchVaultTestLogNamedUintEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'log_named_uint',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"log_string"`
+ */
+export const useWatchVaultTestLogStringEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'log_string',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"log_uint"`
+ */
+export const useWatchVaultTestLogUintEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'log_uint',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"logs"`
+ */
+export const useWatchVaultTestLogsEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'logs',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTokenAbi}__
+ *
+ *
+ */
+export const useReadVaultToken = /*#__PURE__*/ createUseReadContract({
+  abi: vaultTokenAbi,
+  address: vaultTokenAddress,
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTokenAbi}__ and `functionName` set to `"allowance"`
+ *
+ *
+ */
+export const useReadVaultTokenAllowance = /*#__PURE__*/ createUseReadContract({
+  abi: vaultTokenAbi,
+  address: vaultTokenAddress,
+  functionName: 'allowance',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTokenAbi}__ and `functionName` set to `"balanceOf"`
+ *
+ *
+ */
+export const useReadVaultTokenBalanceOf = /*#__PURE__*/ createUseReadContract({
+  abi: vaultTokenAbi,
+  address: vaultTokenAddress,
+  functionName: 'balanceOf',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTokenAbi}__ and `functionName` set to `"decimals"`
+ *
+ *
+ */
+export const useReadVaultTokenDecimals = /*#__PURE__*/ createUseReadContract({
+  abi: vaultTokenAbi,
+  address: vaultTokenAddress,
+  functionName: 'decimals',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTokenAbi}__ and `functionName` set to `"name"`
+ *
+ *
+ */
+export const useReadVaultTokenName = /*#__PURE__*/ createUseReadContract({
+  abi: vaultTokenAbi,
+  address: vaultTokenAddress,
+  functionName: 'name',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTokenAbi}__ and `functionName` set to `"symbol"`
+ *
+ *
+ */
+export const useReadVaultTokenSymbol = /*#__PURE__*/ createUseReadContract({
+  abi: vaultTokenAbi,
+  address: vaultTokenAddress,
+  functionName: 'symbol',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTokenAbi}__ and `functionName` set to `"totalSupply"`
+ *
+ *
+ */
+export const useReadVaultTokenTotalSupply = /*#__PURE__*/ createUseReadContract(
+  {
+    abi: vaultTokenAbi,
+    address: vaultTokenAddress,
+    functionName: 'totalSupply',
+  },
+)
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link vaultTokenAbi}__
+ *
+ *
+ */
+export const useWriteVaultToken = /*#__PURE__*/ createUseWriteContract({
+  abi: vaultTokenAbi,
+  address: vaultTokenAddress,
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link vaultTokenAbi}__ and `functionName` set to `"approve"`
+ *
+ *
+ */
+export const useWriteVaultTokenApprove = /*#__PURE__*/ createUseWriteContract({
+  abi: vaultTokenAbi,
+  address: vaultTokenAddress,
+  functionName: 'approve',
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link vaultTokenAbi}__ and `functionName` set to `"mint"`
+ *
+ *
+ */
+export const useWriteVaultTokenMint = /*#__PURE__*/ createUseWriteContract({
+  abi: vaultTokenAbi,
+  address: vaultTokenAddress,
+  functionName: 'mint',
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link vaultTokenAbi}__ and `functionName` set to `"transfer"`
+ *
+ *
+ */
+export const useWriteVaultTokenTransfer = /*#__PURE__*/ createUseWriteContract({
+  abi: vaultTokenAbi,
+  address: vaultTokenAddress,
+  functionName: 'transfer',
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link vaultTokenAbi}__ and `functionName` set to `"transferFrom"`
+ *
+ *
+ */
+export const useWriteVaultTokenTransferFrom =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: vaultTokenAbi,
+    address: vaultTokenAddress,
+    functionName: 'transferFrom',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link vaultTokenAbi}__
+ *
+ *
+ */
+export const useSimulateVaultToken = /*#__PURE__*/ createUseSimulateContract({
+  abi: vaultTokenAbi,
+  address: vaultTokenAddress,
+})
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link vaultTokenAbi}__ and `functionName` set to `"approve"`
+ *
+ *
+ */
+export const useSimulateVaultTokenApprove =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: vaultTokenAbi,
+    address: vaultTokenAddress,
+    functionName: 'approve',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link vaultTokenAbi}__ and `functionName` set to `"mint"`
+ *
+ *
+ */
+export const useSimulateVaultTokenMint =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: vaultTokenAbi,
+    address: vaultTokenAddress,
+    functionName: 'mint',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link vaultTokenAbi}__ and `functionName` set to `"transfer"`
+ *
+ *
+ */
+export const useSimulateVaultTokenTransfer =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: vaultTokenAbi,
+    address: vaultTokenAddress,
+    functionName: 'transfer',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link vaultTokenAbi}__ and `functionName` set to `"transferFrom"`
+ *
+ *
+ */
+export const useSimulateVaultTokenTransferFrom =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: vaultTokenAbi,
+    address: vaultTokenAddress,
+    functionName: 'transferFrom',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTokenAbi}__
+ *
+ *
+ */
+export const useWatchVaultTokenEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTokenAbi,
+    address: vaultTokenAddress,
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTokenAbi}__ and `eventName` set to `"Approval"`
+ *
+ *
+ */
+export const useWatchVaultTokenApprovalEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTokenAbi,
+    address: vaultTokenAddress,
+    eventName: 'Approval',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTokenAbi}__ and `eventName` set to `"Transfer"`
+ *
+ *
+ */
+export const useWatchVaultTokenTransferEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTokenAbi,
+    address: vaultTokenAddress,
+    eventName: 'Transfer',
   })
