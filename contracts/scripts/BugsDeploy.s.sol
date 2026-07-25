@@ -4,6 +4,7 @@ pragma solidity ^0.8.13;
 import {Script, console} from "forge-std/Script.sol";
 
 import {OwnedRegistry} from "contracts/bugs/OwnedRegistry.sol";
+import {SixDecimalToken} from "contracts/bugs/SixDecimalToken.sol";
 
 // Seeds the broken on-chain state the MCP debug demo relies on.
 // See docs/mcp-debug-runbook.md.
@@ -17,6 +18,12 @@ contract BugsDeployScript is Script {
         // Scenario 2: owned by bob, while ethui's active account is alice.
         OwnedRegistry registry = new OwnedRegistry(bob);
         console.log("OwnedRegistry", address(registry));
+
+        // Scenario 3: 6 decimals, funded so the balance reads as a round 100.
+        SixDecimalToken sixDecimalToken = new SixDecimalToken();
+        sixDecimalToken.mint(alice, 100e6);
+        sixDecimalToken.mint(bob, 100e6);
+        console.log("SixDecimalToken", address(sixDecimalToken));
 
         vm.stopBroadcast();
     }

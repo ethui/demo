@@ -23,6 +23,10 @@ const config: ReturnType<typeof defineConfig> = defineConfig({
           31337: "0x3347B4d90ebe72BeFb30444C9966B2B990aE9FcB",
           31338: "0x3347B4d90ebe72BeFb30444C9966B2B990aE9FcB",
         },
+        SixDecimalToken: {
+          31337: "0xaca81583840B1bf2dDF6CDe824ada250C1936B4D",
+          31338: "0xaca81583840B1bf2dDF6CDe824ada250C1936B4D",
+        },
       },
     }),
     react(),
