@@ -630,8 +630,18 @@ const BOB = "0x70997970C51812dc3A010C7d01b50e0d17dc79C8" as const;
 
 function Decimals() {
   const [amount, setAmount] = useState("100");
+  const [parseError, setParseError] = useState<unknown>(null);
   const { isPending, error, writeContract } =
     useWriteSixDecimalTokenTransfer();
+
+  const onClick = () => {
+    setParseError(null);
+    try {
+      writeContract({ args: [BOB, parseEther(amount)] });
+    } catch (e) {
+      setParseError(e);
+    }
+  };
 
   return (
     <div className="flex flex-col gap-4">
@@ -642,21 +652,21 @@ function Decimals() {
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
         />
-        <Button
-          disabled={isPending}
-          onClick={() =>
-            writeContract({ args: [BOB, parseEther(amount || "0")] })
-          }
-        >
+        <Button disabled={isPending} onClick={onClick}>
           {isPending ? <LoaderCircle className="animate-spin" /> : <Send />}
           Transfer
         </Button>
       </div>
-      <RawError error={error} />
+      <RawError error={parseError ?? error} />
     </div>
   );
 }
 ```
+
+`parseEther` throws synchronously on input it cannot parse (`"abc"`, `"1e2"`),
+which would escape `writeContract`'s error state entirely and leave the page
+blank. The try/catch routes it into the same `RawError`, so any input still
+produces visible raw evidence.
 
 If `@ethui/ui` does not export `Input` at that path, substitute a plain `<input className="w-32 rounded-md border px-2" />` with the same `value`/`onChange` wiring rather than inventing an import.
 
@@ -1163,6 +1173,73 @@ git add contracts/bugs/Forwarder.sol contracts/test/bugs/Forwarder.d.sol \
   src/routes/bugs/silent-failure.tsx src/components/app-sidebar.tsx \
   src/routeTree.gen.ts
 git commit -m "feat(bugs): silent failure scenario"
+```
+
+---
+
+### Task 5b: Re-pin every deployment address from one clean deploy
+
+Tasks 2–5 each pinned their contract's address from the deploy run that
+introduced it. But every `eth-deploy.sh` run against a live anvil deploys
+*fresh* instances at new nonces, so the five committed addresses come from five
+different runs and no single chain state matches all of them. After an anvil
+restart plus one deploy, none of them would be correct.
+
+A fresh chain plus a fixed deploy sequence is deterministic, so re-pinning
+everything from one clean run produces a state that reproduces on every later
+reset.
+
+**Files:**
+- Modify: `wagmi.config.ts`, `src/wagmi.generated.ts`
+
+- [ ] **Step 1: Ask the human partner to restart anvil**
+
+This step needs a *fresh* chain — nonces must start from zero. Do not start or
+restart anvil yourself. Ask the human partner to restart it (mprocs manages
+it), and wait for confirmation before continuing.
+
+- [ ] **Step 2: Deploy once against the fresh chain**
+
+```bash
+./scripts/eth-deploy.sh
+```
+
+Record every logged address: `OwnedRegistry`, `SixDecimalToken`, `VaultToken`,
+`Vault`, `Forwarder`.
+
+- [ ] **Step 3: Re-pin all five in wagmi.config.ts**
+
+Replace each of the five `deployments` entries with the address from Step 2,
+for both 31337 and 31338. Every one of them will differ from what is currently
+committed — that is expected. Then:
+
+```bash
+yarn wagmi generate
+```
+
+- [ ] **Step 4: Confirm the stale address is still code-free**
+
+The scenario 1 constant in `src/routes/bugs/stale-address.tsx` must still hold
+no code on the fresh chain, and the new deploys must not have landed on it:
+
+```bash
+cast code 0x59b670e9fA9D0A427751Af201D676719a970857b --rpc-url http://localhost:8545
+```
+
+Expected: `0x`. If it now holds bytecode, pick another address that returns
+`0x` and update the constant.
+
+- [ ] **Step 5: Verify the frontend gate**
+
+```bash
+yarn fix:biome && yarn lint
+```
+
+- [ ] **Step 6: Commit**
+
+```bash
+git add wagmi.config.ts src/wagmi.generated.ts src/routes/bugs/stale-address.tsx
+git commit -m "fix(bugs): re-pin deployment addresses from a single clean deploy"
 ```
 
 ---
