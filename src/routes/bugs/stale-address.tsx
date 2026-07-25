@@ -8,7 +8,7 @@ export const Route = createFileRoute("/bugs/stale-address")({
   component: StaleAddress,
 });
 
-const STALE_ADDRESS = "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720" as const;
+const STALE_ADDRESS = "0x59b670e9fA9D0A427751Af201D676719a970857b" as const;
 
 function StaleAddress() {
   const { data, error } = useReadContract({
