@@ -81,6 +81,7 @@ const data = {
         { title: "Access control", to: "/bugs/access-control" },
         { title: "Decimals", to: "/bugs/decimals" },
         { title: "Allowance", to: "/bugs/allowance" },
+        { title: "Silent failure", to: "/bugs/silent-failure" },
       ],
     },
   ],

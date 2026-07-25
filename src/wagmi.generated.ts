@@ -1037,6 +1037,468 @@ export const erc721EnumerableAbi = [
 ] as const
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Forwarder
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export const forwarderAbi = [
+  {
+    type: 'function',
+    inputs: [
+      { name: 'target', internalType: 'address', type: 'address' },
+      { name: 'data', internalType: 'bytes', type: 'bytes' },
+    ],
+    name: 'forward',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'target',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      { name: 'data', internalType: 'bytes', type: 'bytes', indexed: false },
+    ],
+    name: 'Forwarded',
+  },
+] as const
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ForwarderTest
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export const forwarderTestAbi = [
+  {
+    type: 'function',
+    inputs: [],
+    name: 'IS_TEST',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'excludeArtifacts',
+    outputs: [
+      {
+        name: 'excludedArtifacts_',
+        internalType: 'string[]',
+        type: 'string[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'excludeContracts',
+    outputs: [
+      {
+        name: 'excludedContracts_',
+        internalType: 'address[]',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'excludeSelectors',
+    outputs: [
+      {
+        name: 'excludedSelectors_',
+        internalType: 'struct StdInvariant.FuzzSelector[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'addr', internalType: 'address', type: 'address' },
+          { name: 'selectors', internalType: 'bytes4[]', type: 'bytes4[]' },
+        ],
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'excludeSenders',
+    outputs: [
+      {
+        name: 'excludedSenders_',
+        internalType: 'address[]',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'failed',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'setUp',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetArtifactSelectors',
+    outputs: [
+      {
+        name: 'targetedArtifactSelectors_',
+        internalType: 'struct StdInvariant.FuzzArtifactSelector[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'artifact', internalType: 'string', type: 'string' },
+          { name: 'selectors', internalType: 'bytes4[]', type: 'bytes4[]' },
+        ],
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetArtifacts',
+    outputs: [
+      {
+        name: 'targetedArtifacts_',
+        internalType: 'string[]',
+        type: 'string[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetContracts',
+    outputs: [
+      {
+        name: 'targetedContracts_',
+        internalType: 'address[]',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetInterfaces',
+    outputs: [
+      {
+        name: 'targetedInterfaces_',
+        internalType: 'struct StdInvariant.FuzzInterface[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'addr', internalType: 'address', type: 'address' },
+          { name: 'artifacts', internalType: 'string[]', type: 'string[]' },
+        ],
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetSelectors',
+    outputs: [
+      {
+        name: 'targetedSelectors_',
+        internalType: 'struct StdInvariant.FuzzSelector[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'addr', internalType: 'address', type: 'address' },
+          { name: 'selectors', internalType: 'bytes4[]', type: 'bytes4[]' },
+        ],
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetSenders',
+    outputs: [
+      {
+        name: 'targetedSenders_',
+        internalType: 'address[]',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'test_forward_emitsEvenWhenInnerCallFails',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'test_forward_swallowsFailure',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'target',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      { name: 'data', internalType: 'bytes', type: 'bytes', indexed: false },
+    ],
+    name: 'Forwarded',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'string', type: 'string', indexed: false },
+    ],
+    name: 'log',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'address', type: 'address', indexed: false },
+    ],
+    name: 'log_address',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'val',
+        internalType: 'uint256[]',
+        type: 'uint256[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'val',
+        internalType: 'int256[]',
+        type: 'int256[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'val',
+        internalType: 'address[]',
+        type: 'address[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'bytes', type: 'bytes', indexed: false },
+    ],
+    name: 'log_bytes',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'bytes32', type: 'bytes32', indexed: false },
+    ],
+    name: 'log_bytes32',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'int256', type: 'int256', indexed: false },
+    ],
+    name: 'log_int',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'address', type: 'address', indexed: false },
+    ],
+    name: 'log_named_address',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      {
+        name: 'val',
+        internalType: 'uint256[]',
+        type: 'uint256[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      {
+        name: 'val',
+        internalType: 'int256[]',
+        type: 'int256[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      {
+        name: 'val',
+        internalType: 'address[]',
+        type: 'address[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'bytes', type: 'bytes', indexed: false },
+    ],
+    name: 'log_named_bytes',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'bytes32', type: 'bytes32', indexed: false },
+    ],
+    name: 'log_named_bytes32',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'int256', type: 'int256', indexed: false },
+      {
+        name: 'decimals',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_decimal_int',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'uint256', type: 'uint256', indexed: false },
+      {
+        name: 'decimals',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_decimal_uint',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'int256', type: 'int256', indexed: false },
+    ],
+    name: 'log_named_int',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'string', type: 'string', indexed: false },
+    ],
+    name: 'log_named_string',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'uint256', type: 'uint256', indexed: false },
+    ],
+    name: 'log_named_uint',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'string', type: 'string', indexed: false },
+    ],
+    name: 'log_string',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'uint256', type: 'uint256', indexed: false },
+    ],
+    name: 'log_uint',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'bytes', type: 'bytes', indexed: false },
+    ],
+    name: 'logs',
+  },
+] as const
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // IBeacon
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -6770,6 +7232,410 @@ export const useWatchErc721EnumerableTransferEvent =
   /*#__PURE__*/ createUseWatchContractEvent({
     abi: erc721EnumerableAbi,
     eventName: 'Transfer',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link forwarderAbi}__
+ */
+export const useWriteForwarder = /*#__PURE__*/ createUseWriteContract({
+  abi: forwarderAbi,
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link forwarderAbi}__ and `functionName` set to `"forward"`
+ */
+export const useWriteForwarderForward = /*#__PURE__*/ createUseWriteContract({
+  abi: forwarderAbi,
+  functionName: 'forward',
+})
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link forwarderAbi}__
+ */
+export const useSimulateForwarder = /*#__PURE__*/ createUseSimulateContract({
+  abi: forwarderAbi,
+})
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link forwarderAbi}__ and `functionName` set to `"forward"`
+ */
+export const useSimulateForwarderForward =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: forwarderAbi,
+    functionName: 'forward',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderAbi}__
+ */
+export const useWatchForwarderEvent = /*#__PURE__*/ createUseWatchContractEvent(
+  { abi: forwarderAbi },
+)
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderAbi}__ and `eventName` set to `"Forwarded"`
+ */
+export const useWatchForwarderForwardedEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderAbi,
+    eventName: 'Forwarded',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link forwarderTestAbi}__
+ */
+export const useReadForwarderTest = /*#__PURE__*/ createUseReadContract({
+  abi: forwarderTestAbi,
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"IS_TEST"`
+ */
+export const useReadForwarderTestIsTest = /*#__PURE__*/ createUseReadContract({
+  abi: forwarderTestAbi,
+  functionName: 'IS_TEST',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"excludeArtifacts"`
+ */
+export const useReadForwarderTestExcludeArtifacts =
+  /*#__PURE__*/ createUseReadContract({
+    abi: forwarderTestAbi,
+    functionName: 'excludeArtifacts',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"excludeContracts"`
+ */
+export const useReadForwarderTestExcludeContracts =
+  /*#__PURE__*/ createUseReadContract({
+    abi: forwarderTestAbi,
+    functionName: 'excludeContracts',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"excludeSelectors"`
+ */
+export const useReadForwarderTestExcludeSelectors =
+  /*#__PURE__*/ createUseReadContract({
+    abi: forwarderTestAbi,
+    functionName: 'excludeSelectors',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"excludeSenders"`
+ */
+export const useReadForwarderTestExcludeSenders =
+  /*#__PURE__*/ createUseReadContract({
+    abi: forwarderTestAbi,
+    functionName: 'excludeSenders',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"failed"`
+ */
+export const useReadForwarderTestFailed = /*#__PURE__*/ createUseReadContract({
+  abi: forwarderTestAbi,
+  functionName: 'failed',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"targetArtifactSelectors"`
+ */
+export const useReadForwarderTestTargetArtifactSelectors =
+  /*#__PURE__*/ createUseReadContract({
+    abi: forwarderTestAbi,
+    functionName: 'targetArtifactSelectors',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"targetArtifacts"`
+ */
+export const useReadForwarderTestTargetArtifacts =
+  /*#__PURE__*/ createUseReadContract({
+    abi: forwarderTestAbi,
+    functionName: 'targetArtifacts',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"targetContracts"`
+ */
+export const useReadForwarderTestTargetContracts =
+  /*#__PURE__*/ createUseReadContract({
+    abi: forwarderTestAbi,
+    functionName: 'targetContracts',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"targetInterfaces"`
+ */
+export const useReadForwarderTestTargetInterfaces =
+  /*#__PURE__*/ createUseReadContract({
+    abi: forwarderTestAbi,
+    functionName: 'targetInterfaces',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"targetSelectors"`
+ */
+export const useReadForwarderTestTargetSelectors =
+  /*#__PURE__*/ createUseReadContract({
+    abi: forwarderTestAbi,
+    functionName: 'targetSelectors',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"targetSenders"`
+ */
+export const useReadForwarderTestTargetSenders =
+  /*#__PURE__*/ createUseReadContract({
+    abi: forwarderTestAbi,
+    functionName: 'targetSenders',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link forwarderTestAbi}__
+ */
+export const useWriteForwarderTest = /*#__PURE__*/ createUseWriteContract({
+  abi: forwarderTestAbi,
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"setUp"`
+ */
+export const useWriteForwarderTestSetUp = /*#__PURE__*/ createUseWriteContract({
+  abi: forwarderTestAbi,
+  functionName: 'setUp',
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"test_forward_emitsEvenWhenInnerCallFails"`
+ */
+export const useWriteForwarderTestTestForwardEmitsEvenWhenInnerCallFails =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: forwarderTestAbi,
+    functionName: 'test_forward_emitsEvenWhenInnerCallFails',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"test_forward_swallowsFailure"`
+ */
+export const useWriteForwarderTestTestForwardSwallowsFailure =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: forwarderTestAbi,
+    functionName: 'test_forward_swallowsFailure',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link forwarderTestAbi}__
+ */
+export const useSimulateForwarderTest = /*#__PURE__*/ createUseSimulateContract(
+  { abi: forwarderTestAbi },
+)
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"setUp"`
+ */
+export const useSimulateForwarderTestSetUp =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: forwarderTestAbi,
+    functionName: 'setUp',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"test_forward_emitsEvenWhenInnerCallFails"`
+ */
+export const useSimulateForwarderTestTestForwardEmitsEvenWhenInnerCallFails =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: forwarderTestAbi,
+    functionName: 'test_forward_emitsEvenWhenInnerCallFails',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"test_forward_swallowsFailure"`
+ */
+export const useSimulateForwarderTestTestForwardSwallowsFailure =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: forwarderTestAbi,
+    functionName: 'test_forward_swallowsFailure',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__
+ */
+export const useWatchForwarderTestEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({ abi: forwarderTestAbi })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"Forwarded"`
+ */
+export const useWatchForwarderTestForwardedEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'Forwarded',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"log"`
+ */
+export const useWatchForwarderTestLogEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'log',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"log_address"`
+ */
+export const useWatchForwarderTestLogAddressEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'log_address',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"log_array"`
+ */
+export const useWatchForwarderTestLogArrayEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'log_array',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"log_bytes"`
+ */
+export const useWatchForwarderTestLogBytesEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'log_bytes',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"log_bytes32"`
+ */
+export const useWatchForwarderTestLogBytes32Event =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'log_bytes32',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"log_int"`
+ */
+export const useWatchForwarderTestLogIntEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'log_int',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"log_named_address"`
+ */
+export const useWatchForwarderTestLogNamedAddressEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'log_named_address',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"log_named_array"`
+ */
+export const useWatchForwarderTestLogNamedArrayEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'log_named_array',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"log_named_bytes"`
+ */
+export const useWatchForwarderTestLogNamedBytesEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'log_named_bytes',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"log_named_bytes32"`
+ */
+export const useWatchForwarderTestLogNamedBytes32Event =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'log_named_bytes32',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"log_named_decimal_int"`
+ */
+export const useWatchForwarderTestLogNamedDecimalIntEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'log_named_decimal_int',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"log_named_decimal_uint"`
+ */
+export const useWatchForwarderTestLogNamedDecimalUintEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'log_named_decimal_uint',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"log_named_int"`
+ */
+export const useWatchForwarderTestLogNamedIntEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'log_named_int',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"log_named_string"`
+ */
+export const useWatchForwarderTestLogNamedStringEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'log_named_string',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"log_named_uint"`
+ */
+export const useWatchForwarderTestLogNamedUintEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'log_named_uint',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"log_string"`
+ */
+export const useWatchForwarderTestLogStringEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'log_string',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"log_uint"`
+ */
+export const useWatchForwarderTestLogUintEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'log_uint',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"logs"`
+ */
+export const useWatchForwarderTestLogsEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'logs',
   })
 
 /**

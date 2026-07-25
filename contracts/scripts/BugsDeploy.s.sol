@@ -7,6 +7,7 @@ import {OwnedRegistry} from "contracts/bugs/OwnedRegistry.sol";
 import {SixDecimalToken} from "contracts/bugs/SixDecimalToken.sol";
 import {Vault} from "contracts/bugs/Vault.sol";
 import {DepositToken} from "contracts/bugs/DepositToken.sol";
+import {Forwarder} from "contracts/bugs/Forwarder.sol";
 
 // Seeds the broken on-chain state the MCP debug demo relies on.
 // See docs/mcp-debug-runbook.md.
@@ -34,6 +35,11 @@ contract BugsDeployScript is Script {
         Vault vault = new Vault(depositToken);
         console.log("DepositToken", address(depositToken));
         console.log("Vault", address(vault));
+
+        // Scenario 5: forwards into the bob-owned registry, so the inner call
+        // always reverts and is swallowed.
+        Forwarder forwarder = new Forwarder();
+        console.log("Forwarder", address(forwarder));
 
         vm.stopBroadcast();
     }

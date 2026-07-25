@@ -21,6 +21,7 @@ import { Route as EthuiGetContractAbiRouteImport } from './routes/ethui/getContr
 import { Route as ContractsErc721RouteImport } from './routes/contracts/erc721'
 import { Route as ContractsErc20RouteImport } from './routes/contracts/erc20'
 import { Route as BugsStaleAddressRouteImport } from './routes/bugs/stale-address'
+import { Route as BugsSilentFailureRouteImport } from './routes/bugs/silent-failure'
 import { Route as BugsDecimalsRouteImport } from './routes/bugs/decimals'
 import { Route as BugsAllowanceRouteImport } from './routes/bugs/allowance'
 import { Route as BugsAccessControlRouteImport } from './routes/bugs/access-control'
@@ -86,6 +87,11 @@ const BugsStaleAddressRoute = BugsStaleAddressRouteImport.update({
   path: '/bugs/stale-address',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BugsSilentFailureRoute = BugsSilentFailureRouteImport.update({
+  id: '/bugs/silent-failure',
+  path: '/bugs/silent-failure',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BugsDecimalsRoute = BugsDecimalsRouteImport.update({
   id: '/bugs/decimals',
   path: '/bugs/decimals',
@@ -107,6 +113,7 @@ export interface FileRoutesByFullPath {
   '/bugs/access-control': typeof BugsAccessControlRoute
   '/bugs/allowance': typeof BugsAllowanceRoute
   '/bugs/decimals': typeof BugsDecimalsRoute
+  '/bugs/silent-failure': typeof BugsSilentFailureRoute
   '/bugs/stale-address': typeof BugsStaleAddressRoute
   '/contracts/erc20': typeof ContractsErc20Route
   '/contracts/erc721': typeof ContractsErc721Route
@@ -124,6 +131,7 @@ export interface FileRoutesByTo {
   '/bugs/access-control': typeof BugsAccessControlRoute
   '/bugs/allowance': typeof BugsAllowanceRoute
   '/bugs/decimals': typeof BugsDecimalsRoute
+  '/bugs/silent-failure': typeof BugsSilentFailureRoute
   '/bugs/stale-address': typeof BugsStaleAddressRoute
   '/contracts/erc20': typeof ContractsErc20Route
   '/contracts/erc721': typeof ContractsErc721Route
@@ -142,6 +150,7 @@ export interface FileRoutesById {
   '/bugs/access-control': typeof BugsAccessControlRoute
   '/bugs/allowance': typeof BugsAllowanceRoute
   '/bugs/decimals': typeof BugsDecimalsRoute
+  '/bugs/silent-failure': typeof BugsSilentFailureRoute
   '/bugs/stale-address': typeof BugsStaleAddressRoute
   '/contracts/erc20': typeof ContractsErc20Route
   '/contracts/erc721': typeof ContractsErc721Route
@@ -161,6 +170,7 @@ export interface FileRouteTypes {
     | '/bugs/access-control'
     | '/bugs/allowance'
     | '/bugs/decimals'
+    | '/bugs/silent-failure'
     | '/bugs/stale-address'
     | '/contracts/erc20'
     | '/contracts/erc721'
@@ -178,6 +188,7 @@ export interface FileRouteTypes {
     | '/bugs/access-control'
     | '/bugs/allowance'
     | '/bugs/decimals'
+    | '/bugs/silent-failure'
     | '/bugs/stale-address'
     | '/contracts/erc20'
     | '/contracts/erc721'
@@ -195,6 +206,7 @@ export interface FileRouteTypes {
     | '/bugs/access-control'
     | '/bugs/allowance'
     | '/bugs/decimals'
+    | '/bugs/silent-failure'
     | '/bugs/stale-address'
     | '/contracts/erc20'
     | '/contracts/erc721'
@@ -213,6 +225,7 @@ export interface RootRouteChildren {
   BugsAccessControlRoute: typeof BugsAccessControlRoute
   BugsAllowanceRoute: typeof BugsAllowanceRoute
   BugsDecimalsRoute: typeof BugsDecimalsRoute
+  BugsSilentFailureRoute: typeof BugsSilentFailureRoute
   BugsStaleAddressRoute: typeof BugsStaleAddressRoute
   ContractsErc20Route: typeof ContractsErc20Route
   ContractsErc721Route: typeof ContractsErc721Route
@@ -312,6 +325,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BugsStaleAddressRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/bugs/silent-failure': {
+      id: '/bugs/silent-failure'
+      path: '/bugs/silent-failure'
+      fullPath: '/bugs/silent-failure'
+      preLoaderRoute: typeof BugsSilentFailureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/bugs/decimals': {
       id: '/bugs/decimals'
       path: '/bugs/decimals'
@@ -341,6 +361,7 @@ const rootRouteChildren: RootRouteChildren = {
   BugsAccessControlRoute: BugsAccessControlRoute,
   BugsAllowanceRoute: BugsAllowanceRoute,
   BugsDecimalsRoute: BugsDecimalsRoute,
+  BugsSilentFailureRoute: BugsSilentFailureRoute,
   BugsStaleAddressRoute: BugsStaleAddressRoute,
   ContractsErc20Route: ContractsErc20Route,
   ContractsErc721Route: ContractsErc721Route,
