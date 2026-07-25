@@ -72,6 +72,196 @@ export const beaconProxyAbi = [
 ] as const
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// DepositToken
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ *
+ */
+export const depositTokenAbi = [
+  {
+    type: 'function',
+    inputs: [
+      { name: 'owner', internalType: 'address', type: 'address' },
+      { name: 'spender', internalType: 'address', type: 'address' },
+    ],
+    name: 'allowance',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'spender', internalType: 'address', type: 'address' },
+      { name: 'value', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'approve',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [{ name: 'account', internalType: 'address', type: 'address' }],
+    name: 'balanceOf',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'decimals',
+    outputs: [{ name: '', internalType: 'uint8', type: 'uint8' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'to', internalType: 'address', type: 'address' },
+      { name: 'amount', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'mint',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'name',
+    outputs: [{ name: '', internalType: 'string', type: 'string' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'symbol',
+    outputs: [{ name: '', internalType: 'string', type: 'string' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'totalSupply',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'to', internalType: 'address', type: 'address' },
+      { name: 'value', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'transfer',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'from', internalType: 'address', type: 'address' },
+      { name: 'to', internalType: 'address', type: 'address' },
+      { name: 'value', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'transferFrom',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'owner',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      {
+        name: 'spender',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      {
+        name: 'value',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'Approval',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'from', internalType: 'address', type: 'address', indexed: true },
+      { name: 'to', internalType: 'address', type: 'address', indexed: true },
+      {
+        name: 'value',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'Transfer',
+  },
+  {
+    type: 'error',
+    inputs: [
+      { name: 'spender', internalType: 'address', type: 'address' },
+      { name: 'allowance', internalType: 'uint256', type: 'uint256' },
+      { name: 'needed', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'ERC20InsufficientAllowance',
+  },
+  {
+    type: 'error',
+    inputs: [
+      { name: 'sender', internalType: 'address', type: 'address' },
+      { name: 'balance', internalType: 'uint256', type: 'uint256' },
+      { name: 'needed', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'ERC20InsufficientBalance',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'approver', internalType: 'address', type: 'address' }],
+    name: 'ERC20InvalidApprover',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'receiver', internalType: 'address', type: 'address' }],
+    name: 'ERC20InvalidReceiver',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'sender', internalType: 'address', type: 'address' }],
+    name: 'ERC20InvalidSender',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'spender', internalType: 'address', type: 'address' }],
+    name: 'ERC20InvalidSpender',
+  },
+] as const
+
+/**
+ *
+ */
+export const depositTokenAddress = {
+  31337: '0x2BB8B93F585B43b06F3d523bf30C203d3B6d4BD4',
+  31338: '0x2BB8B93F585B43b06F3d523bf30C203d3B6d4BD4',
+} as const
+
+/**
+ *
+ */
+export const depositTokenConfig = {
+  address: depositTokenAddress,
+  abi: depositTokenAbi,
+} as const
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // ERC165
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -5287,8 +5477,8 @@ export const vaultAbi = [
  *
  */
 export const vaultAddress = {
-  31337: '0xCBBe2A5c3A22BE749D5DDF24e9534f98951983e2',
-  31338: '0xCBBe2A5c3A22BE749D5DDF24e9534f98951983e2',
+  31337: '0x2d13826359803522cCe7a4Cfa2c1b582303DD0B4',
+  31338: '0x2d13826359803522cCe7a4Cfa2c1b582303DD0B4',
 } as const
 
 /**
@@ -5714,196 +5904,6 @@ export const vaultTestAbi = [
 ] as const
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// VaultToken
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/**
- *
- */
-export const vaultTokenAbi = [
-  {
-    type: 'function',
-    inputs: [
-      { name: 'owner', internalType: 'address', type: 'address' },
-      { name: 'spender', internalType: 'address', type: 'address' },
-    ],
-    name: 'allowance',
-    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [
-      { name: 'spender', internalType: 'address', type: 'address' },
-      { name: 'value', internalType: 'uint256', type: 'uint256' },
-    ],
-    name: 'approve',
-    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
-    inputs: [{ name: 'account', internalType: 'address', type: 'address' }],
-    name: 'balanceOf',
-    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'decimals',
-    outputs: [{ name: '', internalType: 'uint8', type: 'uint8' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [
-      { name: 'to', internalType: 'address', type: 'address' },
-      { name: 'amount', internalType: 'uint256', type: 'uint256' },
-    ],
-    name: 'mint',
-    outputs: [],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'name',
-    outputs: [{ name: '', internalType: 'string', type: 'string' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'symbol',
-    outputs: [{ name: '', internalType: 'string', type: 'string' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'totalSupply',
-    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [
-      { name: 'to', internalType: 'address', type: 'address' },
-      { name: 'value', internalType: 'uint256', type: 'uint256' },
-    ],
-    name: 'transfer',
-    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
-    inputs: [
-      { name: 'from', internalType: 'address', type: 'address' },
-      { name: 'to', internalType: 'address', type: 'address' },
-      { name: 'value', internalType: 'uint256', type: 'uint256' },
-    ],
-    name: 'transferFrom',
-    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      {
-        name: 'owner',
-        internalType: 'address',
-        type: 'address',
-        indexed: true,
-      },
-      {
-        name: 'spender',
-        internalType: 'address',
-        type: 'address',
-        indexed: true,
-      },
-      {
-        name: 'value',
-        internalType: 'uint256',
-        type: 'uint256',
-        indexed: false,
-      },
-    ],
-    name: 'Approval',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: 'from', internalType: 'address', type: 'address', indexed: true },
-      { name: 'to', internalType: 'address', type: 'address', indexed: true },
-      {
-        name: 'value',
-        internalType: 'uint256',
-        type: 'uint256',
-        indexed: false,
-      },
-    ],
-    name: 'Transfer',
-  },
-  {
-    type: 'error',
-    inputs: [
-      { name: 'spender', internalType: 'address', type: 'address' },
-      { name: 'allowance', internalType: 'uint256', type: 'uint256' },
-      { name: 'needed', internalType: 'uint256', type: 'uint256' },
-    ],
-    name: 'ERC20InsufficientAllowance',
-  },
-  {
-    type: 'error',
-    inputs: [
-      { name: 'sender', internalType: 'address', type: 'address' },
-      { name: 'balance', internalType: 'uint256', type: 'uint256' },
-      { name: 'needed', internalType: 'uint256', type: 'uint256' },
-    ],
-    name: 'ERC20InsufficientBalance',
-  },
-  {
-    type: 'error',
-    inputs: [{ name: 'approver', internalType: 'address', type: 'address' }],
-    name: 'ERC20InvalidApprover',
-  },
-  {
-    type: 'error',
-    inputs: [{ name: 'receiver', internalType: 'address', type: 'address' }],
-    name: 'ERC20InvalidReceiver',
-  },
-  {
-    type: 'error',
-    inputs: [{ name: 'sender', internalType: 'address', type: 'address' }],
-    name: 'ERC20InvalidSender',
-  },
-  {
-    type: 'error',
-    inputs: [{ name: 'spender', internalType: 'address', type: 'address' }],
-    name: 'ERC20InvalidSpender',
-  },
-] as const
-
-/**
- *
- */
-export const vaultTokenAddress = {
-  31337: '0xd3FFD73C53F139cEBB80b6A524bE280955b3f4db',
-  31338: '0xd3FFD73C53F139cEBB80b6A524bE280955b3f4db',
-} as const
-
-/**
- *
- */
-export const vaultTokenConfig = {
-  address: vaultTokenAddress,
-  abi: vaultTokenAbi,
-} as const
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // React
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -5920,6 +5920,238 @@ export const useWatchBeaconProxyBeaconUpgradedEvent =
   /*#__PURE__*/ createUseWatchContractEvent({
     abi: beaconProxyAbi,
     eventName: 'BeaconUpgraded',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link depositTokenAbi}__
+ *
+ *
+ */
+export const useReadDepositToken = /*#__PURE__*/ createUseReadContract({
+  abi: depositTokenAbi,
+  address: depositTokenAddress,
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link depositTokenAbi}__ and `functionName` set to `"allowance"`
+ *
+ *
+ */
+export const useReadDepositTokenAllowance = /*#__PURE__*/ createUseReadContract(
+  {
+    abi: depositTokenAbi,
+    address: depositTokenAddress,
+    functionName: 'allowance',
+  },
+)
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link depositTokenAbi}__ and `functionName` set to `"balanceOf"`
+ *
+ *
+ */
+export const useReadDepositTokenBalanceOf = /*#__PURE__*/ createUseReadContract(
+  {
+    abi: depositTokenAbi,
+    address: depositTokenAddress,
+    functionName: 'balanceOf',
+  },
+)
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link depositTokenAbi}__ and `functionName` set to `"decimals"`
+ *
+ *
+ */
+export const useReadDepositTokenDecimals = /*#__PURE__*/ createUseReadContract({
+  abi: depositTokenAbi,
+  address: depositTokenAddress,
+  functionName: 'decimals',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link depositTokenAbi}__ and `functionName` set to `"name"`
+ *
+ *
+ */
+export const useReadDepositTokenName = /*#__PURE__*/ createUseReadContract({
+  abi: depositTokenAbi,
+  address: depositTokenAddress,
+  functionName: 'name',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link depositTokenAbi}__ and `functionName` set to `"symbol"`
+ *
+ *
+ */
+export const useReadDepositTokenSymbol = /*#__PURE__*/ createUseReadContract({
+  abi: depositTokenAbi,
+  address: depositTokenAddress,
+  functionName: 'symbol',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link depositTokenAbi}__ and `functionName` set to `"totalSupply"`
+ *
+ *
+ */
+export const useReadDepositTokenTotalSupply =
+  /*#__PURE__*/ createUseReadContract({
+    abi: depositTokenAbi,
+    address: depositTokenAddress,
+    functionName: 'totalSupply',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link depositTokenAbi}__
+ *
+ *
+ */
+export const useWriteDepositToken = /*#__PURE__*/ createUseWriteContract({
+  abi: depositTokenAbi,
+  address: depositTokenAddress,
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link depositTokenAbi}__ and `functionName` set to `"approve"`
+ *
+ *
+ */
+export const useWriteDepositTokenApprove = /*#__PURE__*/ createUseWriteContract(
+  {
+    abi: depositTokenAbi,
+    address: depositTokenAddress,
+    functionName: 'approve',
+  },
+)
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link depositTokenAbi}__ and `functionName` set to `"mint"`
+ *
+ *
+ */
+export const useWriteDepositTokenMint = /*#__PURE__*/ createUseWriteContract({
+  abi: depositTokenAbi,
+  address: depositTokenAddress,
+  functionName: 'mint',
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link depositTokenAbi}__ and `functionName` set to `"transfer"`
+ *
+ *
+ */
+export const useWriteDepositTokenTransfer =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: depositTokenAbi,
+    address: depositTokenAddress,
+    functionName: 'transfer',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link depositTokenAbi}__ and `functionName` set to `"transferFrom"`
+ *
+ *
+ */
+export const useWriteDepositTokenTransferFrom =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: depositTokenAbi,
+    address: depositTokenAddress,
+    functionName: 'transferFrom',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link depositTokenAbi}__
+ *
+ *
+ */
+export const useSimulateDepositToken = /*#__PURE__*/ createUseSimulateContract({
+  abi: depositTokenAbi,
+  address: depositTokenAddress,
+})
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link depositTokenAbi}__ and `functionName` set to `"approve"`
+ *
+ *
+ */
+export const useSimulateDepositTokenApprove =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: depositTokenAbi,
+    address: depositTokenAddress,
+    functionName: 'approve',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link depositTokenAbi}__ and `functionName` set to `"mint"`
+ *
+ *
+ */
+export const useSimulateDepositTokenMint =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: depositTokenAbi,
+    address: depositTokenAddress,
+    functionName: 'mint',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link depositTokenAbi}__ and `functionName` set to `"transfer"`
+ *
+ *
+ */
+export const useSimulateDepositTokenTransfer =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: depositTokenAbi,
+    address: depositTokenAddress,
+    functionName: 'transfer',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link depositTokenAbi}__ and `functionName` set to `"transferFrom"`
+ *
+ *
+ */
+export const useSimulateDepositTokenTransferFrom =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: depositTokenAbi,
+    address: depositTokenAddress,
+    functionName: 'transferFrom',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link depositTokenAbi}__
+ *
+ *
+ */
+export const useWatchDepositTokenEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: depositTokenAbi,
+    address: depositTokenAddress,
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link depositTokenAbi}__ and `eventName` set to `"Approval"`
+ *
+ *
+ */
+export const useWatchDepositTokenApprovalEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: depositTokenAbi,
+    address: depositTokenAddress,
+    eventName: 'Approval',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link depositTokenAbi}__ and `eventName` set to `"Transfer"`
+ *
+ *
+ */
+export const useWatchDepositTokenTransferEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: depositTokenAbi,
+    address: depositTokenAddress,
+    eventName: 'Transfer',
   })
 
 /**
@@ -11205,7 +11437,7 @@ export const useReadVaultDeposits = /*#__PURE__*/ createUseReadContract({
  *
  *
  */
-export const useReadVaultTokenAddress = /*#__PURE__*/ createUseReadContract({
+export const useReadVaultToken = /*#__PURE__*/ createUseReadContract({
   abi: vaultAbi,
   address: vaultAddress,
   functionName: 'token',
@@ -11622,230 +11854,4 @@ export const useWatchVaultTestLogsEvent =
   /*#__PURE__*/ createUseWatchContractEvent({
     abi: vaultTestAbi,
     eventName: 'logs',
-  })
-
-/**
- * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTokenAbi}__
- *
- *
- */
-export const useReadVaultToken = /*#__PURE__*/ createUseReadContract({
-  abi: vaultTokenAbi,
-  address: vaultTokenAddress,
-})
-
-/**
- * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTokenAbi}__ and `functionName` set to `"allowance"`
- *
- *
- */
-export const useReadVaultTokenAllowance = /*#__PURE__*/ createUseReadContract({
-  abi: vaultTokenAbi,
-  address: vaultTokenAddress,
-  functionName: 'allowance',
-})
-
-/**
- * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTokenAbi}__ and `functionName` set to `"balanceOf"`
- *
- *
- */
-export const useReadVaultTokenBalanceOf = /*#__PURE__*/ createUseReadContract({
-  abi: vaultTokenAbi,
-  address: vaultTokenAddress,
-  functionName: 'balanceOf',
-})
-
-/**
- * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTokenAbi}__ and `functionName` set to `"decimals"`
- *
- *
- */
-export const useReadVaultTokenDecimals = /*#__PURE__*/ createUseReadContract({
-  abi: vaultTokenAbi,
-  address: vaultTokenAddress,
-  functionName: 'decimals',
-})
-
-/**
- * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTokenAbi}__ and `functionName` set to `"name"`
- *
- *
- */
-export const useReadVaultTokenName = /*#__PURE__*/ createUseReadContract({
-  abi: vaultTokenAbi,
-  address: vaultTokenAddress,
-  functionName: 'name',
-})
-
-/**
- * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTokenAbi}__ and `functionName` set to `"symbol"`
- *
- *
- */
-export const useReadVaultTokenSymbol = /*#__PURE__*/ createUseReadContract({
-  abi: vaultTokenAbi,
-  address: vaultTokenAddress,
-  functionName: 'symbol',
-})
-
-/**
- * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTokenAbi}__ and `functionName` set to `"totalSupply"`
- *
- *
- */
-export const useReadVaultTokenTotalSupply = /*#__PURE__*/ createUseReadContract(
-  {
-    abi: vaultTokenAbi,
-    address: vaultTokenAddress,
-    functionName: 'totalSupply',
-  },
-)
-
-/**
- * Wraps __{@link useWriteContract}__ with `abi` set to __{@link vaultTokenAbi}__
- *
- *
- */
-export const useWriteVaultToken = /*#__PURE__*/ createUseWriteContract({
-  abi: vaultTokenAbi,
-  address: vaultTokenAddress,
-})
-
-/**
- * Wraps __{@link useWriteContract}__ with `abi` set to __{@link vaultTokenAbi}__ and `functionName` set to `"approve"`
- *
- *
- */
-export const useWriteVaultTokenApprove = /*#__PURE__*/ createUseWriteContract({
-  abi: vaultTokenAbi,
-  address: vaultTokenAddress,
-  functionName: 'approve',
-})
-
-/**
- * Wraps __{@link useWriteContract}__ with `abi` set to __{@link vaultTokenAbi}__ and `functionName` set to `"mint"`
- *
- *
- */
-export const useWriteVaultTokenMint = /*#__PURE__*/ createUseWriteContract({
-  abi: vaultTokenAbi,
-  address: vaultTokenAddress,
-  functionName: 'mint',
-})
-
-/**
- * Wraps __{@link useWriteContract}__ with `abi` set to __{@link vaultTokenAbi}__ and `functionName` set to `"transfer"`
- *
- *
- */
-export const useWriteVaultTokenTransfer = /*#__PURE__*/ createUseWriteContract({
-  abi: vaultTokenAbi,
-  address: vaultTokenAddress,
-  functionName: 'transfer',
-})
-
-/**
- * Wraps __{@link useWriteContract}__ with `abi` set to __{@link vaultTokenAbi}__ and `functionName` set to `"transferFrom"`
- *
- *
- */
-export const useWriteVaultTokenTransferFrom =
-  /*#__PURE__*/ createUseWriteContract({
-    abi: vaultTokenAbi,
-    address: vaultTokenAddress,
-    functionName: 'transferFrom',
-  })
-
-/**
- * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link vaultTokenAbi}__
- *
- *
- */
-export const useSimulateVaultToken = /*#__PURE__*/ createUseSimulateContract({
-  abi: vaultTokenAbi,
-  address: vaultTokenAddress,
-})
-
-/**
- * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link vaultTokenAbi}__ and `functionName` set to `"approve"`
- *
- *
- */
-export const useSimulateVaultTokenApprove =
-  /*#__PURE__*/ createUseSimulateContract({
-    abi: vaultTokenAbi,
-    address: vaultTokenAddress,
-    functionName: 'approve',
-  })
-
-/**
- * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link vaultTokenAbi}__ and `functionName` set to `"mint"`
- *
- *
- */
-export const useSimulateVaultTokenMint =
-  /*#__PURE__*/ createUseSimulateContract({
-    abi: vaultTokenAbi,
-    address: vaultTokenAddress,
-    functionName: 'mint',
-  })
-
-/**
- * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link vaultTokenAbi}__ and `functionName` set to `"transfer"`
- *
- *
- */
-export const useSimulateVaultTokenTransfer =
-  /*#__PURE__*/ createUseSimulateContract({
-    abi: vaultTokenAbi,
-    address: vaultTokenAddress,
-    functionName: 'transfer',
-  })
-
-/**
- * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link vaultTokenAbi}__ and `functionName` set to `"transferFrom"`
- *
- *
- */
-export const useSimulateVaultTokenTransferFrom =
-  /*#__PURE__*/ createUseSimulateContract({
-    abi: vaultTokenAbi,
-    address: vaultTokenAddress,
-    functionName: 'transferFrom',
-  })
-
-/**
- * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTokenAbi}__
- *
- *
- */
-export const useWatchVaultTokenEvent =
-  /*#__PURE__*/ createUseWatchContractEvent({
-    abi: vaultTokenAbi,
-    address: vaultTokenAddress,
-  })
-
-/**
- * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTokenAbi}__ and `eventName` set to `"Approval"`
- *
- *
- */
-export const useWatchVaultTokenApprovalEvent =
-  /*#__PURE__*/ createUseWatchContractEvent({
-    abi: vaultTokenAbi,
-    address: vaultTokenAddress,
-    eventName: 'Approval',
-  })
-
-/**
- * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTokenAbi}__ and `eventName` set to `"Transfer"`
- *
- *
- */
-export const useWatchVaultTokenTransferEvent =
-  /*#__PURE__*/ createUseWatchContractEvent({
-    abi: vaultTokenAbi,
-    address: vaultTokenAddress,
-    eventName: 'Transfer',
   })

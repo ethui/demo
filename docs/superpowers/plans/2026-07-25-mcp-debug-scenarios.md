@@ -16,6 +16,7 @@
 - **No scenario may be diagnosable from source alone.** Where the bug lives in source, the source must look idiomatic and a competing explanation must exist that only chain state rules out.
 - Forge test files live at `contracts/test/**/*.d.sol` (not `.t.sol` — this repo uses `.d.sol`) and the contract name must end in `Test`.
 - **Forge tests here are inverted: they pass when the bug is present.** Every bug test file opens with a comment saying so, so nobody "repairs" them later.
+- **An inverted revert test must pin the specific error**, not a bare `vm.expectRevert()`. A bare expectation also passes when the contract reverts for an unrelated reason, so it would not notice the scenario silently changing into a different bug.
 - Solidity: `pragma solidity ^0.8.13;`, SPDX header `// SPDX-License-Identifier: MIT`. OpenZeppelin imports use the `@openzeppelin/contracts/` remapping.
 - Frontend imports: `#/` alias for cross-tree imports (`#/wagmi.generated`, `#/components/...`), relative paths for siblings inside `src/routes/bugs/`.
 - Styling: Tailwind classes only. No raw px or hex values.
@@ -34,8 +35,8 @@
 **Create:**
 - `contracts/bugs/OwnedRegistry.sol` — `onlyOwner` setter. Target of scenarios 2 and 5.
 - `contracts/bugs/SixDecimalToken.sol` — ERC20 reporting `decimals() = 6`. Scenario 3.
-- `contracts/bugs/VaultToken.sol` — plain 18-decimal ERC20, distinct symbol so it is not confused with `Token` in ethui's UI. Scenario 4.
-- `contracts/bugs/Vault.sol` — pulls `VaultToken` via `transferFrom`. Scenario 4.
+- `contracts/bugs/DepositToken.sol` — plain 18-decimal ERC20, distinct symbol so it is not confused with `Token` in ethui's UI. Scenario 4.
+- `contracts/bugs/Vault.sol` — pulls `DepositToken` via `transferFrom`. Scenario 4.
 - `contracts/bugs/Forwarder.sol` — unchecked low-level call. Scenario 5.
 - `contracts/scripts/BugsDeploy.s.sol` — deploys the above, seeds broken state.
 - `contracts/test/bugs/OwnedRegistry.d.sol`, `SixDecimalToken.d.sol`, `Vault.d.sol`, `Forwarder.d.sol` — inverted tests.
@@ -49,7 +50,7 @@
 - `scripts/eth-deploy.sh` — run `BugsDeployScript` after `DevDeployScript`.
 - `src/components/app-sidebar.tsx` — add a "Bugs" nav group.
 
-**Note on the spec:** the spec lists four bug contracts. This plan adds a fifth, `VaultToken.sol`, so scenario 4 does not share a token with scenario 3 (sharing would let the two scenarios' symptoms contaminate each other) and so the vault token has a distinct symbol in ethui's UI.
+**Note on the spec:** the spec lists four bug contracts. This plan adds a fifth, `DepositToken.sol`, so scenario 4 does not share a token with scenario 3 (sharing would let the two scenarios' symptoms contaminate each other) and so the vault token has a distinct symbol in ethui's UI.
 
 ---
 
@@ -254,6 +255,7 @@ pragma solidity ^0.8.13;
 // Scenario 2 depends on setValue reverting for a non-owner caller.
 
 import {Test} from "forge-std/Test.sol";
+import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 
 import {OwnedRegistry} from "contracts/bugs/OwnedRegistry.sol";
 
@@ -269,7 +271,9 @@ contract OwnedRegistryTest is Test {
 
     function test_setValue_revertsForNonOwner() public {
         vm.prank(alice);
-        vm.expectRevert();
+        vm.expectRevert(
+            abi.encodeWithSelector(Ownable.OwnableUnauthorizedAccount.selector, alice)
+        );
         registry.setValue(42);
     }
 
@@ -502,6 +506,7 @@ pragma solidity ^0.8.13;
 // Scenario 3 depends on this token reporting 6 decimals, not 18.
 
 import {Test} from "forge-std/Test.sol";
+import {IERC20Errors} from "@openzeppelin/contracts/interfaces/draft-IERC6093.sol";
 
 import {SixDecimalToken} from "contracts/bugs/SixDecimalToken.sol";
 
@@ -521,7 +526,11 @@ contract SixDecimalTokenTest is Test {
 
     function test_transfer_revertsWhenAmountUsesEighteenDecimals() public {
         vm.prank(alice);
-        vm.expectRevert();
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                IERC20Errors.ERC20InsufficientBalance.selector, alice, 100e6, 100e18
+            )
+        );
         token.transfer(address(0xB0B), 100e18);
     }
 }
@@ -700,14 +709,15 @@ git commit -m "feat(bugs): decimals mismatch scenario"
 ### Task 4: Scenario 4 — missing allowance
 
 **Files:**
-- Create: `contracts/bugs/VaultToken.sol`, `contracts/bugs/Vault.sol`
+- Create: `contracts/bugs/DepositToken.sol`, `contracts/bugs/Vault.sol`
 - Create: `contracts/test/bugs/Vault.d.sol`
 - Create: `src/routes/bugs/allowance.tsx`
 - Modify: `contracts/scripts/BugsDeploy.s.sol`, `wagmi.config.ts`, `src/components/app-sidebar.tsx`
 
 **Interfaces:**
 - Consumes: `BugsDeployScript` from Task 2.
-- Produces: `VaultToken` — 18-decimal ERC20 named `VaultToken`/`VLT` with `mint(address,uint256)`. `Vault` — `token() → IERC20`, `deposits(address) → uint256`, `deposit(uint256)`, `event Deposited(address indexed from, uint256 amount)`. Generated hooks `useWriteVaultDeposit`, `useReadVaultDeposits`, `vaultTokenAbi`.
+- Produces: `DepositToken` — 18-decimal ERC20 whose on-chain name and symbol are `VaultToken`/`VLT`, with `mint(address,uint256)`. `Vault` — `token() → IERC20`, `deposits(address) → uint256`, `deposit(uint256)`, `event Deposited(address indexed from, uint256 amount)`. Generated hooks `useWriteVaultDeposit`, `useReadVaultDeposits`, `depositTokenAbi`.
+- **Do not add a `getHookName` override to `wagmi.config.ts`.** Naming the Solidity contract `DepositToken` is what avoids the `useReadVaultToken` collision with `Vault.token()`; a codegen naming override would silently own hook naming for every contract in the project.
 
 - [ ] **Step 1: Write the failing test**
 
@@ -721,25 +731,30 @@ pragma solidity ^0.8.13;
 // Scenario 4 depends on deposit reverting when the caller has not approved.
 
 import {Test} from "forge-std/Test.sol";
+import {IERC20Errors} from "@openzeppelin/contracts/interfaces/draft-IERC6093.sol";
 
 import {Vault} from "contracts/bugs/Vault.sol";
-import {VaultToken} from "contracts/bugs/VaultToken.sol";
+import {DepositToken} from "contracts/bugs/DepositToken.sol";
 
 contract VaultTest is Test {
     address alice = address(0xA11CE);
 
-    VaultToken token;
+    DepositToken token;
     Vault vault;
 
     function setUp() public {
-        token = new VaultToken();
+        token = new DepositToken();
         vault = new Vault(token);
         token.mint(alice, 100e18);
     }
 
     function test_deposit_revertsWithoutApproval() public {
         vm.prank(alice);
-        vm.expectRevert();
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                IERC20Errors.ERC20InsufficientAllowance.selector, address(vault), 0, 10e18
+            )
+        );
         vault.deposit(10e18);
     }
 
@@ -764,7 +779,7 @@ Expected: FAIL — compilation error, `contracts/bugs/Vault.sol` not found.
 
 - [ ] **Step 3: Write the contracts**
 
-`contracts/bugs/VaultToken.sol`:
+`contracts/bugs/DepositToken.sol`:
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -772,7 +787,7 @@ pragma solidity ^0.8.13;
 
 import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-contract VaultToken is ERC20("VaultToken", "VLT") {
+contract DepositToken is ERC20("VaultToken", "VLT") {
     function mint(address to, uint256 amount) external {
         _mint(to, amount);
     }
@@ -820,18 +835,18 @@ Imports:
 
 ```solidity
 import {Vault} from "contracts/bugs/Vault.sol";
-import {VaultToken} from "contracts/bugs/VaultToken.sol";
+import {DepositToken} from "contracts/bugs/DepositToken.sol";
 ```
 
 Inside `run()`, before `vm.stopBroadcast()`:
 
 ```solidity
         // Scenario 4: funded accounts, deliberately zero approvals.
-        VaultToken vaultToken = new VaultToken();
-        vaultToken.mint(alice, 100e18);
-        vaultToken.mint(bob, 100e18);
-        Vault vault = new Vault(vaultToken);
-        console.log("VaultToken", address(vaultToken));
+        DepositToken depositToken = new DepositToken();
+        depositToken.mint(alice, 100e18);
+        depositToken.mint(bob, 100e18);
+        Vault vault = new Vault(depositToken);
+        console.log("DepositToken", address(depositToken));
         console.log("Vault", address(vault));
 ```
 
@@ -844,9 +859,9 @@ Inside `run()`, before `vm.stopBroadcast()`:
 Add both to `wagmi.config.ts` `deployments`:
 
 ```ts
-        VaultToken: {
-          31337: "0xPASTE_VAULT_TOKEN_ADDRESS",
-          31338: "0xPASTE_VAULT_TOKEN_ADDRESS",
+        DepositToken: {
+          31337: "0xPASTE_DEPOSIT_TOKEN_ADDRESS",
+          31338: "0xPASTE_DEPOSIT_TOKEN_ADDRESS",
         },
         Vault: {
           31337: "0xPASTE_VAULT_ADDRESS",
@@ -923,7 +938,7 @@ Open `/bugs/allowance`, click Deposit. Expected: raw error mentioning `ERC20Insu
 - [ ] **Step 10: Commit**
 
 ```bash
-git add contracts/bugs/Vault.sol contracts/bugs/VaultToken.sol \
+git add contracts/bugs/Vault.sol contracts/bugs/DepositToken.sol \
   contracts/test/bugs/Vault.d.sol contracts/scripts/BugsDeploy.s.sol \
   wagmi.config.ts src/wagmi.generated.ts src/routes/bugs/allowance.tsx \
   src/components/app-sidebar.tsx src/routeTree.gen.ts
@@ -1204,7 +1219,7 @@ it), and wait for confirmation before continuing.
 ./scripts/eth-deploy.sh
 ```
 
-Record every logged address: `OwnedRegistry`, `SixDecimalToken`, `VaultToken`,
+Record every logged address: `OwnedRegistry`, `SixDecimalToken`, `DepositToken`,
 `Vault`, `Forwarder`.
 
 - [ ] **Step 3: Re-pin all five in wagmi.config.ts**
@@ -1282,9 +1297,9 @@ Run `call` with `balanceOf(alice)` calldata. Expected: `100000000`.
 
 - [ ] **Step 5: Verify scenario 4**
 
-Run `call` against `VaultToken` with `allowance(alice, vault)` calldata. Expected: `0`.
+Run `call` against `DepositToken` with `allowance(alice, vault)` calldata. Expected: `0`.
 
-Then run `send_transaction` to `VaultToken` with `approve(vault, 10e18)` calldata. Expected: ethui opens an approval dialog. Approve it, then re-run the allowance read and confirm it is non-zero, and confirm the Deposit button now works.
+Then run `send_transaction` to `DepositToken` with `approve(vault, 10e18)` calldata. Expected: ethui opens an approval dialog. Approve it, then re-run the allowance read and confirm it is non-zero, and confirm the Deposit button now works.
 
 **This is the demo's climax — if the approval dialog does not appear, stop and diagnose before continuing.**
 
@@ -1346,7 +1361,7 @@ git commit -m "docs: MCP debug demo runbook"
 **Spec coverage:** All five scenarios map to Tasks 1–5. Structure section covers `contracts/bugs/` (Tasks 2–5), `BugsDeploy.s.sol` (Task 2, extended by 3–5), `src/routes/bugs/` (Tasks 1–5), `wagmi.config.ts` regeneration (Tasks 2–5), and the runbook (Task 7). Error handling — raw errors — is Task 1's `RawError`, used by every route. Reset is Task 7. Testing is the inverted forge tests in Tasks 2–5, with the spec's note that scenario 1 gets no forge test honored in Task 1.
 
 **Deviations from the spec, both deliberate:**
-1. `VaultToken.sol` added as a fifth contract, so scenario 4 does not share a token with scenario 3.
+1. `DepositToken.sol` added as a fifth contract, so scenario 4 does not share a token with scenario 3. Its Solidity identifier differs from its on-chain ERC20 name to avoid a wagmi hook-name collision with `Vault.token()`.
 2. `Forwarder.forward` returns the inner success flag rather than discarding it. This strengthens the governing constraint — the source looks like it reports failure — and avoids an unused-variable warning that would have read as a smell.
 
 **Type consistency:** `RawError` takes `{ error: unknown }` in Task 1 and is used identically in Tasks 2–5. `OwnedRegistry.setValue(uint256)` / `value()` are defined in Task 2 and consumed unchanged in Task 5. `Vault.deposits(address)` is defined in Task 4 and used by the same task's route.

@@ -5,6 +5,7 @@ pragma solidity ^0.8.13;
 // Scenario 2 depends on setValue reverting for a non-owner caller.
 
 import {Test} from "forge-std/Test.sol";
+import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 
 import {OwnedRegistry} from "contracts/bugs/OwnedRegistry.sol";
 
@@ -20,7 +21,9 @@ contract OwnedRegistryTest is Test {
 
     function test_setValue_revertsForNonOwner() public {
         vm.prank(alice);
-        vm.expectRevert();
+        vm.expectRevert(
+            abi.encodeWithSelector(Ownable.OwnableUnauthorizedAccount.selector, alice)
+        );
         registry.setValue(42);
     }
 

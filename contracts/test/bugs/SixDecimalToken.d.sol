@@ -5,6 +5,7 @@ pragma solidity ^0.8.13;
 // Scenario 3 depends on this token reporting 6 decimals, not 18.
 
 import {Test} from "forge-std/Test.sol";
+import {IERC20Errors} from "@openzeppelin/contracts/interfaces/draft-IERC6093.sol";
 
 import {SixDecimalToken} from "contracts/bugs/SixDecimalToken.sol";
 
@@ -24,7 +25,11 @@ contract SixDecimalTokenTest is Test {
 
     function test_transfer_revertsWhenAmountUsesEighteenDecimals() public {
         vm.prank(alice);
-        vm.expectRevert();
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                IERC20Errors.ERC20InsufficientBalance.selector, alice, 100e6, 100e18
+            )
+        );
         token.transfer(address(0xB0B), 100e18);
     }
 }
