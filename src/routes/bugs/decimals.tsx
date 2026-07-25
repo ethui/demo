@@ -16,7 +16,17 @@ const BOB = "0x70997970C51812dc3A010C7d01b50e0d17dc79C8" as const;
 
 function Decimals() {
   const [amount, setAmount] = useState("100");
+  const [parseError, setParseError] = useState<unknown>(null);
   const { isPending, error, writeContract } = useWriteSixDecimalTokenTransfer();
+
+  const onClick = () => {
+    setParseError(null);
+    try {
+      writeContract({ args: [BOB, parseEther(amount)] });
+    } catch (e) {
+      setParseError(e);
+    }
+  };
 
   return (
     <div className="flex flex-col gap-4">
@@ -27,17 +37,12 @@ function Decimals() {
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
         />
-        <Button
-          disabled={isPending}
-          onClick={() =>
-            writeContract({ args: [BOB, parseEther(amount || "0")] })
-          }
-        >
+        <Button disabled={isPending} onClick={onClick}>
           {isPending ? <LoaderCircle className="animate-spin" /> : <Send />}
           Transfer
         </Button>
       </div>
-      <RawError error={error} />
+      <RawError error={parseError ?? error} />
     </div>
   );
 }
