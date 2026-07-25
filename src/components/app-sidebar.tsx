@@ -73,6 +73,17 @@ const data = {
         { title: "getContractAbi", to: "/ethui/getContractAbi" },
       ],
     },
+    {
+      title: "Bugs",
+      url: "#",
+      items: [
+        { title: "Stale address", to: "/bugs/stale-address" },
+        { title: "Access control", to: "/bugs/access-control" },
+        { title: "Decimals", to: "/bugs/decimals" },
+        { title: "Allowance", to: "/bugs/allowance" },
+        { title: "Silent failure", to: "/bugs/silent-failure" },
+      ],
+    },
   ],
 };
 

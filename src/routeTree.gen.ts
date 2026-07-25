@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BugsIndexRouteImport } from './routes/bugs/index'
 import { Route as WalletUpdateEthereumChainRouteImport } from './routes/wallet/updateEthereumChain'
 import { Route as WalletSwitchChainRouteImport } from './routes/wallet/switchChain'
 import { Route as WalletAddEthereumChainRouteImport } from './routes/wallet/addEthereumChain'
@@ -19,10 +20,20 @@ import { Route as EthuiGetProviderStateRouteImport } from './routes/ethui/getPro
 import { Route as EthuiGetContractAbiRouteImport } from './routes/ethui/getContractAbi'
 import { Route as ContractsErc721RouteImport } from './routes/contracts/erc721'
 import { Route as ContractsErc20RouteImport } from './routes/contracts/erc20'
+import { Route as BugsStaleAddressRouteImport } from './routes/bugs/stale-address'
+import { Route as BugsSilentFailureRouteImport } from './routes/bugs/silent-failure'
+import { Route as BugsDecimalsRouteImport } from './routes/bugs/decimals'
+import { Route as BugsAllowanceRouteImport } from './routes/bugs/allowance'
+import { Route as BugsAccessControlRouteImport } from './routes/bugs/access-control'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BugsIndexRoute = BugsIndexRouteImport.update({
+  id: '/bugs/',
+  path: '/bugs/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WalletUpdateEthereumChainRoute =
@@ -71,9 +82,39 @@ const ContractsErc20Route = ContractsErc20RouteImport.update({
   path: '/contracts/erc20',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BugsStaleAddressRoute = BugsStaleAddressRouteImport.update({
+  id: '/bugs/stale-address',
+  path: '/bugs/stale-address',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BugsSilentFailureRoute = BugsSilentFailureRouteImport.update({
+  id: '/bugs/silent-failure',
+  path: '/bugs/silent-failure',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BugsDecimalsRoute = BugsDecimalsRouteImport.update({
+  id: '/bugs/decimals',
+  path: '/bugs/decimals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BugsAllowanceRoute = BugsAllowanceRouteImport.update({
+  id: '/bugs/allowance',
+  path: '/bugs/allowance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BugsAccessControlRoute = BugsAccessControlRouteImport.update({
+  id: '/bugs/access-control',
+  path: '/bugs/access-control',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/bugs/access-control': typeof BugsAccessControlRoute
+  '/bugs/allowance': typeof BugsAllowanceRoute
+  '/bugs/decimals': typeof BugsDecimalsRoute
+  '/bugs/silent-failure': typeof BugsSilentFailureRoute
+  '/bugs/stale-address': typeof BugsStaleAddressRoute
   '/contracts/erc20': typeof ContractsErc20Route
   '/contracts/erc721': typeof ContractsErc721Route
   '/ethui/getContractAbi': typeof EthuiGetContractAbiRoute
@@ -83,9 +124,15 @@ export interface FileRoutesByFullPath {
   '/wallet/addEthereumChain': typeof WalletAddEthereumChainRoute
   '/wallet/switchChain': typeof WalletSwitchChainRoute
   '/wallet/updateEthereumChain': typeof WalletUpdateEthereumChainRoute
+  '/bugs': typeof BugsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/bugs/access-control': typeof BugsAccessControlRoute
+  '/bugs/allowance': typeof BugsAllowanceRoute
+  '/bugs/decimals': typeof BugsDecimalsRoute
+  '/bugs/silent-failure': typeof BugsSilentFailureRoute
+  '/bugs/stale-address': typeof BugsStaleAddressRoute
   '/contracts/erc20': typeof ContractsErc20Route
   '/contracts/erc721': typeof ContractsErc721Route
   '/ethui/getContractAbi': typeof EthuiGetContractAbiRoute
@@ -95,10 +142,16 @@ export interface FileRoutesByTo {
   '/wallet/addEthereumChain': typeof WalletAddEthereumChainRoute
   '/wallet/switchChain': typeof WalletSwitchChainRoute
   '/wallet/updateEthereumChain': typeof WalletUpdateEthereumChainRoute
+  '/bugs': typeof BugsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/bugs/access-control': typeof BugsAccessControlRoute
+  '/bugs/allowance': typeof BugsAllowanceRoute
+  '/bugs/decimals': typeof BugsDecimalsRoute
+  '/bugs/silent-failure': typeof BugsSilentFailureRoute
+  '/bugs/stale-address': typeof BugsStaleAddressRoute
   '/contracts/erc20': typeof ContractsErc20Route
   '/contracts/erc721': typeof ContractsErc721Route
   '/ethui/getContractAbi': typeof EthuiGetContractAbiRoute
@@ -108,11 +161,17 @@ export interface FileRoutesById {
   '/wallet/addEthereumChain': typeof WalletAddEthereumChainRoute
   '/wallet/switchChain': typeof WalletSwitchChainRoute
   '/wallet/updateEthereumChain': typeof WalletUpdateEthereumChainRoute
+  '/bugs/': typeof BugsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/bugs/access-control'
+    | '/bugs/allowance'
+    | '/bugs/decimals'
+    | '/bugs/silent-failure'
+    | '/bugs/stale-address'
     | '/contracts/erc20'
     | '/contracts/erc721'
     | '/ethui/getContractAbi'
@@ -122,9 +181,15 @@ export interface FileRouteTypes {
     | '/wallet/addEthereumChain'
     | '/wallet/switchChain'
     | '/wallet/updateEthereumChain'
+    | '/bugs'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/bugs/access-control'
+    | '/bugs/allowance'
+    | '/bugs/decimals'
+    | '/bugs/silent-failure'
+    | '/bugs/stale-address'
     | '/contracts/erc20'
     | '/contracts/erc721'
     | '/ethui/getContractAbi'
@@ -134,9 +199,15 @@ export interface FileRouteTypes {
     | '/wallet/addEthereumChain'
     | '/wallet/switchChain'
     | '/wallet/updateEthereumChain'
+    | '/bugs'
   id:
     | '__root__'
     | '/'
+    | '/bugs/access-control'
+    | '/bugs/allowance'
+    | '/bugs/decimals'
+    | '/bugs/silent-failure'
+    | '/bugs/stale-address'
     | '/contracts/erc20'
     | '/contracts/erc721'
     | '/ethui/getContractAbi'
@@ -146,10 +217,16 @@ export interface FileRouteTypes {
     | '/wallet/addEthereumChain'
     | '/wallet/switchChain'
     | '/wallet/updateEthereumChain'
+    | '/bugs/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BugsAccessControlRoute: typeof BugsAccessControlRoute
+  BugsAllowanceRoute: typeof BugsAllowanceRoute
+  BugsDecimalsRoute: typeof BugsDecimalsRoute
+  BugsSilentFailureRoute: typeof BugsSilentFailureRoute
+  BugsStaleAddressRoute: typeof BugsStaleAddressRoute
   ContractsErc20Route: typeof ContractsErc20Route
   ContractsErc721Route: typeof ContractsErc721Route
   EthuiGetContractAbiRoute: typeof EthuiGetContractAbiRoute
@@ -159,6 +236,7 @@ export interface RootRouteChildren {
   WalletAddEthereumChainRoute: typeof WalletAddEthereumChainRoute
   WalletSwitchChainRoute: typeof WalletSwitchChainRoute
   WalletUpdateEthereumChainRoute: typeof WalletUpdateEthereumChainRoute
+  BugsIndexRoute: typeof BugsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -168,6 +246,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bugs/': {
+      id: '/bugs/'
+      path: '/bugs'
+      fullPath: '/bugs'
+      preLoaderRoute: typeof BugsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/wallet/updateEthereumChain': {
@@ -233,11 +318,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContractsErc20RouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/bugs/stale-address': {
+      id: '/bugs/stale-address'
+      path: '/bugs/stale-address'
+      fullPath: '/bugs/stale-address'
+      preLoaderRoute: typeof BugsStaleAddressRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bugs/silent-failure': {
+      id: '/bugs/silent-failure'
+      path: '/bugs/silent-failure'
+      fullPath: '/bugs/silent-failure'
+      preLoaderRoute: typeof BugsSilentFailureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bugs/decimals': {
+      id: '/bugs/decimals'
+      path: '/bugs/decimals'
+      fullPath: '/bugs/decimals'
+      preLoaderRoute: typeof BugsDecimalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bugs/allowance': {
+      id: '/bugs/allowance'
+      path: '/bugs/allowance'
+      fullPath: '/bugs/allowance'
+      preLoaderRoute: typeof BugsAllowanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bugs/access-control': {
+      id: '/bugs/access-control'
+      path: '/bugs/access-control'
+      fullPath: '/bugs/access-control'
+      preLoaderRoute: typeof BugsAccessControlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BugsAccessControlRoute: BugsAccessControlRoute,
+  BugsAllowanceRoute: BugsAllowanceRoute,
+  BugsDecimalsRoute: BugsDecimalsRoute,
+  BugsSilentFailureRoute: BugsSilentFailureRoute,
+  BugsStaleAddressRoute: BugsStaleAddressRoute,
   ContractsErc20Route: ContractsErc20Route,
   ContractsErc721Route: ContractsErc721Route,
   EthuiGetContractAbiRoute: EthuiGetContractAbiRoute,
@@ -247,6 +372,7 @@ const rootRouteChildren: RootRouteChildren = {
   WalletAddEthereumChainRoute: WalletAddEthereumChainRoute,
   WalletSwitchChainRoute: WalletSwitchChainRoute,
   WalletUpdateEthereumChainRoute: WalletUpdateEthereumChainRoute,
+  BugsIndexRoute: BugsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

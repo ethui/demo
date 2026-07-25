@@ -72,6 +72,196 @@ export const beaconProxyAbi = [
 ] as const
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// DepositToken
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ *
+ */
+export const depositTokenAbi = [
+  {
+    type: 'function',
+    inputs: [
+      { name: 'owner', internalType: 'address', type: 'address' },
+      { name: 'spender', internalType: 'address', type: 'address' },
+    ],
+    name: 'allowance',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'spender', internalType: 'address', type: 'address' },
+      { name: 'value', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'approve',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [{ name: 'account', internalType: 'address', type: 'address' }],
+    name: 'balanceOf',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'decimals',
+    outputs: [{ name: '', internalType: 'uint8', type: 'uint8' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'to', internalType: 'address', type: 'address' },
+      { name: 'amount', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'mint',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'name',
+    outputs: [{ name: '', internalType: 'string', type: 'string' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'symbol',
+    outputs: [{ name: '', internalType: 'string', type: 'string' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'totalSupply',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'to', internalType: 'address', type: 'address' },
+      { name: 'value', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'transfer',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'from', internalType: 'address', type: 'address' },
+      { name: 'to', internalType: 'address', type: 'address' },
+      { name: 'value', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'transferFrom',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'owner',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      {
+        name: 'spender',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      {
+        name: 'value',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'Approval',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'from', internalType: 'address', type: 'address', indexed: true },
+      { name: 'to', internalType: 'address', type: 'address', indexed: true },
+      {
+        name: 'value',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'Transfer',
+  },
+  {
+    type: 'error',
+    inputs: [
+      { name: 'spender', internalType: 'address', type: 'address' },
+      { name: 'allowance', internalType: 'uint256', type: 'uint256' },
+      { name: 'needed', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'ERC20InsufficientAllowance',
+  },
+  {
+    type: 'error',
+    inputs: [
+      { name: 'sender', internalType: 'address', type: 'address' },
+      { name: 'balance', internalType: 'uint256', type: 'uint256' },
+      { name: 'needed', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'ERC20InsufficientBalance',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'approver', internalType: 'address', type: 'address' }],
+    name: 'ERC20InvalidApprover',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'receiver', internalType: 'address', type: 'address' }],
+    name: 'ERC20InvalidReceiver',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'sender', internalType: 'address', type: 'address' }],
+    name: 'ERC20InvalidSender',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'spender', internalType: 'address', type: 'address' }],
+    name: 'ERC20InvalidSpender',
+  },
+] as const
+
+/**
+ *
+ */
+export const depositTokenAddress = {
+  31337: '0x2BB8B93F585B43b06F3d523bf30C203d3B6d4BD4',
+  31338: '0x2BB8B93F585B43b06F3d523bf30C203d3B6d4BD4',
+} as const
+
+/**
+ *
+ */
+export const depositTokenConfig = {
+  address: depositTokenAddress,
+  abi: depositTokenAbi,
+} as const
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // ERC165
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -843,6 +1033,468 @@ export const erc721EnumerableAbi = [
       { name: 'index', internalType: 'uint256', type: 'uint256' },
     ],
     name: 'ERC721OutOfBoundsIndex',
+  },
+] as const
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Forwarder
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export const forwarderAbi = [
+  {
+    type: 'function',
+    inputs: [
+      { name: 'target', internalType: 'address', type: 'address' },
+      { name: 'data', internalType: 'bytes', type: 'bytes' },
+    ],
+    name: 'forward',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'target',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      { name: 'data', internalType: 'bytes', type: 'bytes', indexed: false },
+    ],
+    name: 'Forwarded',
+  },
+] as const
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ForwarderTest
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export const forwarderTestAbi = [
+  {
+    type: 'function',
+    inputs: [],
+    name: 'IS_TEST',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'excludeArtifacts',
+    outputs: [
+      {
+        name: 'excludedArtifacts_',
+        internalType: 'string[]',
+        type: 'string[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'excludeContracts',
+    outputs: [
+      {
+        name: 'excludedContracts_',
+        internalType: 'address[]',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'excludeSelectors',
+    outputs: [
+      {
+        name: 'excludedSelectors_',
+        internalType: 'struct StdInvariant.FuzzSelector[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'addr', internalType: 'address', type: 'address' },
+          { name: 'selectors', internalType: 'bytes4[]', type: 'bytes4[]' },
+        ],
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'excludeSenders',
+    outputs: [
+      {
+        name: 'excludedSenders_',
+        internalType: 'address[]',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'failed',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'setUp',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetArtifactSelectors',
+    outputs: [
+      {
+        name: 'targetedArtifactSelectors_',
+        internalType: 'struct StdInvariant.FuzzArtifactSelector[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'artifact', internalType: 'string', type: 'string' },
+          { name: 'selectors', internalType: 'bytes4[]', type: 'bytes4[]' },
+        ],
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetArtifacts',
+    outputs: [
+      {
+        name: 'targetedArtifacts_',
+        internalType: 'string[]',
+        type: 'string[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetContracts',
+    outputs: [
+      {
+        name: 'targetedContracts_',
+        internalType: 'address[]',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetInterfaces',
+    outputs: [
+      {
+        name: 'targetedInterfaces_',
+        internalType: 'struct StdInvariant.FuzzInterface[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'addr', internalType: 'address', type: 'address' },
+          { name: 'artifacts', internalType: 'string[]', type: 'string[]' },
+        ],
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetSelectors',
+    outputs: [
+      {
+        name: 'targetedSelectors_',
+        internalType: 'struct StdInvariant.FuzzSelector[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'addr', internalType: 'address', type: 'address' },
+          { name: 'selectors', internalType: 'bytes4[]', type: 'bytes4[]' },
+        ],
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetSenders',
+    outputs: [
+      {
+        name: 'targetedSenders_',
+        internalType: 'address[]',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'test_forward_emitsEvenWhenInnerCallFails',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'test_forward_swallowsFailure',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'target',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      { name: 'data', internalType: 'bytes', type: 'bytes', indexed: false },
+    ],
+    name: 'Forwarded',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'string', type: 'string', indexed: false },
+    ],
+    name: 'log',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'address', type: 'address', indexed: false },
+    ],
+    name: 'log_address',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'val',
+        internalType: 'uint256[]',
+        type: 'uint256[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'val',
+        internalType: 'int256[]',
+        type: 'int256[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'val',
+        internalType: 'address[]',
+        type: 'address[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'bytes', type: 'bytes', indexed: false },
+    ],
+    name: 'log_bytes',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'bytes32', type: 'bytes32', indexed: false },
+    ],
+    name: 'log_bytes32',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'int256', type: 'int256', indexed: false },
+    ],
+    name: 'log_int',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'address', type: 'address', indexed: false },
+    ],
+    name: 'log_named_address',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      {
+        name: 'val',
+        internalType: 'uint256[]',
+        type: 'uint256[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      {
+        name: 'val',
+        internalType: 'int256[]',
+        type: 'int256[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      {
+        name: 'val',
+        internalType: 'address[]',
+        type: 'address[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'bytes', type: 'bytes', indexed: false },
+    ],
+    name: 'log_named_bytes',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'bytes32', type: 'bytes32', indexed: false },
+    ],
+    name: 'log_named_bytes32',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'int256', type: 'int256', indexed: false },
+      {
+        name: 'decimals',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_decimal_int',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'uint256', type: 'uint256', indexed: false },
+      {
+        name: 'decimals',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_decimal_uint',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'int256', type: 'int256', indexed: false },
+    ],
+    name: 'log_named_int',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'string', type: 'string', indexed: false },
+    ],
+    name: 'log_named_string',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'uint256', type: 'uint256', indexed: false },
+    ],
+    name: 'log_named_uint',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'string', type: 'string', indexed: false },
+    ],
+    name: 'log_string',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'uint256', type: 'uint256', indexed: false },
+    ],
+    name: 'log_uint',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'bytes', type: 'bytes', indexed: false },
+    ],
+    name: 'logs',
   },
 ] as const
 
@@ -2331,6 +2983,533 @@ export const ownableAbi = [
 ] as const
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// OwnedRegistry
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ *
+ */
+export const ownedRegistryAbi = [
+  {
+    type: 'constructor',
+    inputs: [
+      { name: 'initialOwner', internalType: 'address', type: 'address' },
+    ],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'owner',
+    outputs: [{ name: '', internalType: 'address', type: 'address' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'renounceOwnership',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [{ name: 'newValue', internalType: 'uint256', type: 'uint256' }],
+    name: 'setValue',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [{ name: 'newOwner', internalType: 'address', type: 'address' }],
+    name: 'transferOwnership',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'value',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'previousOwner',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      {
+        name: 'newOwner',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+    ],
+    name: 'OwnershipTransferred',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'value',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'ValueSet',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'owner', internalType: 'address', type: 'address' }],
+    name: 'OwnableInvalidOwner',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'account', internalType: 'address', type: 'address' }],
+    name: 'OwnableUnauthorizedAccount',
+  },
+] as const
+
+/**
+ *
+ */
+export const ownedRegistryAddress = {
+  31337: '0x3347B4d90ebe72BeFb30444C9966B2B990aE9FcB',
+  31338: '0x3347B4d90ebe72BeFb30444C9966B2B990aE9FcB',
+} as const
+
+/**
+ *
+ */
+export const ownedRegistryConfig = {
+  address: ownedRegistryAddress,
+  abi: ownedRegistryAbi,
+} as const
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// OwnedRegistryTest
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export const ownedRegistryTestAbi = [
+  {
+    type: 'function',
+    inputs: [],
+    name: 'IS_TEST',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'excludeArtifacts',
+    outputs: [
+      {
+        name: 'excludedArtifacts_',
+        internalType: 'string[]',
+        type: 'string[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'excludeContracts',
+    outputs: [
+      {
+        name: 'excludedContracts_',
+        internalType: 'address[]',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'excludeSelectors',
+    outputs: [
+      {
+        name: 'excludedSelectors_',
+        internalType: 'struct StdInvariant.FuzzSelector[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'addr', internalType: 'address', type: 'address' },
+          { name: 'selectors', internalType: 'bytes4[]', type: 'bytes4[]' },
+        ],
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'excludeSenders',
+    outputs: [
+      {
+        name: 'excludedSenders_',
+        internalType: 'address[]',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'failed',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'setUp',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetArtifactSelectors',
+    outputs: [
+      {
+        name: 'targetedArtifactSelectors_',
+        internalType: 'struct StdInvariant.FuzzArtifactSelector[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'artifact', internalType: 'string', type: 'string' },
+          { name: 'selectors', internalType: 'bytes4[]', type: 'bytes4[]' },
+        ],
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetArtifacts',
+    outputs: [
+      {
+        name: 'targetedArtifacts_',
+        internalType: 'string[]',
+        type: 'string[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetContracts',
+    outputs: [
+      {
+        name: 'targetedContracts_',
+        internalType: 'address[]',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetInterfaces',
+    outputs: [
+      {
+        name: 'targetedInterfaces_',
+        internalType: 'struct StdInvariant.FuzzInterface[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'addr', internalType: 'address', type: 'address' },
+          { name: 'artifacts', internalType: 'string[]', type: 'string[]' },
+        ],
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetSelectors',
+    outputs: [
+      {
+        name: 'targetedSelectors_',
+        internalType: 'struct StdInvariant.FuzzSelector[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'addr', internalType: 'address', type: 'address' },
+          { name: 'selectors', internalType: 'bytes4[]', type: 'bytes4[]' },
+        ],
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetSenders',
+    outputs: [
+      {
+        name: 'targetedSenders_',
+        internalType: 'address[]',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'test_setValue_revertsForNonOwner',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'test_setValue_succeedsForOwner',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'string', type: 'string', indexed: false },
+    ],
+    name: 'log',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'address', type: 'address', indexed: false },
+    ],
+    name: 'log_address',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'val',
+        internalType: 'uint256[]',
+        type: 'uint256[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'val',
+        internalType: 'int256[]',
+        type: 'int256[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'val',
+        internalType: 'address[]',
+        type: 'address[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'bytes', type: 'bytes', indexed: false },
+    ],
+    name: 'log_bytes',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'bytes32', type: 'bytes32', indexed: false },
+    ],
+    name: 'log_bytes32',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'int256', type: 'int256', indexed: false },
+    ],
+    name: 'log_int',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'address', type: 'address', indexed: false },
+    ],
+    name: 'log_named_address',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      {
+        name: 'val',
+        internalType: 'uint256[]',
+        type: 'uint256[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      {
+        name: 'val',
+        internalType: 'int256[]',
+        type: 'int256[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      {
+        name: 'val',
+        internalType: 'address[]',
+        type: 'address[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'bytes', type: 'bytes', indexed: false },
+    ],
+    name: 'log_named_bytes',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'bytes32', type: 'bytes32', indexed: false },
+    ],
+    name: 'log_named_bytes32',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'int256', type: 'int256', indexed: false },
+      {
+        name: 'decimals',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_decimal_int',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'uint256', type: 'uint256', indexed: false },
+      {
+        name: 'decimals',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_decimal_uint',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'int256', type: 'int256', indexed: false },
+    ],
+    name: 'log_named_int',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'string', type: 'string', indexed: false },
+    ],
+    name: 'log_named_string',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'uint256', type: 'uint256', indexed: false },
+    ],
+    name: 'log_named_uint',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'string', type: 'string', indexed: false },
+    ],
+    name: 'log_string',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'uint256', type: 'uint256', indexed: false },
+    ],
+    name: 'log_uint',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'bytes', type: 'bytes', indexed: false },
+    ],
+    name: 'logs',
+  },
+] as const
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Proxy
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -2421,6 +3600,613 @@ export const proxyAdminAbi = [
     type: 'error',
     inputs: [{ name: 'account', internalType: 'address', type: 'address' }],
     name: 'OwnableUnauthorizedAccount',
+  },
+] as const
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// SixDecimalToken
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ *
+ */
+export const sixDecimalTokenAbi = [
+  {
+    type: 'function',
+    inputs: [
+      { name: 'owner', internalType: 'address', type: 'address' },
+      { name: 'spender', internalType: 'address', type: 'address' },
+    ],
+    name: 'allowance',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'spender', internalType: 'address', type: 'address' },
+      { name: 'value', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'approve',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [{ name: 'account', internalType: 'address', type: 'address' }],
+    name: 'balanceOf',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'decimals',
+    outputs: [{ name: '', internalType: 'uint8', type: 'uint8' }],
+    stateMutability: 'pure',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'to', internalType: 'address', type: 'address' },
+      { name: 'amount', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'mint',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'name',
+    outputs: [{ name: '', internalType: 'string', type: 'string' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'symbol',
+    outputs: [{ name: '', internalType: 'string', type: 'string' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'totalSupply',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'to', internalType: 'address', type: 'address' },
+      { name: 'value', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'transfer',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'from', internalType: 'address', type: 'address' },
+      { name: 'to', internalType: 'address', type: 'address' },
+      { name: 'value', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'transferFrom',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'owner',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      {
+        name: 'spender',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      {
+        name: 'value',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'Approval',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'from', internalType: 'address', type: 'address', indexed: true },
+      { name: 'to', internalType: 'address', type: 'address', indexed: true },
+      {
+        name: 'value',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'Transfer',
+  },
+  {
+    type: 'error',
+    inputs: [
+      { name: 'spender', internalType: 'address', type: 'address' },
+      { name: 'allowance', internalType: 'uint256', type: 'uint256' },
+      { name: 'needed', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'ERC20InsufficientAllowance',
+  },
+  {
+    type: 'error',
+    inputs: [
+      { name: 'sender', internalType: 'address', type: 'address' },
+      { name: 'balance', internalType: 'uint256', type: 'uint256' },
+      { name: 'needed', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'ERC20InsufficientBalance',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'approver', internalType: 'address', type: 'address' }],
+    name: 'ERC20InvalidApprover',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'receiver', internalType: 'address', type: 'address' }],
+    name: 'ERC20InvalidReceiver',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'sender', internalType: 'address', type: 'address' }],
+    name: 'ERC20InvalidSender',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'spender', internalType: 'address', type: 'address' }],
+    name: 'ERC20InvalidSpender',
+  },
+] as const
+
+/**
+ *
+ */
+export const sixDecimalTokenAddress = {
+  31337: '0xaca81583840B1bf2dDF6CDe824ada250C1936B4D',
+  31338: '0xaca81583840B1bf2dDF6CDe824ada250C1936B4D',
+} as const
+
+/**
+ *
+ */
+export const sixDecimalTokenConfig = {
+  address: sixDecimalTokenAddress,
+  abi: sixDecimalTokenAbi,
+} as const
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// SixDecimalTokenTest
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export const sixDecimalTokenTestAbi = [
+  {
+    type: 'function',
+    inputs: [],
+    name: 'IS_TEST',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'excludeArtifacts',
+    outputs: [
+      {
+        name: 'excludedArtifacts_',
+        internalType: 'string[]',
+        type: 'string[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'excludeContracts',
+    outputs: [
+      {
+        name: 'excludedContracts_',
+        internalType: 'address[]',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'excludeSelectors',
+    outputs: [
+      {
+        name: 'excludedSelectors_',
+        internalType: 'struct StdInvariant.FuzzSelector[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'addr', internalType: 'address', type: 'address' },
+          { name: 'selectors', internalType: 'bytes4[]', type: 'bytes4[]' },
+        ],
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'excludeSenders',
+    outputs: [
+      {
+        name: 'excludedSenders_',
+        internalType: 'address[]',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'failed',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'setUp',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetArtifactSelectors',
+    outputs: [
+      {
+        name: 'targetedArtifactSelectors_',
+        internalType: 'struct StdInvariant.FuzzArtifactSelector[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'artifact', internalType: 'string', type: 'string' },
+          { name: 'selectors', internalType: 'bytes4[]', type: 'bytes4[]' },
+        ],
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetArtifacts',
+    outputs: [
+      {
+        name: 'targetedArtifacts_',
+        internalType: 'string[]',
+        type: 'string[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetContracts',
+    outputs: [
+      {
+        name: 'targetedContracts_',
+        internalType: 'address[]',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetInterfaces',
+    outputs: [
+      {
+        name: 'targetedInterfaces_',
+        internalType: 'struct StdInvariant.FuzzInterface[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'addr', internalType: 'address', type: 'address' },
+          { name: 'artifacts', internalType: 'string[]', type: 'string[]' },
+        ],
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetSelectors',
+    outputs: [
+      {
+        name: 'targetedSelectors_',
+        internalType: 'struct StdInvariant.FuzzSelector[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'addr', internalType: 'address', type: 'address' },
+          { name: 'selectors', internalType: 'bytes4[]', type: 'bytes4[]' },
+        ],
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetSenders',
+    outputs: [
+      {
+        name: 'targetedSenders_',
+        internalType: 'address[]',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'test_decimals_isSix',
+    outputs: [],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'test_transfer_revertsWhenAmountUsesEighteenDecimals',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'string', type: 'string', indexed: false },
+    ],
+    name: 'log',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'address', type: 'address', indexed: false },
+    ],
+    name: 'log_address',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'val',
+        internalType: 'uint256[]',
+        type: 'uint256[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'val',
+        internalType: 'int256[]',
+        type: 'int256[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'val',
+        internalType: 'address[]',
+        type: 'address[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'bytes', type: 'bytes', indexed: false },
+    ],
+    name: 'log_bytes',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'bytes32', type: 'bytes32', indexed: false },
+    ],
+    name: 'log_bytes32',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'int256', type: 'int256', indexed: false },
+    ],
+    name: 'log_int',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'address', type: 'address', indexed: false },
+    ],
+    name: 'log_named_address',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      {
+        name: 'val',
+        internalType: 'uint256[]',
+        type: 'uint256[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      {
+        name: 'val',
+        internalType: 'int256[]',
+        type: 'int256[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      {
+        name: 'val',
+        internalType: 'address[]',
+        type: 'address[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'bytes', type: 'bytes', indexed: false },
+    ],
+    name: 'log_named_bytes',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'bytes32', type: 'bytes32', indexed: false },
+    ],
+    name: 'log_named_bytes32',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'int256', type: 'int256', indexed: false },
+      {
+        name: 'decimals',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_decimal_int',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'uint256', type: 'uint256', indexed: false },
+      {
+        name: 'decimals',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_decimal_uint',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'int256', type: 'int256', indexed: false },
+    ],
+    name: 'log_named_int',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'string', type: 'string', indexed: false },
+    ],
+    name: 'log_named_string',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'uint256', type: 'uint256', indexed: false },
+    ],
+    name: 'log_named_uint',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'string', type: 'string', indexed: false },
+    ],
+    name: 'log_string',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'uint256', type: 'uint256', indexed: false },
+    ],
+    name: 'log_uint',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'bytes', type: 'bytes', indexed: false },
+    ],
+    name: 'logs',
   },
 ] as const
 
@@ -4098,6 +5884,488 @@ export const upgradeableBeaconAbi = [
 ] as const
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Vault
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ *
+ */
+export const vaultAbi = [
+  {
+    type: 'constructor',
+    inputs: [
+      { name: 'token_', internalType: 'contract IERC20', type: 'address' },
+    ],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [{ name: 'amount', internalType: 'uint256', type: 'uint256' }],
+    name: 'deposit',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [{ name: '', internalType: 'address', type: 'address' }],
+    name: 'deposits',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'token',
+    outputs: [{ name: '', internalType: 'contract IERC20', type: 'address' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'from', internalType: 'address', type: 'address', indexed: true },
+      {
+        name: 'amount',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'Deposited',
+  },
+] as const
+
+/**
+ *
+ */
+export const vaultAddress = {
+  31337: '0x2d13826359803522cCe7a4Cfa2c1b582303DD0B4',
+  31338: '0x2d13826359803522cCe7a4Cfa2c1b582303DD0B4',
+} as const
+
+/**
+ *
+ */
+export const vaultConfig = { address: vaultAddress, abi: vaultAbi } as const
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// VaultTest
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export const vaultTestAbi = [
+  {
+    type: 'function',
+    inputs: [],
+    name: 'IS_TEST',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'excludeArtifacts',
+    outputs: [
+      {
+        name: 'excludedArtifacts_',
+        internalType: 'string[]',
+        type: 'string[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'excludeContracts',
+    outputs: [
+      {
+        name: 'excludedContracts_',
+        internalType: 'address[]',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'excludeSelectors',
+    outputs: [
+      {
+        name: 'excludedSelectors_',
+        internalType: 'struct StdInvariant.FuzzSelector[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'addr', internalType: 'address', type: 'address' },
+          { name: 'selectors', internalType: 'bytes4[]', type: 'bytes4[]' },
+        ],
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'excludeSenders',
+    outputs: [
+      {
+        name: 'excludedSenders_',
+        internalType: 'address[]',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'failed',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'setUp',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetArtifactSelectors',
+    outputs: [
+      {
+        name: 'targetedArtifactSelectors_',
+        internalType: 'struct StdInvariant.FuzzArtifactSelector[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'artifact', internalType: 'string', type: 'string' },
+          { name: 'selectors', internalType: 'bytes4[]', type: 'bytes4[]' },
+        ],
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetArtifacts',
+    outputs: [
+      {
+        name: 'targetedArtifacts_',
+        internalType: 'string[]',
+        type: 'string[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetContracts',
+    outputs: [
+      {
+        name: 'targetedContracts_',
+        internalType: 'address[]',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetInterfaces',
+    outputs: [
+      {
+        name: 'targetedInterfaces_',
+        internalType: 'struct StdInvariant.FuzzInterface[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'addr', internalType: 'address', type: 'address' },
+          { name: 'artifacts', internalType: 'string[]', type: 'string[]' },
+        ],
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetSelectors',
+    outputs: [
+      {
+        name: 'targetedSelectors_',
+        internalType: 'struct StdInvariant.FuzzSelector[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'addr', internalType: 'address', type: 'address' },
+          { name: 'selectors', internalType: 'bytes4[]', type: 'bytes4[]' },
+        ],
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'targetSenders',
+    outputs: [
+      {
+        name: 'targetedSenders_',
+        internalType: 'address[]',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'test_deposit_revertsWithoutApproval',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'test_deposit_succeedsAfterApproval',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'string', type: 'string', indexed: false },
+    ],
+    name: 'log',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'address', type: 'address', indexed: false },
+    ],
+    name: 'log_address',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'val',
+        internalType: 'uint256[]',
+        type: 'uint256[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'val',
+        internalType: 'int256[]',
+        type: 'int256[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'val',
+        internalType: 'address[]',
+        type: 'address[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'bytes', type: 'bytes', indexed: false },
+    ],
+    name: 'log_bytes',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'bytes32', type: 'bytes32', indexed: false },
+    ],
+    name: 'log_bytes32',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'int256', type: 'int256', indexed: false },
+    ],
+    name: 'log_int',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'address', type: 'address', indexed: false },
+    ],
+    name: 'log_named_address',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      {
+        name: 'val',
+        internalType: 'uint256[]',
+        type: 'uint256[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      {
+        name: 'val',
+        internalType: 'int256[]',
+        type: 'int256[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      {
+        name: 'val',
+        internalType: 'address[]',
+        type: 'address[]',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_array',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'bytes', type: 'bytes', indexed: false },
+    ],
+    name: 'log_named_bytes',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'bytes32', type: 'bytes32', indexed: false },
+    ],
+    name: 'log_named_bytes32',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'int256', type: 'int256', indexed: false },
+      {
+        name: 'decimals',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_decimal_int',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'uint256', type: 'uint256', indexed: false },
+      {
+        name: 'decimals',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'log_named_decimal_uint',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'int256', type: 'int256', indexed: false },
+    ],
+    name: 'log_named_int',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'string', type: 'string', indexed: false },
+    ],
+    name: 'log_named_string',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: 'key', internalType: 'string', type: 'string', indexed: false },
+      { name: 'val', internalType: 'uint256', type: 'uint256', indexed: false },
+    ],
+    name: 'log_named_uint',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'string', type: 'string', indexed: false },
+    ],
+    name: 'log_string',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'uint256', type: 'uint256', indexed: false },
+    ],
+    name: 'log_uint',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      { name: '', internalType: 'bytes', type: 'bytes', indexed: false },
+    ],
+    name: 'logs',
+  },
+] as const
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // React
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -4114,6 +6382,238 @@ export const useWatchBeaconProxyBeaconUpgradedEvent =
   /*#__PURE__*/ createUseWatchContractEvent({
     abi: beaconProxyAbi,
     eventName: 'BeaconUpgraded',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link depositTokenAbi}__
+ *
+ *
+ */
+export const useReadDepositToken = /*#__PURE__*/ createUseReadContract({
+  abi: depositTokenAbi,
+  address: depositTokenAddress,
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link depositTokenAbi}__ and `functionName` set to `"allowance"`
+ *
+ *
+ */
+export const useReadDepositTokenAllowance = /*#__PURE__*/ createUseReadContract(
+  {
+    abi: depositTokenAbi,
+    address: depositTokenAddress,
+    functionName: 'allowance',
+  },
+)
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link depositTokenAbi}__ and `functionName` set to `"balanceOf"`
+ *
+ *
+ */
+export const useReadDepositTokenBalanceOf = /*#__PURE__*/ createUseReadContract(
+  {
+    abi: depositTokenAbi,
+    address: depositTokenAddress,
+    functionName: 'balanceOf',
+  },
+)
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link depositTokenAbi}__ and `functionName` set to `"decimals"`
+ *
+ *
+ */
+export const useReadDepositTokenDecimals = /*#__PURE__*/ createUseReadContract({
+  abi: depositTokenAbi,
+  address: depositTokenAddress,
+  functionName: 'decimals',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link depositTokenAbi}__ and `functionName` set to `"name"`
+ *
+ *
+ */
+export const useReadDepositTokenName = /*#__PURE__*/ createUseReadContract({
+  abi: depositTokenAbi,
+  address: depositTokenAddress,
+  functionName: 'name',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link depositTokenAbi}__ and `functionName` set to `"symbol"`
+ *
+ *
+ */
+export const useReadDepositTokenSymbol = /*#__PURE__*/ createUseReadContract({
+  abi: depositTokenAbi,
+  address: depositTokenAddress,
+  functionName: 'symbol',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link depositTokenAbi}__ and `functionName` set to `"totalSupply"`
+ *
+ *
+ */
+export const useReadDepositTokenTotalSupply =
+  /*#__PURE__*/ createUseReadContract({
+    abi: depositTokenAbi,
+    address: depositTokenAddress,
+    functionName: 'totalSupply',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link depositTokenAbi}__
+ *
+ *
+ */
+export const useWriteDepositToken = /*#__PURE__*/ createUseWriteContract({
+  abi: depositTokenAbi,
+  address: depositTokenAddress,
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link depositTokenAbi}__ and `functionName` set to `"approve"`
+ *
+ *
+ */
+export const useWriteDepositTokenApprove = /*#__PURE__*/ createUseWriteContract(
+  {
+    abi: depositTokenAbi,
+    address: depositTokenAddress,
+    functionName: 'approve',
+  },
+)
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link depositTokenAbi}__ and `functionName` set to `"mint"`
+ *
+ *
+ */
+export const useWriteDepositTokenMint = /*#__PURE__*/ createUseWriteContract({
+  abi: depositTokenAbi,
+  address: depositTokenAddress,
+  functionName: 'mint',
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link depositTokenAbi}__ and `functionName` set to `"transfer"`
+ *
+ *
+ */
+export const useWriteDepositTokenTransfer =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: depositTokenAbi,
+    address: depositTokenAddress,
+    functionName: 'transfer',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link depositTokenAbi}__ and `functionName` set to `"transferFrom"`
+ *
+ *
+ */
+export const useWriteDepositTokenTransferFrom =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: depositTokenAbi,
+    address: depositTokenAddress,
+    functionName: 'transferFrom',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link depositTokenAbi}__
+ *
+ *
+ */
+export const useSimulateDepositToken = /*#__PURE__*/ createUseSimulateContract({
+  abi: depositTokenAbi,
+  address: depositTokenAddress,
+})
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link depositTokenAbi}__ and `functionName` set to `"approve"`
+ *
+ *
+ */
+export const useSimulateDepositTokenApprove =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: depositTokenAbi,
+    address: depositTokenAddress,
+    functionName: 'approve',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link depositTokenAbi}__ and `functionName` set to `"mint"`
+ *
+ *
+ */
+export const useSimulateDepositTokenMint =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: depositTokenAbi,
+    address: depositTokenAddress,
+    functionName: 'mint',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link depositTokenAbi}__ and `functionName` set to `"transfer"`
+ *
+ *
+ */
+export const useSimulateDepositTokenTransfer =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: depositTokenAbi,
+    address: depositTokenAddress,
+    functionName: 'transfer',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link depositTokenAbi}__ and `functionName` set to `"transferFrom"`
+ *
+ *
+ */
+export const useSimulateDepositTokenTransferFrom =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: depositTokenAbi,
+    address: depositTokenAddress,
+    functionName: 'transferFrom',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link depositTokenAbi}__
+ *
+ *
+ */
+export const useWatchDepositTokenEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: depositTokenAbi,
+    address: depositTokenAddress,
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link depositTokenAbi}__ and `eventName` set to `"Approval"`
+ *
+ *
+ */
+export const useWatchDepositTokenApprovalEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: depositTokenAbi,
+    address: depositTokenAddress,
+    eventName: 'Approval',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link depositTokenAbi}__ and `eventName` set to `"Transfer"`
+ *
+ *
+ */
+export const useWatchDepositTokenTransferEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: depositTokenAbi,
+    address: depositTokenAddress,
+    eventName: 'Transfer',
   })
 
 /**
@@ -4732,6 +7232,410 @@ export const useWatchErc721EnumerableTransferEvent =
   /*#__PURE__*/ createUseWatchContractEvent({
     abi: erc721EnumerableAbi,
     eventName: 'Transfer',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link forwarderAbi}__
+ */
+export const useWriteForwarder = /*#__PURE__*/ createUseWriteContract({
+  abi: forwarderAbi,
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link forwarderAbi}__ and `functionName` set to `"forward"`
+ */
+export const useWriteForwarderForward = /*#__PURE__*/ createUseWriteContract({
+  abi: forwarderAbi,
+  functionName: 'forward',
+})
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link forwarderAbi}__
+ */
+export const useSimulateForwarder = /*#__PURE__*/ createUseSimulateContract({
+  abi: forwarderAbi,
+})
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link forwarderAbi}__ and `functionName` set to `"forward"`
+ */
+export const useSimulateForwarderForward =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: forwarderAbi,
+    functionName: 'forward',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderAbi}__
+ */
+export const useWatchForwarderEvent = /*#__PURE__*/ createUseWatchContractEvent(
+  { abi: forwarderAbi },
+)
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderAbi}__ and `eventName` set to `"Forwarded"`
+ */
+export const useWatchForwarderForwardedEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderAbi,
+    eventName: 'Forwarded',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link forwarderTestAbi}__
+ */
+export const useReadForwarderTest = /*#__PURE__*/ createUseReadContract({
+  abi: forwarderTestAbi,
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"IS_TEST"`
+ */
+export const useReadForwarderTestIsTest = /*#__PURE__*/ createUseReadContract({
+  abi: forwarderTestAbi,
+  functionName: 'IS_TEST',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"excludeArtifacts"`
+ */
+export const useReadForwarderTestExcludeArtifacts =
+  /*#__PURE__*/ createUseReadContract({
+    abi: forwarderTestAbi,
+    functionName: 'excludeArtifacts',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"excludeContracts"`
+ */
+export const useReadForwarderTestExcludeContracts =
+  /*#__PURE__*/ createUseReadContract({
+    abi: forwarderTestAbi,
+    functionName: 'excludeContracts',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"excludeSelectors"`
+ */
+export const useReadForwarderTestExcludeSelectors =
+  /*#__PURE__*/ createUseReadContract({
+    abi: forwarderTestAbi,
+    functionName: 'excludeSelectors',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"excludeSenders"`
+ */
+export const useReadForwarderTestExcludeSenders =
+  /*#__PURE__*/ createUseReadContract({
+    abi: forwarderTestAbi,
+    functionName: 'excludeSenders',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"failed"`
+ */
+export const useReadForwarderTestFailed = /*#__PURE__*/ createUseReadContract({
+  abi: forwarderTestAbi,
+  functionName: 'failed',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"targetArtifactSelectors"`
+ */
+export const useReadForwarderTestTargetArtifactSelectors =
+  /*#__PURE__*/ createUseReadContract({
+    abi: forwarderTestAbi,
+    functionName: 'targetArtifactSelectors',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"targetArtifacts"`
+ */
+export const useReadForwarderTestTargetArtifacts =
+  /*#__PURE__*/ createUseReadContract({
+    abi: forwarderTestAbi,
+    functionName: 'targetArtifacts',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"targetContracts"`
+ */
+export const useReadForwarderTestTargetContracts =
+  /*#__PURE__*/ createUseReadContract({
+    abi: forwarderTestAbi,
+    functionName: 'targetContracts',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"targetInterfaces"`
+ */
+export const useReadForwarderTestTargetInterfaces =
+  /*#__PURE__*/ createUseReadContract({
+    abi: forwarderTestAbi,
+    functionName: 'targetInterfaces',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"targetSelectors"`
+ */
+export const useReadForwarderTestTargetSelectors =
+  /*#__PURE__*/ createUseReadContract({
+    abi: forwarderTestAbi,
+    functionName: 'targetSelectors',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"targetSenders"`
+ */
+export const useReadForwarderTestTargetSenders =
+  /*#__PURE__*/ createUseReadContract({
+    abi: forwarderTestAbi,
+    functionName: 'targetSenders',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link forwarderTestAbi}__
+ */
+export const useWriteForwarderTest = /*#__PURE__*/ createUseWriteContract({
+  abi: forwarderTestAbi,
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"setUp"`
+ */
+export const useWriteForwarderTestSetUp = /*#__PURE__*/ createUseWriteContract({
+  abi: forwarderTestAbi,
+  functionName: 'setUp',
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"test_forward_emitsEvenWhenInnerCallFails"`
+ */
+export const useWriteForwarderTestTestForwardEmitsEvenWhenInnerCallFails =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: forwarderTestAbi,
+    functionName: 'test_forward_emitsEvenWhenInnerCallFails',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"test_forward_swallowsFailure"`
+ */
+export const useWriteForwarderTestTestForwardSwallowsFailure =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: forwarderTestAbi,
+    functionName: 'test_forward_swallowsFailure',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link forwarderTestAbi}__
+ */
+export const useSimulateForwarderTest = /*#__PURE__*/ createUseSimulateContract(
+  { abi: forwarderTestAbi },
+)
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"setUp"`
+ */
+export const useSimulateForwarderTestSetUp =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: forwarderTestAbi,
+    functionName: 'setUp',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"test_forward_emitsEvenWhenInnerCallFails"`
+ */
+export const useSimulateForwarderTestTestForwardEmitsEvenWhenInnerCallFails =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: forwarderTestAbi,
+    functionName: 'test_forward_emitsEvenWhenInnerCallFails',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link forwarderTestAbi}__ and `functionName` set to `"test_forward_swallowsFailure"`
+ */
+export const useSimulateForwarderTestTestForwardSwallowsFailure =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: forwarderTestAbi,
+    functionName: 'test_forward_swallowsFailure',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__
+ */
+export const useWatchForwarderTestEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({ abi: forwarderTestAbi })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"Forwarded"`
+ */
+export const useWatchForwarderTestForwardedEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'Forwarded',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"log"`
+ */
+export const useWatchForwarderTestLogEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'log',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"log_address"`
+ */
+export const useWatchForwarderTestLogAddressEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'log_address',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"log_array"`
+ */
+export const useWatchForwarderTestLogArrayEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'log_array',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"log_bytes"`
+ */
+export const useWatchForwarderTestLogBytesEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'log_bytes',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"log_bytes32"`
+ */
+export const useWatchForwarderTestLogBytes32Event =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'log_bytes32',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"log_int"`
+ */
+export const useWatchForwarderTestLogIntEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'log_int',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"log_named_address"`
+ */
+export const useWatchForwarderTestLogNamedAddressEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'log_named_address',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"log_named_array"`
+ */
+export const useWatchForwarderTestLogNamedArrayEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'log_named_array',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"log_named_bytes"`
+ */
+export const useWatchForwarderTestLogNamedBytesEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'log_named_bytes',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"log_named_bytes32"`
+ */
+export const useWatchForwarderTestLogNamedBytes32Event =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'log_named_bytes32',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"log_named_decimal_int"`
+ */
+export const useWatchForwarderTestLogNamedDecimalIntEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'log_named_decimal_int',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"log_named_decimal_uint"`
+ */
+export const useWatchForwarderTestLogNamedDecimalUintEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'log_named_decimal_uint',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"log_named_int"`
+ */
+export const useWatchForwarderTestLogNamedIntEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'log_named_int',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"log_named_string"`
+ */
+export const useWatchForwarderTestLogNamedStringEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'log_named_string',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"log_named_uint"`
+ */
+export const useWatchForwarderTestLogNamedUintEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'log_named_uint',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"log_string"`
+ */
+export const useWatchForwarderTestLogStringEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'log_string',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"log_uint"`
+ */
+export const useWatchForwarderTestLogUintEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'log_uint',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link forwarderTestAbi}__ and `eventName` set to `"logs"`
+ */
+export const useWatchForwarderTestLogsEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: forwarderTestAbi,
+    eventName: 'logs',
   })
 
 /**
@@ -6195,6 +9099,514 @@ export const useWatchOwnableOwnershipTransferredEvent =
   })
 
 /**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link ownedRegistryAbi}__
+ *
+ *
+ */
+export const useReadOwnedRegistry = /*#__PURE__*/ createUseReadContract({
+  abi: ownedRegistryAbi,
+  address: ownedRegistryAddress,
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link ownedRegistryAbi}__ and `functionName` set to `"owner"`
+ *
+ *
+ */
+export const useReadOwnedRegistryOwner = /*#__PURE__*/ createUseReadContract({
+  abi: ownedRegistryAbi,
+  address: ownedRegistryAddress,
+  functionName: 'owner',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link ownedRegistryAbi}__ and `functionName` set to `"value"`
+ *
+ *
+ */
+export const useReadOwnedRegistryValue = /*#__PURE__*/ createUseReadContract({
+  abi: ownedRegistryAbi,
+  address: ownedRegistryAddress,
+  functionName: 'value',
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link ownedRegistryAbi}__
+ *
+ *
+ */
+export const useWriteOwnedRegistry = /*#__PURE__*/ createUseWriteContract({
+  abi: ownedRegistryAbi,
+  address: ownedRegistryAddress,
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link ownedRegistryAbi}__ and `functionName` set to `"renounceOwnership"`
+ *
+ *
+ */
+export const useWriteOwnedRegistryRenounceOwnership =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: ownedRegistryAbi,
+    address: ownedRegistryAddress,
+    functionName: 'renounceOwnership',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link ownedRegistryAbi}__ and `functionName` set to `"setValue"`
+ *
+ *
+ */
+export const useWriteOwnedRegistrySetValue =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: ownedRegistryAbi,
+    address: ownedRegistryAddress,
+    functionName: 'setValue',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link ownedRegistryAbi}__ and `functionName` set to `"transferOwnership"`
+ *
+ *
+ */
+export const useWriteOwnedRegistryTransferOwnership =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: ownedRegistryAbi,
+    address: ownedRegistryAddress,
+    functionName: 'transferOwnership',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link ownedRegistryAbi}__
+ *
+ *
+ */
+export const useSimulateOwnedRegistry = /*#__PURE__*/ createUseSimulateContract(
+  { abi: ownedRegistryAbi, address: ownedRegistryAddress },
+)
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link ownedRegistryAbi}__ and `functionName` set to `"renounceOwnership"`
+ *
+ *
+ */
+export const useSimulateOwnedRegistryRenounceOwnership =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: ownedRegistryAbi,
+    address: ownedRegistryAddress,
+    functionName: 'renounceOwnership',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link ownedRegistryAbi}__ and `functionName` set to `"setValue"`
+ *
+ *
+ */
+export const useSimulateOwnedRegistrySetValue =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: ownedRegistryAbi,
+    address: ownedRegistryAddress,
+    functionName: 'setValue',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link ownedRegistryAbi}__ and `functionName` set to `"transferOwnership"`
+ *
+ *
+ */
+export const useSimulateOwnedRegistryTransferOwnership =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: ownedRegistryAbi,
+    address: ownedRegistryAddress,
+    functionName: 'transferOwnership',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link ownedRegistryAbi}__
+ *
+ *
+ */
+export const useWatchOwnedRegistryEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: ownedRegistryAbi,
+    address: ownedRegistryAddress,
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link ownedRegistryAbi}__ and `eventName` set to `"OwnershipTransferred"`
+ *
+ *
+ */
+export const useWatchOwnedRegistryOwnershipTransferredEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: ownedRegistryAbi,
+    address: ownedRegistryAddress,
+    eventName: 'OwnershipTransferred',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link ownedRegistryAbi}__ and `eventName` set to `"ValueSet"`
+ *
+ *
+ */
+export const useWatchOwnedRegistryValueSetEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: ownedRegistryAbi,
+    address: ownedRegistryAddress,
+    eventName: 'ValueSet',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link ownedRegistryTestAbi}__
+ */
+export const useReadOwnedRegistryTest = /*#__PURE__*/ createUseReadContract({
+  abi: ownedRegistryTestAbi,
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `functionName` set to `"IS_TEST"`
+ */
+export const useReadOwnedRegistryTestIsTest =
+  /*#__PURE__*/ createUseReadContract({
+    abi: ownedRegistryTestAbi,
+    functionName: 'IS_TEST',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `functionName` set to `"excludeArtifacts"`
+ */
+export const useReadOwnedRegistryTestExcludeArtifacts =
+  /*#__PURE__*/ createUseReadContract({
+    abi: ownedRegistryTestAbi,
+    functionName: 'excludeArtifacts',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `functionName` set to `"excludeContracts"`
+ */
+export const useReadOwnedRegistryTestExcludeContracts =
+  /*#__PURE__*/ createUseReadContract({
+    abi: ownedRegistryTestAbi,
+    functionName: 'excludeContracts',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `functionName` set to `"excludeSelectors"`
+ */
+export const useReadOwnedRegistryTestExcludeSelectors =
+  /*#__PURE__*/ createUseReadContract({
+    abi: ownedRegistryTestAbi,
+    functionName: 'excludeSelectors',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `functionName` set to `"excludeSenders"`
+ */
+export const useReadOwnedRegistryTestExcludeSenders =
+  /*#__PURE__*/ createUseReadContract({
+    abi: ownedRegistryTestAbi,
+    functionName: 'excludeSenders',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `functionName` set to `"failed"`
+ */
+export const useReadOwnedRegistryTestFailed =
+  /*#__PURE__*/ createUseReadContract({
+    abi: ownedRegistryTestAbi,
+    functionName: 'failed',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `functionName` set to `"targetArtifactSelectors"`
+ */
+export const useReadOwnedRegistryTestTargetArtifactSelectors =
+  /*#__PURE__*/ createUseReadContract({
+    abi: ownedRegistryTestAbi,
+    functionName: 'targetArtifactSelectors',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `functionName` set to `"targetArtifacts"`
+ */
+export const useReadOwnedRegistryTestTargetArtifacts =
+  /*#__PURE__*/ createUseReadContract({
+    abi: ownedRegistryTestAbi,
+    functionName: 'targetArtifacts',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `functionName` set to `"targetContracts"`
+ */
+export const useReadOwnedRegistryTestTargetContracts =
+  /*#__PURE__*/ createUseReadContract({
+    abi: ownedRegistryTestAbi,
+    functionName: 'targetContracts',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `functionName` set to `"targetInterfaces"`
+ */
+export const useReadOwnedRegistryTestTargetInterfaces =
+  /*#__PURE__*/ createUseReadContract({
+    abi: ownedRegistryTestAbi,
+    functionName: 'targetInterfaces',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `functionName` set to `"targetSelectors"`
+ */
+export const useReadOwnedRegistryTestTargetSelectors =
+  /*#__PURE__*/ createUseReadContract({
+    abi: ownedRegistryTestAbi,
+    functionName: 'targetSelectors',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `functionName` set to `"targetSenders"`
+ */
+export const useReadOwnedRegistryTestTargetSenders =
+  /*#__PURE__*/ createUseReadContract({
+    abi: ownedRegistryTestAbi,
+    functionName: 'targetSenders',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link ownedRegistryTestAbi}__
+ */
+export const useWriteOwnedRegistryTest = /*#__PURE__*/ createUseWriteContract({
+  abi: ownedRegistryTestAbi,
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `functionName` set to `"setUp"`
+ */
+export const useWriteOwnedRegistryTestSetUp =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: ownedRegistryTestAbi,
+    functionName: 'setUp',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `functionName` set to `"test_setValue_revertsForNonOwner"`
+ */
+export const useWriteOwnedRegistryTestTestSetValueRevertsForNonOwner =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: ownedRegistryTestAbi,
+    functionName: 'test_setValue_revertsForNonOwner',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `functionName` set to `"test_setValue_succeedsForOwner"`
+ */
+export const useWriteOwnedRegistryTestTestSetValueSucceedsForOwner =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: ownedRegistryTestAbi,
+    functionName: 'test_setValue_succeedsForOwner',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link ownedRegistryTestAbi}__
+ */
+export const useSimulateOwnedRegistryTest =
+  /*#__PURE__*/ createUseSimulateContract({ abi: ownedRegistryTestAbi })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `functionName` set to `"setUp"`
+ */
+export const useSimulateOwnedRegistryTestSetUp =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: ownedRegistryTestAbi,
+    functionName: 'setUp',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `functionName` set to `"test_setValue_revertsForNonOwner"`
+ */
+export const useSimulateOwnedRegistryTestTestSetValueRevertsForNonOwner =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: ownedRegistryTestAbi,
+    functionName: 'test_setValue_revertsForNonOwner',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `functionName` set to `"test_setValue_succeedsForOwner"`
+ */
+export const useSimulateOwnedRegistryTestTestSetValueSucceedsForOwner =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: ownedRegistryTestAbi,
+    functionName: 'test_setValue_succeedsForOwner',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link ownedRegistryTestAbi}__
+ */
+export const useWatchOwnedRegistryTestEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({ abi: ownedRegistryTestAbi })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `eventName` set to `"log"`
+ */
+export const useWatchOwnedRegistryTestLogEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: ownedRegistryTestAbi,
+    eventName: 'log',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `eventName` set to `"log_address"`
+ */
+export const useWatchOwnedRegistryTestLogAddressEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: ownedRegistryTestAbi,
+    eventName: 'log_address',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `eventName` set to `"log_array"`
+ */
+export const useWatchOwnedRegistryTestLogArrayEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: ownedRegistryTestAbi,
+    eventName: 'log_array',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `eventName` set to `"log_bytes"`
+ */
+export const useWatchOwnedRegistryTestLogBytesEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: ownedRegistryTestAbi,
+    eventName: 'log_bytes',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `eventName` set to `"log_bytes32"`
+ */
+export const useWatchOwnedRegistryTestLogBytes32Event =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: ownedRegistryTestAbi,
+    eventName: 'log_bytes32',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `eventName` set to `"log_int"`
+ */
+export const useWatchOwnedRegistryTestLogIntEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: ownedRegistryTestAbi,
+    eventName: 'log_int',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `eventName` set to `"log_named_address"`
+ */
+export const useWatchOwnedRegistryTestLogNamedAddressEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: ownedRegistryTestAbi,
+    eventName: 'log_named_address',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `eventName` set to `"log_named_array"`
+ */
+export const useWatchOwnedRegistryTestLogNamedArrayEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: ownedRegistryTestAbi,
+    eventName: 'log_named_array',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `eventName` set to `"log_named_bytes"`
+ */
+export const useWatchOwnedRegistryTestLogNamedBytesEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: ownedRegistryTestAbi,
+    eventName: 'log_named_bytes',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `eventName` set to `"log_named_bytes32"`
+ */
+export const useWatchOwnedRegistryTestLogNamedBytes32Event =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: ownedRegistryTestAbi,
+    eventName: 'log_named_bytes32',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `eventName` set to `"log_named_decimal_int"`
+ */
+export const useWatchOwnedRegistryTestLogNamedDecimalIntEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: ownedRegistryTestAbi,
+    eventName: 'log_named_decimal_int',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `eventName` set to `"log_named_decimal_uint"`
+ */
+export const useWatchOwnedRegistryTestLogNamedDecimalUintEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: ownedRegistryTestAbi,
+    eventName: 'log_named_decimal_uint',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `eventName` set to `"log_named_int"`
+ */
+export const useWatchOwnedRegistryTestLogNamedIntEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: ownedRegistryTestAbi,
+    eventName: 'log_named_int',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `eventName` set to `"log_named_string"`
+ */
+export const useWatchOwnedRegistryTestLogNamedStringEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: ownedRegistryTestAbi,
+    eventName: 'log_named_string',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `eventName` set to `"log_named_uint"`
+ */
+export const useWatchOwnedRegistryTestLogNamedUintEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: ownedRegistryTestAbi,
+    eventName: 'log_named_uint',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `eventName` set to `"log_string"`
+ */
+export const useWatchOwnedRegistryTestLogStringEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: ownedRegistryTestAbi,
+    eventName: 'log_string',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `eventName` set to `"log_uint"`
+ */
+export const useWatchOwnedRegistryTestLogUintEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: ownedRegistryTestAbi,
+    eventName: 'log_uint',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link ownedRegistryTestAbi}__ and `eventName` set to `"logs"`
+ */
+export const useWatchOwnedRegistryTestLogsEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: ownedRegistryTestAbi,
+    eventName: 'logs',
+  })
+
+/**
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link proxyAdminAbi}__
  */
 export const useReadProxyAdmin = /*#__PURE__*/ createUseReadContract({
@@ -6299,6 +9711,582 @@ export const useWatchProxyAdminOwnershipTransferredEvent =
   /*#__PURE__*/ createUseWatchContractEvent({
     abi: proxyAdminAbi,
     eventName: 'OwnershipTransferred',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link sixDecimalTokenAbi}__
+ *
+ *
+ */
+export const useReadSixDecimalToken = /*#__PURE__*/ createUseReadContract({
+  abi: sixDecimalTokenAbi,
+  address: sixDecimalTokenAddress,
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link sixDecimalTokenAbi}__ and `functionName` set to `"allowance"`
+ *
+ *
+ */
+export const useReadSixDecimalTokenAllowance =
+  /*#__PURE__*/ createUseReadContract({
+    abi: sixDecimalTokenAbi,
+    address: sixDecimalTokenAddress,
+    functionName: 'allowance',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link sixDecimalTokenAbi}__ and `functionName` set to `"balanceOf"`
+ *
+ *
+ */
+export const useReadSixDecimalTokenBalanceOf =
+  /*#__PURE__*/ createUseReadContract({
+    abi: sixDecimalTokenAbi,
+    address: sixDecimalTokenAddress,
+    functionName: 'balanceOf',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link sixDecimalTokenAbi}__ and `functionName` set to `"decimals"`
+ *
+ *
+ */
+export const useReadSixDecimalTokenDecimals =
+  /*#__PURE__*/ createUseReadContract({
+    abi: sixDecimalTokenAbi,
+    address: sixDecimalTokenAddress,
+    functionName: 'decimals',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link sixDecimalTokenAbi}__ and `functionName` set to `"name"`
+ *
+ *
+ */
+export const useReadSixDecimalTokenName = /*#__PURE__*/ createUseReadContract({
+  abi: sixDecimalTokenAbi,
+  address: sixDecimalTokenAddress,
+  functionName: 'name',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link sixDecimalTokenAbi}__ and `functionName` set to `"symbol"`
+ *
+ *
+ */
+export const useReadSixDecimalTokenSymbol = /*#__PURE__*/ createUseReadContract(
+  {
+    abi: sixDecimalTokenAbi,
+    address: sixDecimalTokenAddress,
+    functionName: 'symbol',
+  },
+)
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link sixDecimalTokenAbi}__ and `functionName` set to `"totalSupply"`
+ *
+ *
+ */
+export const useReadSixDecimalTokenTotalSupply =
+  /*#__PURE__*/ createUseReadContract({
+    abi: sixDecimalTokenAbi,
+    address: sixDecimalTokenAddress,
+    functionName: 'totalSupply',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link sixDecimalTokenAbi}__
+ *
+ *
+ */
+export const useWriteSixDecimalToken = /*#__PURE__*/ createUseWriteContract({
+  abi: sixDecimalTokenAbi,
+  address: sixDecimalTokenAddress,
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link sixDecimalTokenAbi}__ and `functionName` set to `"approve"`
+ *
+ *
+ */
+export const useWriteSixDecimalTokenApprove =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: sixDecimalTokenAbi,
+    address: sixDecimalTokenAddress,
+    functionName: 'approve',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link sixDecimalTokenAbi}__ and `functionName` set to `"mint"`
+ *
+ *
+ */
+export const useWriteSixDecimalTokenMint = /*#__PURE__*/ createUseWriteContract(
+  {
+    abi: sixDecimalTokenAbi,
+    address: sixDecimalTokenAddress,
+    functionName: 'mint',
+  },
+)
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link sixDecimalTokenAbi}__ and `functionName` set to `"transfer"`
+ *
+ *
+ */
+export const useWriteSixDecimalTokenTransfer =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: sixDecimalTokenAbi,
+    address: sixDecimalTokenAddress,
+    functionName: 'transfer',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link sixDecimalTokenAbi}__ and `functionName` set to `"transferFrom"`
+ *
+ *
+ */
+export const useWriteSixDecimalTokenTransferFrom =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: sixDecimalTokenAbi,
+    address: sixDecimalTokenAddress,
+    functionName: 'transferFrom',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link sixDecimalTokenAbi}__
+ *
+ *
+ */
+export const useSimulateSixDecimalToken =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: sixDecimalTokenAbi,
+    address: sixDecimalTokenAddress,
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link sixDecimalTokenAbi}__ and `functionName` set to `"approve"`
+ *
+ *
+ */
+export const useSimulateSixDecimalTokenApprove =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: sixDecimalTokenAbi,
+    address: sixDecimalTokenAddress,
+    functionName: 'approve',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link sixDecimalTokenAbi}__ and `functionName` set to `"mint"`
+ *
+ *
+ */
+export const useSimulateSixDecimalTokenMint =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: sixDecimalTokenAbi,
+    address: sixDecimalTokenAddress,
+    functionName: 'mint',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link sixDecimalTokenAbi}__ and `functionName` set to `"transfer"`
+ *
+ *
+ */
+export const useSimulateSixDecimalTokenTransfer =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: sixDecimalTokenAbi,
+    address: sixDecimalTokenAddress,
+    functionName: 'transfer',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link sixDecimalTokenAbi}__ and `functionName` set to `"transferFrom"`
+ *
+ *
+ */
+export const useSimulateSixDecimalTokenTransferFrom =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: sixDecimalTokenAbi,
+    address: sixDecimalTokenAddress,
+    functionName: 'transferFrom',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link sixDecimalTokenAbi}__
+ *
+ *
+ */
+export const useWatchSixDecimalTokenEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: sixDecimalTokenAbi,
+    address: sixDecimalTokenAddress,
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link sixDecimalTokenAbi}__ and `eventName` set to `"Approval"`
+ *
+ *
+ */
+export const useWatchSixDecimalTokenApprovalEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: sixDecimalTokenAbi,
+    address: sixDecimalTokenAddress,
+    eventName: 'Approval',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link sixDecimalTokenAbi}__ and `eventName` set to `"Transfer"`
+ *
+ *
+ */
+export const useWatchSixDecimalTokenTransferEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: sixDecimalTokenAbi,
+    address: sixDecimalTokenAddress,
+    eventName: 'Transfer',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__
+ */
+export const useReadSixDecimalTokenTest = /*#__PURE__*/ createUseReadContract({
+  abi: sixDecimalTokenTestAbi,
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `functionName` set to `"IS_TEST"`
+ */
+export const useReadSixDecimalTokenTestIsTest =
+  /*#__PURE__*/ createUseReadContract({
+    abi: sixDecimalTokenTestAbi,
+    functionName: 'IS_TEST',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `functionName` set to `"excludeArtifacts"`
+ */
+export const useReadSixDecimalTokenTestExcludeArtifacts =
+  /*#__PURE__*/ createUseReadContract({
+    abi: sixDecimalTokenTestAbi,
+    functionName: 'excludeArtifacts',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `functionName` set to `"excludeContracts"`
+ */
+export const useReadSixDecimalTokenTestExcludeContracts =
+  /*#__PURE__*/ createUseReadContract({
+    abi: sixDecimalTokenTestAbi,
+    functionName: 'excludeContracts',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `functionName` set to `"excludeSelectors"`
+ */
+export const useReadSixDecimalTokenTestExcludeSelectors =
+  /*#__PURE__*/ createUseReadContract({
+    abi: sixDecimalTokenTestAbi,
+    functionName: 'excludeSelectors',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `functionName` set to `"excludeSenders"`
+ */
+export const useReadSixDecimalTokenTestExcludeSenders =
+  /*#__PURE__*/ createUseReadContract({
+    abi: sixDecimalTokenTestAbi,
+    functionName: 'excludeSenders',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `functionName` set to `"failed"`
+ */
+export const useReadSixDecimalTokenTestFailed =
+  /*#__PURE__*/ createUseReadContract({
+    abi: sixDecimalTokenTestAbi,
+    functionName: 'failed',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `functionName` set to `"targetArtifactSelectors"`
+ */
+export const useReadSixDecimalTokenTestTargetArtifactSelectors =
+  /*#__PURE__*/ createUseReadContract({
+    abi: sixDecimalTokenTestAbi,
+    functionName: 'targetArtifactSelectors',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `functionName` set to `"targetArtifacts"`
+ */
+export const useReadSixDecimalTokenTestTargetArtifacts =
+  /*#__PURE__*/ createUseReadContract({
+    abi: sixDecimalTokenTestAbi,
+    functionName: 'targetArtifacts',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `functionName` set to `"targetContracts"`
+ */
+export const useReadSixDecimalTokenTestTargetContracts =
+  /*#__PURE__*/ createUseReadContract({
+    abi: sixDecimalTokenTestAbi,
+    functionName: 'targetContracts',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `functionName` set to `"targetInterfaces"`
+ */
+export const useReadSixDecimalTokenTestTargetInterfaces =
+  /*#__PURE__*/ createUseReadContract({
+    abi: sixDecimalTokenTestAbi,
+    functionName: 'targetInterfaces',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `functionName` set to `"targetSelectors"`
+ */
+export const useReadSixDecimalTokenTestTargetSelectors =
+  /*#__PURE__*/ createUseReadContract({
+    abi: sixDecimalTokenTestAbi,
+    functionName: 'targetSelectors',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `functionName` set to `"targetSenders"`
+ */
+export const useReadSixDecimalTokenTestTargetSenders =
+  /*#__PURE__*/ createUseReadContract({
+    abi: sixDecimalTokenTestAbi,
+    functionName: 'targetSenders',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `functionName` set to `"test_decimals_isSix"`
+ */
+export const useReadSixDecimalTokenTestTestDecimalsIsSix =
+  /*#__PURE__*/ createUseReadContract({
+    abi: sixDecimalTokenTestAbi,
+    functionName: 'test_decimals_isSix',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__
+ */
+export const useWriteSixDecimalTokenTest = /*#__PURE__*/ createUseWriteContract(
+  { abi: sixDecimalTokenTestAbi },
+)
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `functionName` set to `"setUp"`
+ */
+export const useWriteSixDecimalTokenTestSetUp =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: sixDecimalTokenTestAbi,
+    functionName: 'setUp',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `functionName` set to `"test_transfer_revertsWhenAmountUsesEighteenDecimals"`
+ */
+export const useWriteSixDecimalTokenTestTestTransferRevertsWhenAmountUsesEighteenDecimals =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: sixDecimalTokenTestAbi,
+    functionName: 'test_transfer_revertsWhenAmountUsesEighteenDecimals',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__
+ */
+export const useSimulateSixDecimalTokenTest =
+  /*#__PURE__*/ createUseSimulateContract({ abi: sixDecimalTokenTestAbi })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `functionName` set to `"setUp"`
+ */
+export const useSimulateSixDecimalTokenTestSetUp =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: sixDecimalTokenTestAbi,
+    functionName: 'setUp',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `functionName` set to `"test_transfer_revertsWhenAmountUsesEighteenDecimals"`
+ */
+export const useSimulateSixDecimalTokenTestTestTransferRevertsWhenAmountUsesEighteenDecimals =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: sixDecimalTokenTestAbi,
+    functionName: 'test_transfer_revertsWhenAmountUsesEighteenDecimals',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__
+ */
+export const useWatchSixDecimalTokenTestEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({ abi: sixDecimalTokenTestAbi })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `eventName` set to `"log"`
+ */
+export const useWatchSixDecimalTokenTestLogEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: sixDecimalTokenTestAbi,
+    eventName: 'log',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `eventName` set to `"log_address"`
+ */
+export const useWatchSixDecimalTokenTestLogAddressEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: sixDecimalTokenTestAbi,
+    eventName: 'log_address',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `eventName` set to `"log_array"`
+ */
+export const useWatchSixDecimalTokenTestLogArrayEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: sixDecimalTokenTestAbi,
+    eventName: 'log_array',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `eventName` set to `"log_bytes"`
+ */
+export const useWatchSixDecimalTokenTestLogBytesEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: sixDecimalTokenTestAbi,
+    eventName: 'log_bytes',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `eventName` set to `"log_bytes32"`
+ */
+export const useWatchSixDecimalTokenTestLogBytes32Event =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: sixDecimalTokenTestAbi,
+    eventName: 'log_bytes32',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `eventName` set to `"log_int"`
+ */
+export const useWatchSixDecimalTokenTestLogIntEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: sixDecimalTokenTestAbi,
+    eventName: 'log_int',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `eventName` set to `"log_named_address"`
+ */
+export const useWatchSixDecimalTokenTestLogNamedAddressEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: sixDecimalTokenTestAbi,
+    eventName: 'log_named_address',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `eventName` set to `"log_named_array"`
+ */
+export const useWatchSixDecimalTokenTestLogNamedArrayEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: sixDecimalTokenTestAbi,
+    eventName: 'log_named_array',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `eventName` set to `"log_named_bytes"`
+ */
+export const useWatchSixDecimalTokenTestLogNamedBytesEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: sixDecimalTokenTestAbi,
+    eventName: 'log_named_bytes',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `eventName` set to `"log_named_bytes32"`
+ */
+export const useWatchSixDecimalTokenTestLogNamedBytes32Event =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: sixDecimalTokenTestAbi,
+    eventName: 'log_named_bytes32',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `eventName` set to `"log_named_decimal_int"`
+ */
+export const useWatchSixDecimalTokenTestLogNamedDecimalIntEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: sixDecimalTokenTestAbi,
+    eventName: 'log_named_decimal_int',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `eventName` set to `"log_named_decimal_uint"`
+ */
+export const useWatchSixDecimalTokenTestLogNamedDecimalUintEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: sixDecimalTokenTestAbi,
+    eventName: 'log_named_decimal_uint',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `eventName` set to `"log_named_int"`
+ */
+export const useWatchSixDecimalTokenTestLogNamedIntEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: sixDecimalTokenTestAbi,
+    eventName: 'log_named_int',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `eventName` set to `"log_named_string"`
+ */
+export const useWatchSixDecimalTokenTestLogNamedStringEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: sixDecimalTokenTestAbi,
+    eventName: 'log_named_string',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `eventName` set to `"log_named_uint"`
+ */
+export const useWatchSixDecimalTokenTestLogNamedUintEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: sixDecimalTokenTestAbi,
+    eventName: 'log_named_uint',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `eventName` set to `"log_string"`
+ */
+export const useWatchSixDecimalTokenTestLogStringEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: sixDecimalTokenTestAbi,
+    eventName: 'log_string',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `eventName` set to `"log_uint"`
+ */
+export const useWatchSixDecimalTokenTestLogUintEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: sixDecimalTokenTestAbi,
+    eventName: 'log_uint',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link sixDecimalTokenTestAbi}__ and `eventName` set to `"logs"`
+ */
+export const useWatchSixDecimalTokenTestLogsEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: sixDecimalTokenTestAbi,
+    eventName: 'logs',
   })
 
 /**
@@ -8287,4 +12275,449 @@ export const useWatchUpgradeableBeaconUpgradedEvent =
   /*#__PURE__*/ createUseWatchContractEvent({
     abi: upgradeableBeaconAbi,
     eventName: 'Upgraded',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultAbi}__
+ *
+ *
+ */
+export const useReadVault = /*#__PURE__*/ createUseReadContract({
+  abi: vaultAbi,
+  address: vaultAddress,
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultAbi}__ and `functionName` set to `"deposits"`
+ *
+ *
+ */
+export const useReadVaultDeposits = /*#__PURE__*/ createUseReadContract({
+  abi: vaultAbi,
+  address: vaultAddress,
+  functionName: 'deposits',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultAbi}__ and `functionName` set to `"token"`
+ *
+ *
+ */
+export const useReadVaultToken = /*#__PURE__*/ createUseReadContract({
+  abi: vaultAbi,
+  address: vaultAddress,
+  functionName: 'token',
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link vaultAbi}__
+ *
+ *
+ */
+export const useWriteVault = /*#__PURE__*/ createUseWriteContract({
+  abi: vaultAbi,
+  address: vaultAddress,
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link vaultAbi}__ and `functionName` set to `"deposit"`
+ *
+ *
+ */
+export const useWriteVaultDeposit = /*#__PURE__*/ createUseWriteContract({
+  abi: vaultAbi,
+  address: vaultAddress,
+  functionName: 'deposit',
+})
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link vaultAbi}__
+ *
+ *
+ */
+export const useSimulateVault = /*#__PURE__*/ createUseSimulateContract({
+  abi: vaultAbi,
+  address: vaultAddress,
+})
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link vaultAbi}__ and `functionName` set to `"deposit"`
+ *
+ *
+ */
+export const useSimulateVaultDeposit = /*#__PURE__*/ createUseSimulateContract({
+  abi: vaultAbi,
+  address: vaultAddress,
+  functionName: 'deposit',
+})
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultAbi}__
+ *
+ *
+ */
+export const useWatchVaultEvent = /*#__PURE__*/ createUseWatchContractEvent({
+  abi: vaultAbi,
+  address: vaultAddress,
+})
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultAbi}__ and `eventName` set to `"Deposited"`
+ *
+ *
+ */
+export const useWatchVaultDepositedEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultAbi,
+    address: vaultAddress,
+    eventName: 'Deposited',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTestAbi}__
+ */
+export const useReadVaultTest = /*#__PURE__*/ createUseReadContract({
+  abi: vaultTestAbi,
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"IS_TEST"`
+ */
+export const useReadVaultTestIsTest = /*#__PURE__*/ createUseReadContract({
+  abi: vaultTestAbi,
+  functionName: 'IS_TEST',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"excludeArtifacts"`
+ */
+export const useReadVaultTestExcludeArtifacts =
+  /*#__PURE__*/ createUseReadContract({
+    abi: vaultTestAbi,
+    functionName: 'excludeArtifacts',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"excludeContracts"`
+ */
+export const useReadVaultTestExcludeContracts =
+  /*#__PURE__*/ createUseReadContract({
+    abi: vaultTestAbi,
+    functionName: 'excludeContracts',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"excludeSelectors"`
+ */
+export const useReadVaultTestExcludeSelectors =
+  /*#__PURE__*/ createUseReadContract({
+    abi: vaultTestAbi,
+    functionName: 'excludeSelectors',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"excludeSenders"`
+ */
+export const useReadVaultTestExcludeSenders =
+  /*#__PURE__*/ createUseReadContract({
+    abi: vaultTestAbi,
+    functionName: 'excludeSenders',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"failed"`
+ */
+export const useReadVaultTestFailed = /*#__PURE__*/ createUseReadContract({
+  abi: vaultTestAbi,
+  functionName: 'failed',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"targetArtifactSelectors"`
+ */
+export const useReadVaultTestTargetArtifactSelectors =
+  /*#__PURE__*/ createUseReadContract({
+    abi: vaultTestAbi,
+    functionName: 'targetArtifactSelectors',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"targetArtifacts"`
+ */
+export const useReadVaultTestTargetArtifacts =
+  /*#__PURE__*/ createUseReadContract({
+    abi: vaultTestAbi,
+    functionName: 'targetArtifacts',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"targetContracts"`
+ */
+export const useReadVaultTestTargetContracts =
+  /*#__PURE__*/ createUseReadContract({
+    abi: vaultTestAbi,
+    functionName: 'targetContracts',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"targetInterfaces"`
+ */
+export const useReadVaultTestTargetInterfaces =
+  /*#__PURE__*/ createUseReadContract({
+    abi: vaultTestAbi,
+    functionName: 'targetInterfaces',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"targetSelectors"`
+ */
+export const useReadVaultTestTargetSelectors =
+  /*#__PURE__*/ createUseReadContract({
+    abi: vaultTestAbi,
+    functionName: 'targetSelectors',
+  })
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"targetSenders"`
+ */
+export const useReadVaultTestTargetSenders =
+  /*#__PURE__*/ createUseReadContract({
+    abi: vaultTestAbi,
+    functionName: 'targetSenders',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link vaultTestAbi}__
+ */
+export const useWriteVaultTest = /*#__PURE__*/ createUseWriteContract({
+  abi: vaultTestAbi,
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"setUp"`
+ */
+export const useWriteVaultTestSetUp = /*#__PURE__*/ createUseWriteContract({
+  abi: vaultTestAbi,
+  functionName: 'setUp',
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"test_deposit_revertsWithoutApproval"`
+ */
+export const useWriteVaultTestTestDepositRevertsWithoutApproval =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: vaultTestAbi,
+    functionName: 'test_deposit_revertsWithoutApproval',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"test_deposit_succeedsAfterApproval"`
+ */
+export const useWriteVaultTestTestDepositSucceedsAfterApproval =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: vaultTestAbi,
+    functionName: 'test_deposit_succeedsAfterApproval',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link vaultTestAbi}__
+ */
+export const useSimulateVaultTest = /*#__PURE__*/ createUseSimulateContract({
+  abi: vaultTestAbi,
+})
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"setUp"`
+ */
+export const useSimulateVaultTestSetUp =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: vaultTestAbi,
+    functionName: 'setUp',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"test_deposit_revertsWithoutApproval"`
+ */
+export const useSimulateVaultTestTestDepositRevertsWithoutApproval =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: vaultTestAbi,
+    functionName: 'test_deposit_revertsWithoutApproval',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link vaultTestAbi}__ and `functionName` set to `"test_deposit_succeedsAfterApproval"`
+ */
+export const useSimulateVaultTestTestDepositSucceedsAfterApproval =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: vaultTestAbi,
+    functionName: 'test_deposit_succeedsAfterApproval',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__
+ */
+export const useWatchVaultTestEvent = /*#__PURE__*/ createUseWatchContractEvent(
+  { abi: vaultTestAbi },
+)
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"log"`
+ */
+export const useWatchVaultTestLogEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'log',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"log_address"`
+ */
+export const useWatchVaultTestLogAddressEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'log_address',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"log_array"`
+ */
+export const useWatchVaultTestLogArrayEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'log_array',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"log_bytes"`
+ */
+export const useWatchVaultTestLogBytesEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'log_bytes',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"log_bytes32"`
+ */
+export const useWatchVaultTestLogBytes32Event =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'log_bytes32',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"log_int"`
+ */
+export const useWatchVaultTestLogIntEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'log_int',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"log_named_address"`
+ */
+export const useWatchVaultTestLogNamedAddressEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'log_named_address',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"log_named_array"`
+ */
+export const useWatchVaultTestLogNamedArrayEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'log_named_array',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"log_named_bytes"`
+ */
+export const useWatchVaultTestLogNamedBytesEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'log_named_bytes',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"log_named_bytes32"`
+ */
+export const useWatchVaultTestLogNamedBytes32Event =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'log_named_bytes32',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"log_named_decimal_int"`
+ */
+export const useWatchVaultTestLogNamedDecimalIntEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'log_named_decimal_int',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"log_named_decimal_uint"`
+ */
+export const useWatchVaultTestLogNamedDecimalUintEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'log_named_decimal_uint',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"log_named_int"`
+ */
+export const useWatchVaultTestLogNamedIntEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'log_named_int',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"log_named_string"`
+ */
+export const useWatchVaultTestLogNamedStringEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'log_named_string',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"log_named_uint"`
+ */
+export const useWatchVaultTestLogNamedUintEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'log_named_uint',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"log_string"`
+ */
+export const useWatchVaultTestLogStringEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'log_string',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"log_uint"`
+ */
+export const useWatchVaultTestLogUintEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'log_uint',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link vaultTestAbi}__ and `eventName` set to `"logs"`
+ */
+export const useWatchVaultTestLogsEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: vaultTestAbi,
+    eventName: 'logs',
   })
