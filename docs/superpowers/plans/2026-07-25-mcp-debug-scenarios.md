@@ -82,7 +82,7 @@ function chain(error: unknown): string[] {
     lines.push(`${current.name}: ${current.message}`);
     current = current.cause;
   }
-  if (lines.length === 0 && current != null) lines.push(String(current));
+  if (current != null) lines.push(String(current));
   return lines;
 }
 
