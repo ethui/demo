@@ -38,3 +38,7 @@ dist
 dependencies
 subgraph/node_modules
 .claude
+
+# playwright
+test-results/
+playwright-report/

@@ -7,6 +7,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "eth-watch": "./scripts/eth-watch.sh",
+    "e2e": "playwright test",
     "lint": "yarn lint:biome && yarn lint:tsc",
     "lint:biome": "biome check .",
     "lint:tsc": "tsc --noEmit",
@@ -33,6 +34,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.2.2",
+    "@playwright/test": "^1.62.0",
     "@tanstack/react-router": "^1.131.31",
     "@tanstack/router-plugin": "^1.131.31",
     "@types/lodash-es": "^4.17.12",

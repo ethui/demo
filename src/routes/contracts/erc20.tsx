@@ -1,11 +1,13 @@
 import { Button } from "@ethui/ui/components/shadcn/button";
 import { createFileRoute } from "@tanstack/react-router";
-import { Check, LoaderCircle } from "lucide-react";
-import { formatEther } from "viem";
+import { Check, Flame, LoaderCircle } from "lucide-react";
+import { useState } from "react";
+import { formatEther, parseEther } from "viem";
 import { useAccount } from "wagmi";
 import {
   useReadTokenBalanceOf,
   useWatchTokenTransferEvent,
+  useWriteTokenBurn,
   useWriteTokenMint,
 } from "#/wagmi.generated";
 
@@ -18,6 +20,7 @@ function ERC20() {
   return (
     <>
       <Mint />
+      <Burn />
       <Balance />
     </>
   );
@@ -42,6 +45,39 @@ function Mint() {
   );
 }
 
+function Burn() {
+  const { address } = useAccount();
+  const [amount, setAmount] = useState("");
+  const { isPending, writeContract } = useWriteTokenBurn();
+
+  const onClick = async () => {
+    if (!address || !amount) return;
+    writeContract({
+      args: [address, parseEther(amount)],
+    });
+  };
+
+  return (
+    <div className="flex gap-2">
+      <input
+        className="rounded border px-2"
+        data-testid="burn-amount"
+        onChange={(e) => setAmount(e.target.value)}
+        placeholder="amount"
+        value={amount}
+      />
+      <Button
+        data-testid="burn-submit"
+        disabled={!address || !amount || isPending}
+        onClick={onClick}
+      >
+        {isPending ? <LoaderCircle className="animate-spin" /> : <Flame />}
+        Burn $TEST
+      </Button>
+    </div>
+  );
+}
+
 function Balance() {
   const { address } = useAccount();
   const { data: balance, refetch } = useReadTokenBalanceOf({
@@ -57,5 +93,5 @@ function Balance() {
 
   if (!balance) return null;
 
-  return <p>Balances: {formatEther(balance)}</p>;
+  return <p data-testid="balance">Balances: {formatEther(balance)}</p>;
 }
